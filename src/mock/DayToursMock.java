@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 package mock;
-
+// prufu comment
 /**
  *
  * @author Eiríkur Kristinn Hlöðversson, Háskóli Íslands, ekh9@hi.is
