@@ -31,4 +31,7 @@ public class Validate {
         if(x/10!=0) return numofdigits(x/10)+1;
         return 1;
     }
+    
+    // lalladklakdlad,alk
+    
 }
