@@ -50,7 +50,7 @@ public class ValidateTest {
     @Test
     public void testValidateSsn(){
         assertTrue(validate.ssn(1611612229));
-        assertFalse(validate.phone(694493234));
+        assertFalse(validate.ssn(1611612221));
     }
     
    

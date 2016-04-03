@@ -23,6 +23,13 @@ public class WindowTest {
     private Window flight1;
     private Window hotel1;
     private Window dayTour1;
+    private String rvk;
+    private String aey;
+    private String blabla;
+    private String bull;
+    private String reykjavik;
+    private String bolungarvik;
+    
     
     public WindowTest() {
     }
@@ -32,6 +39,11 @@ public class WindowTest {
         flight1 = new Window();
         hotel1 = new Window();
         dayTour1 = new Window();
+        rvk = "Rvk";
+        aey = "Aey";
+        blabla = "BlaBla";
+        bull ="bull";
+        
     }
     
     @After
@@ -39,36 +51,30 @@ public class WindowTest {
         flight1 = null;
         hotel1 = null;
         dayTour1 = null;
+        rvk = null;
+        aey = null;
+        blabla = null;
+        bull = null;
+        reykjavik = "Reykjavík";
+        bolungarvik = "Bolungarvík";
     }
     
     @Test
     public void testFlightSearch(){
         Date departure = new Date(2016-1900,3-1,3);
-        String from = "Rvk";
-        String to = "Aey";
-        FlightMock[] result = flight1.flightSearch.search(departure, from, to);
-       //System.out.print("SearchFlight");
+        FlightMock[] result = flight1.flightSearch.search(departure, rvk, aey);
         assertNotNull(result);
         
         departure = new Date(2016-1900,3-1,3);
-        from = "BlaBla";
-        to = "Aey";
-        result = flight1.flightSearch.search(departure, from, to);
-       // System.out.println("SearchFlight");
+        result = flight1.flightSearch.search(departure, blabla, aey);
         assertNull(result);
         
         departure = new Date(2016-1900,3-1,3);
-        from = "Rvk";
-        to = "BullBull";
-        result = flight1.flightSearch.search(departure, from, to);
-        //System.out.println("SearchFlight");
+        result = flight1.flightSearch.search(departure, rvk, bull);
         assertNull(result);
         
         departure = new Date(1999-1900,3-1,3);
-        from = "BlaBla";
-        to = "Aey";
-        result = flight1.flightSearch.search(departure, from, to);
-        //System.out.println("SearchFlight");
+        result = flight1.flightSearch.search(departure, blabla, aey);
         assertNull(result);
         
         
@@ -77,42 +83,30 @@ public class WindowTest {
     @Test
     public void testSearchHotel(){
         Date departure = new Date(2016-1900,3-1,3);
-        String city = "Reykjavík";
-        HotelMock[] result = hotel1.hotelSearch.search(departure, city);
-        //System.out.print(result);
+        HotelMock[] result = hotel1.hotelSearch.search(departure, reykjavik);
         assertNotNull(result);
         
         departure = new Date(1999-1900,3-1,3);
-        city = "Reykjavík";
-        result = hotel1.hotelSearch.search(departure, city);
-       // System.out.println(result);
+        result = hotel1.hotelSearch.search(departure, reykjavik);
         assertNull(result);
         
         departure = new Date(2016-1900,3-1,3);
-        city = "Bolungarvík";
-        result = hotel1.hotelSearch.search(departure, city);
-       // System.out.println(Arrays.toString(result));
+        result = hotel1.hotelSearch.search(departure, bolungarvik);
         assertNull(result);
     }
     
     @Test
     public void testSearchDayTour(){
         Date departure = new Date(2016-1900,3-1,3);
-        String city = "Reykjavík";
-        DayTourMock[] results = dayTour1.dayTourSearch.search(departure, city);
-        //System.out.print(Arrays.toString(results));
+        DayTourMock[] results = dayTour1.dayTourSearch.search(departure, reykjavik);
         assertNotNull(results);
         
         departure = new Date(1999-1900,3-1,3);
-        city = "Reykjavík";
-        results = dayTour1.dayTourSearch.search(departure, city);
-        //System.out.println(Arrays.toString(results));
+        results = dayTour1.dayTourSearch.search(departure, reykjavik);
         assertNull(results);
         
         departure = new Date(2016-1900,3-1,3);
-        city = "Bolungarvík";
-        results = dayTour1.dayTourSearch.search(departure, city);
-        //System.out.println(Arrays.toString(results));
+        results = dayTour1.dayTourSearch.search(departure, reykjavik);
         assertNull(results);    
     }
   
