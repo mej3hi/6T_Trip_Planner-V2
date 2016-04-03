@@ -646,5 +646,5 @@ public class Window extends javax.swing.JFrame {
     }
     //----------------------------------------------------------------
     
-    //Prufa
+    
 }
