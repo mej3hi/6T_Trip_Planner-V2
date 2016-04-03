@@ -5,6 +5,8 @@
  */
 package trip;
 
+import mock.TeamDayTour;
+import mock.DayTourMock;
 import java.util.Date;
 
 /**
@@ -12,14 +14,14 @@ import java.util.Date;
  * @author M
  */
 public class DayTourSearch {
-    private DayTour[] results;
+    private DayTourMock[] results;
     
-    public DayTour[] search(Date date, String at){
-        results = ddb.search(date, at);
+    public DayTourMock[] search(Date date, String at){
+        results = TeamDayTour.search(date, at);
         return results;
     }
     
-    public DayTour getDayTour(int index){
+    public DayTourMock getDayTour(int index){
         return results[index];
     }
 }

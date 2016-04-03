@@ -5,6 +5,9 @@
  */
 package trip;
 
+import mock.HotelMock;
+import mock.DayTourMock;
+import mock.FlightMock;
 import java.util.Arrays;
 import java.util.Date;
 import org.junit.After;
@@ -43,7 +46,7 @@ public class WindowTest {
         Date departure = new Date(2016-1900,3-1,3);
         String from = "Rvk";
         String to = "Aey";
-        Flight[] result = flight1.flightSearch.search(departure, from, to);
+        FlightMock[] result = flight1.flightSearch.search(departure, from, to);
        //System.out.print("SearchFlight");
         assertNotNull(result);
         
@@ -75,7 +78,7 @@ public class WindowTest {
     public void testSearchHotel(){
         Date departure = new Date(2016-1900,3-1,3);
         String city = "Reykjavík";
-        Hotel[] result = hotel1.hotelSearch.search(departure, city);
+        HotelMock[] result = hotel1.hotelSearch.search(departure, city);
         //System.out.print(result);
         assertNotNull(result);
         
@@ -96,7 +99,7 @@ public class WindowTest {
     public void testSearchDayTour(){
         Date departure = new Date(2016-1900,3-1,3);
         String city = "Reykjavík";
-        DayTour[] results = dayTour1.dayTourSearch.search(departure, city);
+        DayTourMock[] results = dayTour1.dayTourSearch.search(departure, city);
         //System.out.print(Arrays.toString(results));
         assertNotNull(results);
         

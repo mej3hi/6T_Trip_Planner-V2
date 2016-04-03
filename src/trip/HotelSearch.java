@@ -5,6 +5,8 @@
  */
 package trip;
 
+import mock.TeamHotelMock;
+import mock.HotelMock;
 import java.util.Date;
 
 /**
@@ -12,14 +14,14 @@ import java.util.Date;
  * @author M
  */
 public class HotelSearch {
-    private Hotel[] results;
+    private HotelMock[] results;
     
-    public Hotel[] search(Date date, String at){
-        results = hdb.search(date, at);
+    public HotelMock[] search(Date date, String at){
+        results = TeamHotelMock.search(date, at);
         return results;
     }
     
-    public Hotel getHotel(int index){
+    public HotelMock getHotel(int index){
         return results[index];
     }
 }

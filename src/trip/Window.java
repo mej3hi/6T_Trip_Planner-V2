@@ -5,6 +5,9 @@
  */
 package trip;
 
+import mock.HotelMock;
+import mock.DayTourMock;
+import mock.FlightMock;
 import java.util.Date;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
@@ -388,7 +391,7 @@ public class Window extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void flightSearchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_flightSearchButtonActionPerformed
-        Flight[] results = flightSearch.search(depFlightDatePicker.getDate(), brief(fromFlightComboBox.getSelectedItem().toString()), brief(toFlightComboBox.getSelectedItem().toString()));
+        FlightMock[] results = flightSearch.search(depFlightDatePicker.getDate(), brief(fromFlightComboBox.getSelectedItem().toString()), brief(toFlightComboBox.getSelectedItem().toString()));
         createFlightTable(results);
     }//GEN-LAST:event_flightSearchButtonActionPerformed
 
@@ -402,7 +405,7 @@ public class Window extends javax.swing.JFrame {
     }//GEN-LAST:event_nextFromFlightButtonActionPerformed
 
     private void hotelSearchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_hotelSearchButtonActionPerformed
-        Hotel[] results = hotelSearch.search(arrHotelDatePicker.getDate(), locationHotelComboBox.getSelectedItem().toString());
+        HotelMock[] results = hotelSearch.search(arrHotelDatePicker.getDate(), locationHotelComboBox.getSelectedItem().toString());
         createHotelTable(results);
     }//GEN-LAST:event_hotelSearchButtonActionPerformed
 
@@ -412,7 +415,7 @@ public class Window extends javax.swing.JFrame {
     }//GEN-LAST:event_nextFromHotelButtonActionPerformed
 
     private void dayTourSearchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dayTourSearchButtonActionPerformed
-        DayTour[] results = dayTourSearch.search(dayTourDatePicker.getDate(),destinationTourComboBox.getSelectedItem().toString());
+        DayTourMock[] results = dayTourSearch.search(dayTourDatePicker.getDate(),destinationTourComboBox.getSelectedItem().toString());
         createDayTourTable(results);
     }//GEN-LAST:event_dayTourSearchButtonActionPerformed
 
@@ -536,7 +539,7 @@ public class Window extends javax.swing.JFrame {
         depFlightDatePicker.setDate(new Date());
     }
     
-    private void createFlightTable(Flight[] x) {
+    private void createFlightTable(FlightMock[] x) {
         DefaultTableModel model = (DefaultTableModel) flightResultTable.getModel();
         model.setRowCount(0);
         if(x==null) return;
@@ -560,7 +563,7 @@ public class Window extends javax.swing.JFrame {
 
             if (isChecked) {
                 int index = (int) flightResultTable.getValueAt(i, 0);
-                Flight tmp = flightSearch.getFlight(index);
+                FlightMock tmp = flightSearch.getFlight(index);
                 bookingManager.addFlight(tmp);
             }
 
@@ -571,7 +574,7 @@ public class Window extends javax.swing.JFrame {
         mainTabbedPane.setSelectedComponent(panel);
     }
     
-    private void createHotelTable(Hotel[] x){
+    private void createHotelTable(HotelMock[] x){
         DefaultTableModel model = (DefaultTableModel) hotelResultTable.getModel();
         model.setRowCount(0);
         if(x==null) return;
@@ -588,14 +591,14 @@ public class Window extends javax.swing.JFrame {
 
             if (isChecked) {
                 int index = (int) hotelResultTable.getValueAt(i, 0);
-                Hotel tmp = hotelSearch.getHotel(index);
+                HotelMock tmp = hotelSearch.getHotel(index);
                 bookingManager.setHotel(tmp);
             }
 
         }
     }
     
-    private void createDayTourTable(DayTour[] x){
+    private void createDayTourTable(DayTourMock[] x){
         DefaultTableModel model = (DefaultTableModel) dayTourResultsTable.getModel();
         model.setRowCount(0);
         if(x==null) return;
@@ -612,7 +615,7 @@ public class Window extends javax.swing.JFrame {
 
             if (isChecked) {
                 int index = (int) dayTourResultsTable.getValueAt(i, 0);
-                DayTour tmp = dayTourSearch.getDayTour(index);
+                DayTourMock tmp = dayTourSearch.getDayTour(index);
                 bookingManager.addDayTour(tmp);
             }
 
@@ -620,7 +623,7 @@ public class Window extends javax.swing.JFrame {
     }
     
     //------------------- Hjálparföll ------------------------------
-    private Object[] toObj(Flight x,int i){
+    private Object[] toObj(FlightMock x,int i){
         return new Object[]{i,x.airline,x.departure+x.from,
                 x.arrival+x.to,x.duration,x.price,false};
     }
@@ -633,11 +636,11 @@ public class Window extends javax.swing.JFrame {
         return "";
     }
     
-    private Object[] hToObj(Hotel x, int i){
+    private Object[] hToObj(HotelMock x, int i){
         return new Object[]{i,x.name,x.city,x.price,false};
     }
     
-    private Object[] dToObj(DayTour x, int i){
+    private Object[] dToObj(DayTourMock x, int i){
         return new Object[]{i,x.trip,x.city,x.time,x.price,false};
     }
     

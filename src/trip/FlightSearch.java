@@ -5,6 +5,8 @@
  */
 package trip;
 
+import mock.FlightMock;
+import mock.TeamFlightMock;
 import java.util.Date;
 
 /**
@@ -12,14 +14,14 @@ import java.util.Date;
  * @author M
  */
 public class FlightSearch {
-    private Flight[] results;
+    private FlightMock[] results;
     
-    public Flight[] search(Date departure, String from, String to){
-        results = fdb.search(departure, from, to);
+    public FlightMock[] search(Date departure, String from, String to){
+        results = TeamFlightMock.search(departure, from, to);
         return results;
     }
     
-    public Flight getFlight(int index){
+    public FlightMock getFlight(int index){
         return results[index];
     }
 }

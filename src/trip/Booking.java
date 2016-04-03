@@ -5,6 +5,9 @@
  */
 package trip;
 
+import mock.HotelMock;
+import mock.DayTourMock;
+import mock.FlightMock;
 import java.util.ArrayList;
 
 /**
@@ -12,9 +15,9 @@ import java.util.ArrayList;
  * @author M
  */
 public class Booking {
-    public ArrayList<Flight> flight = new ArrayList<>();
-    public Hotel hotel;
-    public ArrayList<DayTour> daytour = new ArrayList<>();
+    public ArrayList<FlightMock> flight = new ArrayList<>();
+    public HotelMock hotel;
+    public ArrayList<DayTourMock> daytour = new ArrayList<>();
     public Customer customer = new Customer();
     
 }

@@ -5,6 +5,10 @@
  */
 package trip;
 
+import mock.HotelMock;
+import mock.DayTourMock;
+import mock.FlightMock;
+
 /**
  *
  * @author M
@@ -16,15 +20,15 @@ public class BookingManager {
         return booking;
     }
     
-    public void addFlight(Flight flight){
+    public void addFlight(FlightMock flight){
         booking.flight.add(flight);
     }
     
-    public void setHotel(Hotel hotel){
+    public void setHotel(HotelMock hotel){
         booking.hotel = hotel;
     }
     
-    public void addDayTour(DayTour dayTour){
+    public void addDayTour(DayTourMock dayTour){
         booking.daytour.add(dayTour);
     }
     

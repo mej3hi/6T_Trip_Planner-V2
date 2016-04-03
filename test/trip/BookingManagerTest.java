@@ -5,6 +5,7 @@
  */
 package trip;
 
+import mock.FlightMock;
 import java.util.Date;
 import org.junit.After;
 import org.junit.Before;
@@ -18,7 +19,7 @@ import static org.junit.Assert.*;
 public class BookingManagerTest {
     
     private BookingManager bookingManager;
-    private Flight flight;
+    private FlightMock flight;
     
     public BookingManagerTest() {
     }
@@ -30,7 +31,7 @@ public class BookingManagerTest {
         bookingManager.getBookings().customer.setId(1);
         bookingManager.getBookings().customer.setPhone(6789983);
         
-        flight = new Flight( "1","Wow",new Date(2016-1900,3-1,3), "12:00", "15:00", "3:00", "Rvk", "Aey","6.000");
+        flight = new FlightMock( "1","Wow",new Date(2016-1900,3-1,3), "12:00", "15:00", "3:00", "Rvk", "Aey","6.000");
         bookingManager.addFlight(flight);
         
     }
