@@ -32,6 +32,6 @@ public class Validate {
         return 1;
     }
     
-    // lalladklakdlad,alk
+    
     
 }
