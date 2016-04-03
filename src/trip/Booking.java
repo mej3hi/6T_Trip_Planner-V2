@@ -6,7 +6,7 @@
 package trip;
 
 import java.util.ArrayList;
-
+//prufa
 /**
  *
  * @author M
