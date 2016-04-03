@@ -88,7 +88,6 @@ public class Window extends javax.swing.JFrame {
         nextFromDayTourButton = new javax.swing.JButton();
         tripTourComboBox = new javax.swing.JComboBox<>();
         customerPanel = new javax.swing.JPanel();
-        jTextField1 = new javax.swing.JTextField();
         bookPanel = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -345,23 +344,15 @@ public class Window extends javax.swing.JFrame {
 
         mainTabbedPane.addTab("DayTours", dayTourPanel);
 
-        jTextField1.setText("jTextField1");
-
         javax.swing.GroupLayout customerPanelLayout = new javax.swing.GroupLayout(customerPanel);
         customerPanel.setLayout(customerPanelLayout);
         customerPanelLayout.setHorizontalGroup(
             customerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(customerPanelLayout.createSequentialGroup()
-                .addGap(243, 243, 243)
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(279, Short.MAX_VALUE))
+            .addGap(0, 606, Short.MAX_VALUE)
         );
         customerPanelLayout.setVerticalGroup(
             customerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(customerPanelLayout.createSequentialGroup()
-                .addGap(129, 129, 129)
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(413, Short.MAX_VALUE))
+            .addGap(0, 570, Short.MAX_VALUE)
         );
 
         mainTabbedPane.addTab("Customer", customerPanel);
@@ -520,7 +511,6 @@ public class Window extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JComboBox<String> locationHotelComboBox;
     private javax.swing.JTabbedPane mainTabbedPane;
     private javax.swing.JButton nextFromDayTourButton;
