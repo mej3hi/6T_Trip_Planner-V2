@@ -23,6 +23,7 @@ public class Window extends javax.swing.JFrame {
     FlightSearch flightSearch = new FlightSearch();
     HotelSearch hotelSearch = new HotelSearch();
     DayTourSearch dayTourSearch = new DayTourSearch();
+    Validate validate = new Validate();
     /**
      * Creates new form Window
      */
@@ -91,9 +92,25 @@ public class Window extends javax.swing.JFrame {
         nextFromDayTourButton = new javax.swing.JButton();
         tripTourComboBox = new javax.swing.JComboBox<>();
         customerPanel = new javax.swing.JPanel();
+        jLabel17 = new javax.swing.JLabel();
+        jTextField1 = new javax.swing.JTextField();
+        jLabel18 = new javax.swing.JLabel();
+        jTextField2 = new javax.swing.JTextField();
+        jLabel19 = new javax.swing.JLabel();
+        jTextField3 = new javax.swing.JTextField();
+        jButton1 = new javax.swing.JButton();
         bookPanel = new javax.swing.JPanel();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        jTextArea1 = new javax.swing.JTextArea();
+        jButton2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        mainTabbedPane.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                mainTabbedPaneStateChanged(evt);
+            }
+        });
 
         flightsPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -347,28 +364,57 @@ public class Window extends javax.swing.JFrame {
 
         mainTabbedPane.addTab("DayTours", dayTourPanel);
 
-        javax.swing.GroupLayout customerPanelLayout = new javax.swing.GroupLayout(customerPanel);
-        customerPanel.setLayout(customerPanelLayout);
-        customerPanelLayout.setHorizontalGroup(
-            customerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 606, Short.MAX_VALUE)
-        );
-        customerPanelLayout.setVerticalGroup(
-            customerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 570, Short.MAX_VALUE)
-        );
+        customerPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel17.setText("Name");
+        customerPanel.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, -1, -1));
+        customerPanel.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, 150, -1));
+
+        jLabel18.setText("SSN");
+        customerPanel.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 110, -1, -1));
+        customerPanel.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 130, 150, -1));
+
+        jLabel19.setText("Phone");
+        customerPanel.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 180, -1, -1));
+        customerPanel.add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 200, 110, -1));
+
+        jButton1.setText("Next >");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        customerPanel.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 270, -1, -1));
 
         mainTabbedPane.addTab("Customer", customerPanel);
+
+        jTextArea1.setColumns(20);
+        jTextArea1.setRows(5);
+        jScrollPane4.setViewportView(jTextArea1);
+
+        jButton2.setText("Book");
 
         javax.swing.GroupLayout bookPanelLayout = new javax.swing.GroupLayout(bookPanel);
         bookPanel.setLayout(bookPanelLayout);
         bookPanelLayout.setHorizontalGroup(
             bookPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 606, Short.MAX_VALUE)
+            .addGroup(bookPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(bookPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 576, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, bookPanelLayout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jButton2)))
+                .addContainerGap())
         );
         bookPanelLayout.setVerticalGroup(
             bookPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 570, Short.MAX_VALUE)
+            .addGroup(bookPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 462, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
+                .addComponent(jButton2)
+                .addGap(30, 30, 30))
         );
 
         mainTabbedPane.addTab("Book", bookPanel);
@@ -436,6 +482,16 @@ public class Window extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_depFlightDatePickerActionPerformed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        addCustomer();
+        
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void mainTabbedPaneStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_mainTabbedPaneStateChanged
+        if(mainTabbedPane.getSelectedIndex()==4)
+            showBooking();
+    }//GEN-LAST:event_mainTabbedPaneStateChanged
+
     /**
      * @param args the command line arguments
      */
@@ -495,6 +551,8 @@ public class Window extends javax.swing.JFrame {
     private javax.swing.JTable hotelResultTable;
     private javax.swing.JButton hotelSearchButton;
     private javax.swing.JPanel hotelsPanel;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -503,6 +561,9 @@ public class Window extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel18;
+    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -514,6 +575,11 @@ public class Window extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JTextArea jTextArea1;
+    private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField jTextField2;
+    private javax.swing.JTextField jTextField3;
     private javax.swing.JComboBox<String> locationHotelComboBox;
     private javax.swing.JTabbedPane mainTabbedPane;
     private javax.swing.JButton nextFromDayTourButton;
@@ -537,6 +603,8 @@ public class Window extends javax.swing.JFrame {
         dayTourResultsTable.getColumnModel().getColumn(0).setMaxWidth(0);
         
         depFlightDatePicker.setDate(new Date());
+        
+        //mainTabbedPane.setEnabledAt(4, false);
     }
     
     private void createFlightTable(FlightMock[] x) {
@@ -609,7 +677,7 @@ public class Window extends javax.swing.JFrame {
         }
     }
     
-        private void addSelectedDayTours() {
+    private void addSelectedDayTours() {
         for (int i = 0; i < dayTourResultsTable.getRowCount(); i++) {
             boolean isChecked = (Boolean) dayTourResultsTable.getValueAt(i, 5);
 
@@ -622,6 +690,41 @@ public class Window extends javax.swing.JFrame {
         }
     }
     
+    private void addCustomer(){
+        String name = jTextField1.getText().trim();
+        String ssn = jTextField2.getText().trim();
+        String phone = jTextField3.getText().trim();
+        if(!validateCustomer(name,ssn,phone)) return;
+        
+        bookingManager.updateCustomer(name, toInt(ssn), toInt(phone));
+        
+    }
+    
+    private boolean validateCustomer(String name, String ssn, String phone){
+        boolean b = true;
+        if(!validate.name(name))
+            b=false;
+        if(!validate.ssn(ssn))
+            b=false;
+        if(!validate.phone(phone))
+            b=false;
+        return b;
+    }
+    
+    private void showBooking(){
+        Booking booking = bookingManager.getBookings();
+        
+        String name = booking.customer.getName();
+        int ssn = booking.customer.getId();
+        int phone = booking.customer.getPhone();
+        
+        String s="";
+        s+="Name: "+name+"\n"+"SSN: "+ssn+"\n"+"Phone: "+phone+"\n\n";
+        jTextArea1.setText(s);
+        
+        
+    }
+        
     //------------------- Hjálparföll ------------------------------
     private Object[] toObj(FlightMock x,int i){
         return new Object[]{i,x.airline,x.departure+x.from,
@@ -646,6 +749,10 @@ public class Window extends javax.swing.JFrame {
     
     private void echo(Object o){
         System.out.println(o);
+    }
+    
+    private int toInt(String s){
+        return Integer.parseInt(s.replaceAll("[- ]", ""));
     }
     //----------------------------------------------------------------
     

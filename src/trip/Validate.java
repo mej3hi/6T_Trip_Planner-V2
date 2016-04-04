@@ -19,12 +19,12 @@ public class Validate {
         return true;
     }
     
-    public boolean phone(int phone){
-        return 7==numofdigits(phone);
+    public boolean phone(String phone){
+        return phone.matches("[0-9]{3}[ -]?[0-9]{4}");
     }
     
-    public boolean ssn(int ssn){
-        return (""+ssn).matches("[0123][0-9][01][0-9][0-9][0-9][0-9]{4}");
+    public boolean ssn(String ssn){
+        return (ssn).matches("[0123][0-9][01][0-9][0-9][0-9][ -]?[0-9]{4}");
     }
     
     public int numofdigits(int x){
