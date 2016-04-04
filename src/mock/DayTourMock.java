@@ -12,7 +12,7 @@ import java.util.Date;
  * @author M |id|Trip|City|Time|Price|
  */ 
 public class DayTourMock {
-    public String id;
+    public int id;
     public String trip;
     public String city;
     public String time;
@@ -27,7 +27,7 @@ public class DayTourMock {
      * @param price
      * @param date 
      */
-    public DayTourMock(String id,String name,String city,String time,String price, Date date){
+    public DayTourMock(int id,String name,String city,String time,String price, Date date){
         this.id = id;
         this.trip = name;
         this.city = city;

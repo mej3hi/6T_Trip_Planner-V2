@@ -12,7 +12,7 @@ import java.util.Date;
  * @author M
  */
 public class HotelMock {
-    public String id;
+    public int id;
     public String name;
     public String city;
     public String price;
@@ -25,7 +25,7 @@ public class HotelMock {
      * @param price
      * @param date 
      */
-    public HotelMock(String id,String name,String city,String price, Date date){
+    public HotelMock(int id,String name,String city,String price, Date date){
         this.id = id;
         this.name = name;
         this.city = city;

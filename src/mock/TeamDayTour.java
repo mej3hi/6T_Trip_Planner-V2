@@ -43,7 +43,7 @@ public class TeamDayTour {
         int k=0;
         for(int i=0; i<data.length; i++){
             if(date.compareTo(std(data[i][5]))==0 && city.equals(data[i][2])){
-                hotelobj[k]= new DayTourMock(data[i][0],data[i][1],data[i][2],data[i][3],data[i][4],std(data[i][5]));
+                hotelobj[k]= new DayTourMock(Integer.parseInt(data[i][0]),data[i][1],data[i][2],data[i][3],data[i][4],std(data[i][5]));
                 k++;
             }   
         }

@@ -11,7 +11,7 @@ package trip;
  */
 public class Customer {
     private String name;
-    private int id;
+    private String id;
     private int phone;
     
     public void setName(String name){
@@ -22,11 +22,11 @@ public class Customer {
         return name;
     }
     
-    public void setId(int id){
+    public void setId(String id){
         this.id=id;
     }
     
-    public int getId(){
+    public String getId(){
         return id;
     }
     

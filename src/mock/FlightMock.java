@@ -12,7 +12,7 @@ import java.util.Date;
  * @author M
  */
 public class FlightMock {
-    public String id;
+    public int id;
     public String airline;
     public Date date;
     public String departure;
@@ -33,7 +33,7 @@ public class FlightMock {
      * @param to
      * @param price 
      */
-    public FlightMock(String id,String airline, Date date, String departure,String arrival, String duration, String from, String to, String price){
+    public FlightMock(int id,String airline, Date date, String departure,String arrival, String duration, String from, String to, String price){
         this.id=id;
         this.airline=airline;
         this.date=date;

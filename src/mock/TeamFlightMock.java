@@ -42,7 +42,7 @@ public class TeamFlightMock {
         int k=0;
         for(int i=0; i<data.length; i++){
             if(date.compareTo(std(data[i][2]))==0 && data[i][6].toLowerCase().equals(from.toLowerCase()) && data[i][7].toLowerCase().equals(to.toLowerCase())){
-                flightobj[k]= new FlightMock(data[i][0],data[i][1],std(data[i][2]),data[i][3],data[i][4],data[i][5],data[i][6],data[i][7],data[i][8]);
+                flightobj[k]= new FlightMock(Integer.parseInt(data[i][0]),data[i][1],std(data[i][2]),data[i][3],data[i][4],data[i][5],data[i][6],data[i][7],data[i][8]);
                 k++;
             }   
         }

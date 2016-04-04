@@ -32,7 +32,7 @@ public class BookingManager {
         booking.daytour.add(dayTour);
     }
     
-    public void updateCustomer(String name, int id, int phone){
+    public void updateCustomer(String name, String id, int phone){
         booking.customer.setName(name);
         booking.customer.setId(id);
         booking.customer.setPhone(phone);

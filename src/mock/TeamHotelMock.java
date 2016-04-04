@@ -41,7 +41,7 @@ public class TeamHotelMock {
         int k=0;
         for(int i=0; i<data.length; i++){
             if(date.compareTo(std(data[i][4]))==0 && city.equals(data[i][2])){
-                hotelobj[k]= new HotelMock(data[i][0],data[i][1],data[i][2],data[i][3],std(data[i][4]));
+                hotelobj[k]= new HotelMock(Integer.parseInt(data[i][0]),data[i][1],data[i][2],data[i][3],std(data[i][4]));
                 k++;
             }   
         }

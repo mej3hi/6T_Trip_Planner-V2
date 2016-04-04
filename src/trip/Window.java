@@ -5,6 +5,9 @@
  */
 package trip;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import mock.HotelMock;
 import mock.DayTourMock;
 import mock.FlightMock;
@@ -24,6 +27,7 @@ public class Window extends javax.swing.JFrame {
     HotelSearch hotelSearch = new HotelSearch();
     DayTourSearch dayTourSearch = new DayTourSearch();
     Validate validate = new Validate();
+    BookingDatabase bookingDatabase = new BookingDatabase();
     /**
      * Creates new form Window
      */
@@ -99,6 +103,9 @@ public class Window extends javax.swing.JFrame {
         jLabel19 = new javax.swing.JLabel();
         jTextField3 = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
+        jLabel20 = new javax.swing.JLabel();
+        jLabel21 = new javax.swing.JLabel();
+        jLabel22 = new javax.swing.JLabel();
         bookPanel = new javax.swing.JPanel();
         jScrollPane4 = new javax.swing.JScrollPane();
         jTextArea1 = new javax.swing.JTextArea();
@@ -386,6 +393,18 @@ public class Window extends javax.swing.JFrame {
         });
         customerPanel.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 270, -1, -1));
 
+        jLabel20.setForeground(new java.awt.Color(255, 0, 51));
+        jLabel20.setText("Invalid Name");
+        customerPanel.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 60, -1, -1));
+
+        jLabel21.setForeground(new java.awt.Color(255, 0, 51));
+        jLabel21.setText("Invalid SSN");
+        customerPanel.add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 130, -1, -1));
+
+        jLabel22.setForeground(new java.awt.Color(255, 0, 51));
+        jLabel22.setText("Invalid Phone");
+        customerPanel.add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 200, -1, -1));
+
         mainTabbedPane.addTab("Customer", customerPanel);
 
         jTextArea1.setColumns(20);
@@ -393,6 +412,11 @@ public class Window extends javax.swing.JFrame {
         jScrollPane4.setViewportView(jTextArea1);
 
         jButton2.setText("Book");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout bookPanelLayout = new javax.swing.GroupLayout(bookPanel);
         bookPanel.setLayout(bookPanelLayout);
@@ -467,7 +491,7 @@ public class Window extends javax.swing.JFrame {
 
     private void nextFromDayTourButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nextFromDayTourButtonActionPerformed
         addSelectedDayTours();
-        System.out.println(bookingManager.getBookings().daytour.get(0).trip);
+        showPanel(customerPanel);
     }//GEN-LAST:event_nextFromDayTourButtonActionPerformed
 
     private void roomHotelComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_roomHotelComboBoxActionPerformed
@@ -484,13 +508,16 @@ public class Window extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         addCustomer();
-        
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void mainTabbedPaneStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_mainTabbedPaneStateChanged
         if(mainTabbedPane.getSelectedIndex()==4)
             showBooking();
     }//GEN-LAST:event_mainTabbedPaneStateChanged
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        addBookingToDatabase();
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -565,6 +592,9 @@ public class Window extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel20;
+    private javax.swing.JLabel jLabel21;
+    private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -604,6 +634,7 @@ public class Window extends javax.swing.JFrame {
         
         depFlightDatePicker.setDate(new Date());
         
+        hideLabels();
         //mainTabbedPane.setEnabledAt(4, false);
     }
     
@@ -696,18 +727,25 @@ public class Window extends javax.swing.JFrame {
         String phone = jTextField3.getText().trim();
         if(!validateCustomer(name,ssn,phone)) return;
         
-        bookingManager.updateCustomer(name, toInt(ssn), toInt(phone));
-        
+        bookingManager.updateCustomer(name, ssn, toInt(phone));
+        showPanel(bookPanel);
     }
     
     private boolean validateCustomer(String name, String ssn, String phone){
         boolean b = true;
-        if(!validate.name(name))
+        hideLabels();
+        if(!validate.name(name)){
+            jLabel20.setVisible(true);
             b=false;
-        if(!validate.ssn(ssn))
+        }
+        if(!validate.ssn(ssn)){
+            jLabel21.setVisible(true);
             b=false;
-        if(!validate.phone(phone))
+        }
+        if(!validate.phone(phone)){
+            jLabel22.setVisible(true);
             b=false;
+        }
         return b;
     }
     
@@ -715,14 +753,69 @@ public class Window extends javax.swing.JFrame {
         Booking booking = bookingManager.getBookings();
         
         String name = booking.customer.getName();
-        int ssn = booking.customer.getId();
+        String ssn = booking.customer.getId();
         int phone = booking.customer.getPhone();
         
         String s="";
         s+="Name: "+name+"\n"+"SSN: "+ssn+"\n"+"Phone: "+phone+"\n\n";
+        
+        ArrayList<FlightMock> fb = booking.flight;
+        for(int i=0; i<fb.size(); i++){
+            if(i==0){
+                s+="Flights\n\n";
+                s+="Airl\tDepart\tArriv\tDurat\tPrice\n";
+                s+="----------\t-----------\t----------\t----------\t---------\n";
+            }
+            FlightMock y = fb.get(i);
+            s+= y.airline+"\t"+y.departure+"\t"+y.arrival+"\t"+y.duration+"\t"+y.price+"\n";
+        }
+        
+        HotelMock hb = booking.hotel;
+        if(hb!=null){
+            s+="\n\nHotel\n\n";
+            s+="Name\tCity\tPrice\tDate\n";
+            s+="----------\t-----------\t----------\t----------\n";
+            s+=hb.name+"\t"+hb.city+"\t"+hb.price+"\t"+dts(hb.date);
+        }
+        
+        ArrayList<DayTourMock> db = booking.daytour;
+        for(int i=0; i<db.size(); i++){
+            if(i==0){
+                s+="\n\nDay Tours\n\n";
+                s+="Name\tCity\tPrice\tTime\tDate\n";
+                s+="----------\t-----------\t----------\t----------\t---------\n";
+            }
+            DayTourMock y = db.get(i);
+            s+= y.trip+"\t"+y.city+"\t"+y.price+"\t"+y.time+"\t"+dts(y.date)+"\n";
+        }
+            
+        
         jTextArea1.setText(s);
+    }
+    
+    private void addBookingToDatabase(){
+        Booking booking = bookingManager.getBookings();
+        ArrayList<FlightMock> flights = booking.flight;
+        HotelMock hotel = booking.hotel;
+        ArrayList<DayTourMock> daytours = booking.daytour;
         
+        for(int i=0; i<flights.size(); i++){
+            bookingDatabase.addBooking(booking.customer, "f", flights.get(i).id);
+        }
         
+        if(hotel!=null)
+            bookingDatabase.addBooking(booking.customer, "h", hotel.id);
+        
+        for(int i=0; i<daytours.size(); i++){
+            bookingDatabase.addBooking(booking.customer, "d", daytours.get(i).id);
+        }
+        
+    }
+    
+    private void hideLabels(){
+        jLabel20.setVisible(false);
+        jLabel21.setVisible(false);
+        jLabel22.setVisible(false);
     }
         
     //------------------- Hjálparföll ------------------------------
@@ -753,6 +846,11 @@ public class Window extends javax.swing.JFrame {
     
     private int toInt(String s){
         return Integer.parseInt(s.replaceAll("[- ]", ""));
+    }
+    
+    private String dts(Date d){
+        DateFormat formatter = new SimpleDateFormat("MM-dd-yyyy");
+        return formatter.format(d);
     }
     //----------------------------------------------------------------
     
