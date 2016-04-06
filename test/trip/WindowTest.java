@@ -43,6 +43,8 @@ public class WindowTest {
         aey = "Aey";
         blabla = "BlaBla";
         bull ="bull";
+        reykjavik = "Reykjavík";
+        bolungarvik = "Bolungarvík";
         
     }
     
@@ -55,8 +57,9 @@ public class WindowTest {
         aey = null;
         blabla = null;
         bull = null;
-        reykjavik = "Reykjavík";
-        bolungarvik = "Bolungarvík";
+        reykjavik = null;
+        bolungarvik = null;
+        
     }
     
     @Test

@@ -27,7 +27,7 @@ public class CustomerTest {
     @Before
     public void setUp() {
         customer = new Customer();
-        customer.setId(23);
+        customer.setId("23");
         customer.setName("Kalli");
         customer.setPhone(5885522);
     }
@@ -44,7 +44,7 @@ public class CustomerTest {
     
     @Test
     public void testGetId() {
-        assertEquals(23, customer.getId());
+        assertEquals("23", customer.getId());
     }
     @Test
     public void testGetPhone() {

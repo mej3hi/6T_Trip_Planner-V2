@@ -42,15 +42,17 @@ public class ValidateTest {
     
     @Test
     public void testValidatePhone(){
-        assertTrue(validate.phone(6944931));
-        assertFalse(validate.phone(694493234));
-        assertFalse(validate.phone(6944));
+        assertTrue(validate.phone("6944931"));
+        assertTrue(validate.phone("694 4931"));
+        assertFalse(validate.phone("694493234234234234234234"));
+        assertFalse(validate.phone("Eitthvadbull"));
+        assertFalse(validate.phone("6944"));
     }
     
     @Test
     public void testValidateSsn(){
-        assertTrue(validate.ssn(1611612229));
-        assertFalse(validate.ssn(1611612221));
+        assertTrue(validate.ssn("1611612229"));
+        assertFalse(validate.ssn("161161222121232323"));
     }
     
    

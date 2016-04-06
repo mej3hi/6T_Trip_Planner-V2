@@ -13,6 +13,7 @@ import mock.DayTourMock;
 import mock.FlightMock;
 import java.util.Date;
 import javax.swing.JPanel;
+import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import org.jdesktop.swingx.autocomplete.AutoCompleteDecorator;
 
@@ -24,10 +25,12 @@ public class Window extends javax.swing.JFrame {
 
     BookingManager bookingManager = new BookingManager();
     FlightSearch flightSearch = new FlightSearch();
+    FlightSearch flightSearchArr = new FlightSearch();
     HotelSearch hotelSearch = new HotelSearch();
     DayTourSearch dayTourSearch = new DayTourSearch();
     Validate validate = new Validate();
     BookingDatabase bookingDatabase = new BookingDatabase();
+    
     /**
      * Creates new form Window
      */
@@ -519,8 +522,16 @@ public class Window extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void flightSearchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_flightSearchButtonActionPerformed
+        // Þyrfti að athuga hvort depFlightDatePicker og arrFlightDatePicker
+        // sé ekki null eða annað en Date
         FlightMock[] results = flightSearch.search(depFlightDatePicker.getDate(), brief(fromFlightComboBox.getSelectedItem().toString()), brief(toFlightComboBox.getSelectedItem().toString()));
-        createFlightTable(results);
+        createFlightTable(results, flightResultTable);
+        
+        if (!oneWayCheckBox.isSelected()){
+            
+            FlightMock[] resultsArr = flightSearchArr.search(arrFlightDatePicker.getDate(), brief(toFlightComboBox.getSelectedItem().toString()), brief(fromFlightComboBox.getSelectedItem().toString()));
+            createFlightTable(resultsArr, flightResultTable2);
+        }
     }//GEN-LAST:event_flightSearchButtonActionPerformed
 
     private void oneWayCheckBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_oneWayCheckBoxActionPerformed
@@ -528,7 +539,9 @@ public class Window extends javax.swing.JFrame {
     }//GEN-LAST:event_oneWayCheckBoxActionPerformed
 
     private void nextFromFlightButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nextFromFlightButtonActionPerformed
-        addSelectedFlights();
+        // ??
+        addSelectedFlights(flightResultTable, flightSearch);
+        if (!oneWayCheckBox.isSelected()) addSelectedFlights(flightResultTable2, flightSearchArr);
         showPanel(hotelsPanel);
     }//GEN-LAST:event_nextFromFlightButtonActionPerformed
 
@@ -702,8 +715,8 @@ public class Window extends javax.swing.JFrame {
         //mainTabbedPane.setEnabledAt(4, false);
     }
     
-    private void createFlightTable(FlightMock[] x) {
-        DefaultTableModel model = (DefaultTableModel) flightResultTable.getModel();
+    private void createFlightTable(FlightMock[] x, JTable table) {
+        DefaultTableModel model = (DefaultTableModel) table.getModel();
         model.setRowCount(0);
         if(x==null) return;
         
@@ -716,23 +729,23 @@ public class Window extends javax.swing.JFrame {
     private void oneWay(){
         if(oneWayCheckBox.isSelected()){
             jScrollPane6.setVisible(false);
-            flightResultTable2.setVisible(false);
+            //flightResultTable2.setVisible(false);
             arrFlightDatePicker.setEnabled(false);
         }
         else{
             arrFlightDatePicker.setEnabled(true);
             jScrollPane6.setVisible(true);
-            flightResultTable2.setVisible(true);
+            //flightResultTable2.setVisible(true);
         }
     }
     
-    private void addSelectedFlights() {
-        for (int i = 0; i < flightResultTable.getRowCount(); i++) {
-            boolean isChecked = (Boolean) flightResultTable.getValueAt(i, 6);
+    private void addSelectedFlights(JTable table, FlightSearch s) {
+        for (int i = 0; i < table.getRowCount(); i++) {
+            boolean isChecked = (Boolean) table.getValueAt(i, 6);
 
             if (isChecked) {
-                int index = (int) flightResultTable.getValueAt(i, 0);
-                FlightMock tmp = flightSearch.getFlight(index);
+                int index = (int) table.getValueAt(i, 0);
+                FlightMock tmp = s.getFlight(index);
                 bookingManager.addFlight(tmp);
             }
 
