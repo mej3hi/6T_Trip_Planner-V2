@@ -63,6 +63,8 @@ public class Window extends javax.swing.JFrame {
         flightResultTable = new javax.swing.JTable();
         nextFromFlightButton = new javax.swing.JButton();
         jLabel16 = new javax.swing.JLabel();
+        jScrollPane6 = new javax.swing.JScrollPane();
+        flightResultTable2 = new javax.swing.JTable();
         hotelsPanel = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
         locationHotelComboBox = new javax.swing.JComboBox<>();
@@ -80,6 +82,8 @@ public class Window extends javax.swing.JFrame {
         jScrollPane2 = new javax.swing.JScrollPane();
         hotelResultTable = new javax.swing.JTable();
         nextFromHotelButton = new javax.swing.JButton();
+        jScrollPane5 = new javax.swing.JScrollPane();
+        hotelResultTable1 = new javax.swing.JTable();
         dayTourPanel = new javax.swing.JPanel();
         jLabel11 = new javax.swing.JLabel();
         destinationTourComboBox = new javax.swing.JComboBox<>();
@@ -196,7 +200,7 @@ public class Window extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(flightResultTable);
 
-        flightsPanel.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(22, 190, 560, 240));
+        flightsPanel.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 190, 580, 180));
 
         nextFromFlightButton.setText("Next >");
         nextFromFlightButton.addActionListener(new java.awt.event.ActionListener() {
@@ -204,10 +208,37 @@ public class Window extends javax.swing.JFrame {
                 nextFromFlightButtonActionPerformed(evt);
             }
         });
-        flightsPanel.add(nextFromFlightButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 450, -1, -1));
+        flightsPanel.add(nextFromFlightButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 580, -1, -1));
 
         jLabel16.setText("Number of tickets");
         flightsPanel.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 40, -1, -1));
+
+        flightResultTable2.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Id", "Airline", "Departure", "Arrival", "Duration", "Price", "Select"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.Integer.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Boolean.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false, true
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane6.setViewportView(flightResultTable2);
+
+        flightsPanel.add(jScrollPane6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 380, 580, 180));
 
         mainTabbedPane.addTab("Flights", flightsPanel);
 
@@ -283,7 +314,7 @@ public class Window extends javax.swing.JFrame {
         });
         jScrollPane2.setViewportView(hotelResultTable);
 
-        hotelsPanel.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 190, 570, 240));
+        hotelsPanel.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 190, 580, 370));
 
         nextFromHotelButton.setText("Next >");
         nextFromHotelButton.addActionListener(new java.awt.event.ActionListener() {
@@ -291,7 +322,34 @@ public class Window extends javax.swing.JFrame {
                 nextFromHotelButtonActionPerformed(evt);
             }
         });
-        hotelsPanel.add(nextFromHotelButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 440, -1, -1));
+        hotelsPanel.add(nextFromHotelButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 580, -1, -1));
+
+        hotelResultTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Id", "Hotel", "City", "Price", "Select"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.Integer.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Boolean.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, true
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane5.setViewportView(hotelResultTable1);
+
+        hotelsPanel.add(jScrollPane5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 190, 580, 180));
 
         mainTabbedPane.addTab("Hotels", hotelsPanel);
 
@@ -425,7 +483,7 @@ public class Window extends javax.swing.JFrame {
             .addGroup(bookPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(bookPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 576, Short.MAX_VALUE)
+                    .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 606, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, bookPanelLayout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(jButton2)))
@@ -436,7 +494,7 @@ public class Window extends javax.swing.JFrame {
             .addGroup(bookPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 462, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 86, Short.MAX_VALUE)
                 .addComponent(jButton2)
                 .addGap(30, 30, 30))
         );
@@ -447,7 +505,7 @@ public class Window extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(mainTabbedPane)
+            .addComponent(mainTabbedPane, javax.swing.GroupLayout.PREFERRED_SIZE, 639, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -572,10 +630,12 @@ public class Window extends javax.swing.JFrame {
     private org.jdesktop.swingx.JXDatePicker depHotelDatePicker;
     private javax.swing.JComboBox<String> destinationTourComboBox;
     private javax.swing.JTable flightResultTable;
+    private javax.swing.JTable flightResultTable2;
     private javax.swing.JButton flightSearchButton;
     private javax.swing.JPanel flightsPanel;
     private javax.swing.JComboBox<String> fromFlightComboBox;
     private javax.swing.JTable hotelResultTable;
+    private javax.swing.JTable hotelResultTable1;
     private javax.swing.JButton hotelSearchButton;
     private javax.swing.JPanel hotelsPanel;
     private javax.swing.JButton jButton1;
@@ -606,6 +666,8 @@ public class Window extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JScrollPane jScrollPane5;
+    private javax.swing.JScrollPane jScrollPane6;
     private javax.swing.JTextArea jTextArea1;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
@@ -625,6 +687,8 @@ public class Window extends javax.swing.JFrame {
     private void init() {
         flightResultTable.getColumnModel().getColumn(0).setMinWidth(0);
         flightResultTable.getColumnModel().getColumn(0).setMaxWidth(0);
+        flightResultTable2.getColumnModel().getColumn(0).setMinWidth(0);
+        flightResultTable2.getColumnModel().getColumn(0).setMaxWidth(0);
         
         hotelResultTable.getColumnModel().getColumn(0).setMinWidth(0);
         hotelResultTable.getColumnModel().getColumn(0).setMaxWidth(0);
@@ -650,10 +714,16 @@ public class Window extends javax.swing.JFrame {
     }
     
     private void oneWay(){
-        if(oneWayCheckBox.isSelected())
+        if(oneWayCheckBox.isSelected()){
+            jScrollPane6.setVisible(false);
+            flightResultTable2.setVisible(false);
             arrFlightDatePicker.setEnabled(false);
-        else
+        }
+        else{
             arrFlightDatePicker.setEnabled(true);
+            jScrollPane6.setVisible(true);
+            flightResultTable2.setVisible(true);
+        }
     }
     
     private void addSelectedFlights() {
