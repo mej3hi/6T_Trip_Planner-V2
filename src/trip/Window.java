@@ -159,6 +159,12 @@ public class Window extends javax.swing.JFrame {
             }
         });
         flightsPanel.add(depFlightDatePicker, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 140, -1, -1));
+
+        arrFlightDatePicker.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                arrFlightDatePickerActionPerformed(evt);
+            }
+        });
         flightsPanel.add(arrFlightDatePicker, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 140, -1, -1));
 
         oneWayCheckBox.setText("One Way");
@@ -433,12 +439,6 @@ public class Window extends javax.swing.JFrame {
 
         jLabel18.setText("SSN");
         customerPanel.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 110, -1, -1));
-
-        jTextField2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField2ActionPerformed(evt);
-            }
-        });
         customerPanel.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 130, 150, -1));
 
         jLabel19.setText("Phone");
@@ -533,8 +533,10 @@ public class Window extends javax.swing.JFrame {
         if (!oneWayCheckBox.isSelected() ){
             
             ArrayList<Flight> resultsArr = flightSearchArr.search(arrFlightDatePicker.getDate(), toFlightComboBox.getSelectedItem().toString(), fromFlightComboBox.getSelectedItem().toString(), Integer.parseInt(numberOfTicketsComboBox.getItemAt(numberOfTicketsComboBox.getSelectedIndex())));
+
              if(results.get(0).getTotalPrice()!= 0) {
                  createFlightTable(resultsArr, jArrFlightResultTable);
+
              }
         }
     }//GEN-LAST:event_flightSearchButtonActionPerformed
@@ -595,9 +597,10 @@ public class Window extends javax.swing.JFrame {
         addBookingToDatabase();
     }//GEN-LAST:event_jButton2ActionPerformed
 
-    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
+
+    private void arrFlightDatePickerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_arrFlightDatePickerActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField2ActionPerformed
+    }//GEN-LAST:event_arrFlightDatePickerActionPerformed
 
     /**
      * @param args the command line arguments
