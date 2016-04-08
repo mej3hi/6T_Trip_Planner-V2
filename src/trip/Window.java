@@ -161,6 +161,12 @@ public class Window extends javax.swing.JFrame {
             }
         });
         flightsPanel.add(depFlightDatePicker, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 140, -1, -1));
+
+        arrFlightDatePicker.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                arrFlightDatePickerActionPerformed(evt);
+            }
+        });
         flightsPanel.add(arrFlightDatePicker, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 140, -1, -1));
 
         oneWayCheckBox.setText("One Way");
@@ -535,7 +541,7 @@ public class Window extends javax.swing.JFrame {
         if (!oneWayCheckBox.isSelected()){
             
             ArrayList<Flight> resultsArr = flightSearchArr.search(arrFlightDatePicker.getDate(), toFlightComboBox.getSelectedItem().toString(), fromFlightComboBox.getSelectedItem().toString(), Integer.parseInt(numberOfTicketsComboBox.getItemAt(numberOfTicketsComboBox.getSelectedIndex())));
-             if(results.get(0).getTotalPrice()!= 0) {
+             if(resultsArr.get(0).getTotalPrice()!= 0) {
                  createFlightTable(resultsArr, flightResultTable2);
              }
         }
@@ -596,6 +602,10 @@ public class Window extends javax.swing.JFrame {
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         addBookingToDatabase();
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void arrFlightDatePickerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_arrFlightDatePickerActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_arrFlightDatePickerActionPerformed
 
     /**
      * @param args the command line arguments
