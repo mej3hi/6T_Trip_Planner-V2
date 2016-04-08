@@ -7,10 +7,10 @@ package flugHopur;
 public class Flight {
 	
 	private String departureLocation;
-	private String arrivalLocation;
+        private String arrivalLocation;
 	private int totalPrice;
-	private String departureTime;
-	private String departureDate;
+        private String departureTime;
+        private String departureDate;
 	private String arrivalTime;
 	private String duration;
 	private String flightNumber;

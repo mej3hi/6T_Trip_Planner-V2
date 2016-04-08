@@ -527,7 +527,7 @@ public class Window extends javax.swing.JFrame {
         FlightMock[] results = flightSearch.search(depFlightDatePicker.getDate(), brief(fromFlightComboBox.getSelectedItem().toString()), brief(toFlightComboBox.getSelectedItem().toString()));
         createFlightTable(results, flightResultTable);
         
-        if (!oneWayCheckBox.isSelected()){
+        if (!oneWayCheckBox.isSelected() ){
             
             FlightMock[] resultsArr = flightSearchArr.search(arrFlightDatePicker.getDate(), brief(toFlightComboBox.getSelectedItem().toString()), brief(fromFlightComboBox.getSelectedItem().toString()));
             createFlightTable(resultsArr, flightResultTable2);
