@@ -30,7 +30,7 @@ public class Window extends javax.swing.JFrame {
     DayTourSearch dayTourSearch = new DayTourSearch();
     Validate validate = new Validate();
     BookingDatabase bookingDatabase = new BookingDatabase();
-    
+        
     /**
      * Creates new form Window
      */

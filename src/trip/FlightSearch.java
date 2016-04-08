@@ -15,7 +15,7 @@ import java.util.Date;
  */
 public class FlightSearch {
     private FlightMock[] results;
-    
+
     public FlightMock[] search(Date departure, String from, String to){
         results = TeamFlightMock.search(departure, from, to);
         return results;
