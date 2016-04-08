@@ -33,9 +33,9 @@ public class BookingManager {
         booking.daytour.add(dayTour);
     }
     
-    public void updateCustomer(String name, String id, int phone){
+    public void updateCustomer(String name, String ssn, int phone){
         booking.customer.setName(name);
-        booking.customer.setId(id);
+        booking.customer.setSsn(ssn);
         booking.customer.setPhone(phone);
     }
 }
