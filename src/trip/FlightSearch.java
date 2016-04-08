@@ -5,23 +5,29 @@
  */
 package trip;
 
+import flugHopur.Flight;
+import java.util.ArrayList;
 import mock.FlightMock;
 import mock.TeamFlightMock;
 import java.util.Date;
+import flugHopur.Search;
+
 
 /**
  *
  * @author M
  */
 public class FlightSearch {
-    private FlightMock[] results;
-    
-    public FlightMock[] search(Date departure, String from, String to){
-        results = TeamFlightMock.search(departure, from, to);
+    private ArrayList<Flight> results;
+    Search search = new Search();
+
+    public ArrayList<Flight> search(Date departure, String from, String to, int numberOfPassengers){
+        String convertedDate = String.format("%1$td.%1$tm.%1$tY", departure);
+        results = search.gettingCorrectSearchResults(from, to, numberOfPassengers, convertedDate);
         return results;
     }
     
-    public FlightMock getFlight(int index){
-        return results[index];
+    public Flight getFlight(int index){
+        return results.get(index);
     }
 }

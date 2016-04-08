@@ -5,12 +5,13 @@
  */
 package trip;
 
+import flugHopur.Flight;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import mock.HotelMock;
 import mock.DayTourMock;
-import mock.FlightMock;
+//import mock.FlightMock;
 import java.util.Date;
 import javax.swing.JPanel;
 import javax.swing.JTable;
@@ -30,7 +31,7 @@ public class Window extends javax.swing.JFrame {
     DayTourSearch dayTourSearch = new DayTourSearch();
     Validate validate = new Validate();
     BookingDatabase bookingDatabase = new BookingDatabase();
-    
+        
     /**
      * Creates new form Window
      */
@@ -183,14 +184,14 @@ public class Window extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Id", "Airline", "Departure", "Arrival", "Duration", "Price", "Select"
+                "Id", "Airline", "Departure", "Time", "Arrival", "Time", "Duration", "Ticket(s)", "Total Price", "Select"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Boolean.class
+                java.lang.Integer.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Boolean.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, true
+                false, false, false, false, false, false, false, false, false, true
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -221,14 +222,14 @@ public class Window extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Id", "Airline", "Departure", "Arrival", "Duration", "Price", "Select"
+                "Id", "Airline", "Departure", "Time", "Arrival", "Time", "Duration", "Ticket(s)", "Total Price", "Select"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Boolean.class
+                java.lang.Integer.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Boolean.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, true
+                false, false, false, false, false, false, false, false, false, true
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -524,13 +525,19 @@ public class Window extends javax.swing.JFrame {
     private void flightSearchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_flightSearchButtonActionPerformed
         // Þyrfti að athuga hvort depFlightDatePicker og arrFlightDatePicker
         // sé ekki null eða annað en Date
-        FlightMock[] results = flightSearch.search(depFlightDatePicker.getDate(), brief(fromFlightComboBox.getSelectedItem().toString()), brief(toFlightComboBox.getSelectedItem().toString()));
-        createFlightTable(results, flightResultTable);
+        ArrayList<Flight> results = flightSearch.search(depFlightDatePicker.getDate(), fromFlightComboBox.getSelectedItem().toString(), toFlightComboBox.getSelectedItem().toString(), Integer.parseInt(numberOfTicketsComboBox.getItemAt(numberOfTicketsComboBox.getSelectedIndex())) );
+       
+        if(results.get(0).getTotalPrice()!= 0) {
+            createFlightTable(results, flightResultTable);
+            
+        }
         
         if (!oneWayCheckBox.isSelected() ){
             
-            FlightMock[] resultsArr = flightSearchArr.search(arrFlightDatePicker.getDate(), brief(toFlightComboBox.getSelectedItem().toString()), brief(fromFlightComboBox.getSelectedItem().toString()));
-            createFlightTable(resultsArr, flightResultTable2);
+            ArrayList<Flight> resultsArr = flightSearchArr.search(arrFlightDatePicker.getDate(), toFlightComboBox.getSelectedItem().toString(), fromFlightComboBox.getSelectedItem().toString(), Integer.parseInt(numberOfTicketsComboBox.getItemAt(numberOfTicketsComboBox.getSelectedIndex())));
+             if(results.get(0).getTotalPrice()!= 0) {
+                 createFlightTable(resultsArr, flightResultTable2);
+             }
         }
     }//GEN-LAST:event_flightSearchButtonActionPerformed
 
@@ -710,19 +717,20 @@ public class Window extends javax.swing.JFrame {
         dayTourResultsTable.getColumnModel().getColumn(0).setMaxWidth(0);
         
         depFlightDatePicker.setDate(new Date());
+        arrFlightDatePicker.setDate(new Date());
         
         hideLabels();
         //mainTabbedPane.setEnabledAt(4, false);
     }
     
-    private void createFlightTable(FlightMock[] x, JTable table) {
+    private void createFlightTable(ArrayList<Flight> x, JTable table) {
         DefaultTableModel model = (DefaultTableModel) table.getModel();
         model.setRowCount(0);
         if(x==null) return;
         
-        for(int i=0; i<x.length; i++){
-            if(x[i]==null){return;}
-            model.addRow(toObj(x[i],i));
+        for(int i=0; i<x.size(); i++){
+            if(x.get(i)==null){return;}
+            model.addRow(toObj(x.get(i),i));
         }
     }
     
@@ -741,11 +749,11 @@ public class Window extends javax.swing.JFrame {
     
     private void addSelectedFlights(JTable table, FlightSearch s) {
         for (int i = 0; i < table.getRowCount(); i++) {
-            boolean isChecked = (Boolean) table.getValueAt(i, 6);
+            boolean isChecked = (Boolean) table.getValueAt(i, 9);
 
             if (isChecked) {
                 int index = (int) table.getValueAt(i, 0);
-                FlightMock tmp = s.getFlight(index);
+                Flight tmp = s.getFlight(index);
                 bookingManager.addFlight(tmp);
             }
 
@@ -842,15 +850,20 @@ public class Window extends javax.swing.JFrame {
         String s="";
         s+="Name: "+name+"\n"+"SSN: "+ssn+"\n"+"Phone: "+phone+"\n\n";
         
-        ArrayList<FlightMock> fb = booking.flight;
+        ArrayList<Flight> fb = booking.flight;
         for(int i=0; i<fb.size(); i++){
             if(i==0){
                 s+="Flights\n\n";
-                s+="Airl\tDepart\tArriv\tDurat\tPrice\n";
-                s+="----------\t-----------\t----------\t----------\t---------\n";
+                s+="Airl\tFlight\tDepartur\tTime\tDate\tArrival\tTime\tDuration\tMax Luggage\tFood\tPassengers\tPrice\n";
+                s+="----------\t-----------\t----------\t----------\t---------\t---------\t---------\t---------\t---------\t---------\t---------\t---------\n";
             }
-            FlightMock y = fb.get(i);
-            s+= y.airline+"\t"+y.departure+"\t"+y.arrival+"\t"+y.duration+"\t"+y.price+"\n";
+            Flight y = fb.get(i);
+            s+= y.getAirline()+"\t"+y.getFlightNumber()+"\t"+
+                y.getDepartureLocation()+"\t"+y.getDepartureTime()+
+                "\t "+y.getDepartureDate()+"\t"+y.getArrivalLocation()+
+                "\t"+y.getArrivalTime()+"\t"+y.getDuration()+"\t"+
+                y.getMaximumLuggageWeight()+"\t"+y.getFoodInfo()+
+                "\t"+y.getNumberOfPassengers()+"\t"+y.getTotalPrice()+"\n";
         }
         
         HotelMock hb = booking.hotel;
@@ -878,12 +891,12 @@ public class Window extends javax.swing.JFrame {
     
     private void addBookingToDatabase(){
         Booking booking = bookingManager.getBookings();
-        ArrayList<FlightMock> flights = booking.flight;
+        ArrayList<Flight> flights = booking.flight;
         HotelMock hotel = booking.hotel;
         ArrayList<DayTourMock> daytours = booking.daytour;
         
         for(int i=0; i<flights.size(); i++){
-            bookingDatabase.addBooking(booking.customer, "f", flights.get(i).id);
+            bookingDatabase.addBooking(booking.customer, "f", flights.get(i).getID());
         }
         
         if(hotel!=null)
@@ -902,9 +915,9 @@ public class Window extends javax.swing.JFrame {
     }
         
     //------------------- Hjálparföll ------------------------------
-    private Object[] toObj(FlightMock x,int i){
-        return new Object[]{i,x.airline,x.departure+x.from,
-                x.arrival+x.to,x.duration,x.price,false};
+    private Object[] toObj(Flight x,int i){
+        return new Object[]{i,x.getAirline(),x.getDepartureLocation(),x.getDepartureTime(),
+                x.getArrivalLocation(),x.getArrivalTime(),x.getDuration(),x.getNumberOfPassengers(),x.getTotalPrice(),false};
     }
     
     private String brief(String x){

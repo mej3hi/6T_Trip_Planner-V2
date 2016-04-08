@@ -5,6 +5,7 @@
  */
 package trip;
 
+import flugHopur.Flight;
 import mock.HotelMock;
 import mock.DayTourMock;
 import mock.FlightMock;
@@ -20,7 +21,7 @@ public class BookingManager {
         return booking;
     }
     
-    public void addFlight(FlightMock flight){
+    public void addFlight(Flight flight){
         booking.flight.add(flight);
     }
     
