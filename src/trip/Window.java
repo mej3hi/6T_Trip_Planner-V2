@@ -534,7 +534,7 @@ public class Window extends javax.swing.JFrame {
             
             ArrayList<Flight> resultsArr = flightSearchArr.search(arrFlightDatePicker.getDate(), toFlightComboBox.getSelectedItem().toString(), fromFlightComboBox.getSelectedItem().toString(), Integer.parseInt(numberOfTicketsComboBox.getItemAt(numberOfTicketsComboBox.getSelectedIndex())));
 
-             if(results.get(0).getTotalPrice()!= 0) {
+             if(resultsArr.get(0).getTotalPrice()!= 0) {
                  createFlightTable(resultsArr, jArrFlightResultTable);
 
              }
