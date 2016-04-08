@@ -6,7 +6,7 @@
 package mock;
 
 import mock.DayTourMock;
-import mock.TeamFlightMock;
+import ekkiInotkun.TeamFlightMock;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;

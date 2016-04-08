@@ -7,7 +7,7 @@ package trip;
 
 import mock.HotelMock;
 import mock.DayTourMock;
-import mock.FlightMock;
+import ekkiInotkun.FlightMock;
 import java.util.Arrays;
 import java.util.Date;
 import org.junit.After;
