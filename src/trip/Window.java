@@ -844,7 +844,7 @@ public class Window extends javax.swing.JFrame {
         Booking booking = bookingManager.getBookings();
         
         String name = booking.customer.getName();
-        String ssn = booking.customer.getId();
+        String ssn = booking.customer.getSsn();
         int phone = booking.customer.getPhone();
         
         String s="";
