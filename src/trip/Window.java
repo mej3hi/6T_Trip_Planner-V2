@@ -64,11 +64,11 @@ public class Window extends javax.swing.JFrame {
         oneWayCheckBox = new javax.swing.JCheckBox();
         flightSearchButton = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        flightResultTable = new javax.swing.JTable();
+        jdepFlightResultTable = new javax.swing.JTable();
         nextFromFlightButton = new javax.swing.JButton();
         jLabel16 = new javax.swing.JLabel();
-        jScrollPane6 = new javax.swing.JScrollPane();
-        flightResultTable2 = new javax.swing.JTable();
+        jDepFlightTableScrollPane = new javax.swing.JScrollPane();
+        jArrFlightResultTable = new javax.swing.JTable();
         hotelsPanel = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
         locationHotelComboBox = new javax.swing.JComboBox<>();
@@ -93,8 +93,6 @@ public class Window extends javax.swing.JFrame {
         destinationTourComboBox = new javax.swing.JComboBox<>();
         adultTourComboBox = new javax.swing.JComboBox<>();
         jLabel12 = new javax.swing.JLabel();
-        jLabel13 = new javax.swing.JLabel();
-        childrenTourComboBox = new javax.swing.JComboBox<>();
         dayTourSearchButton = new javax.swing.JButton();
         dayTourDatePicker = new org.jdesktop.swingx.JXDatePicker();
         jLabel14 = new javax.swing.JLabel();
@@ -140,13 +138,13 @@ public class Window extends javax.swing.JFrame {
         jLabel1.setText("From");
         flightsPanel.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, -1, -1));
 
-        fromFlightComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Akureyri", "Reykjavík" }));
+        fromFlightComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Akureyri", "Reykjavík", "Ísafjörður", "Eigilsstaðir" }));
         flightsPanel.add(fromFlightComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, 120, -1));
 
         jLabel2.setText("To");
         flightsPanel.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 40, -1, -1));
 
-        toFlightComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Akureyri", "Reykjavík" }));
+        toFlightComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Akureyri", "Reykjavík", "Ísafjörður", "Eigilsstaðir" }));
         flightsPanel.add(toFlightComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 60, 120, -1));
 
         jLabel3.setText("Departure");
@@ -161,6 +159,12 @@ public class Window extends javax.swing.JFrame {
             }
         });
         flightsPanel.add(depFlightDatePicker, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 140, -1, -1));
+
+        arrFlightDatePicker.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                arrFlightDatePickerActionPerformed(evt);
+            }
+        });
         flightsPanel.add(arrFlightDatePicker, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 140, -1, -1));
 
         oneWayCheckBox.setText("One Way");
@@ -179,7 +183,7 @@ public class Window extends javax.swing.JFrame {
         });
         flightsPanel.add(flightSearchButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 140, -1, -1));
 
-        flightResultTable.setModel(new javax.swing.table.DefaultTableModel(
+        jdepFlightResultTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -202,7 +206,7 @@ public class Window extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(flightResultTable);
+        jScrollPane1.setViewportView(jdepFlightResultTable);
 
         flightsPanel.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 190, 580, 180));
 
@@ -217,7 +221,7 @@ public class Window extends javax.swing.JFrame {
         jLabel16.setText("Number of tickets");
         flightsPanel.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 40, -1, -1));
 
-        flightResultTable2.setModel(new javax.swing.table.DefaultTableModel(
+        jArrFlightResultTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -240,9 +244,9 @@ public class Window extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane6.setViewportView(flightResultTable2);
+        jDepFlightTableScrollPane.setViewportView(jArrFlightResultTable);
 
-        flightsPanel.add(jScrollPane6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 380, 580, 180));
+        flightsPanel.add(jDepFlightTableScrollPane, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 380, 580, 180));
 
         mainTabbedPane.addTab("Flights", flightsPanel);
 
@@ -366,16 +370,10 @@ public class Window extends javax.swing.JFrame {
         dayTourPanel.add(destinationTourComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, -1, -1));
 
         adultTourComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4" }));
-        dayTourPanel.add(adultTourComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 140, -1, -1));
+        dayTourPanel.add(adultTourComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 140, -1, -1));
 
-        jLabel12.setText("Adults");
-        dayTourPanel.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 120, -1, -1));
-
-        jLabel13.setText("Children");
-        dayTourPanel.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 120, -1, -1));
-
-        childrenTourComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "0", "1", "2", "3" }));
-        dayTourPanel.add(childrenTourComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 140, -1, -1));
+        jLabel12.setText("Tickets");
+        dayTourPanel.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 120, -1, -1));
 
         dayTourSearchButton.setText("Search");
         dayTourSearchButton.addActionListener(new java.awt.event.ActionListener() {
@@ -383,13 +381,13 @@ public class Window extends javax.swing.JFrame {
                 dayTourSearchButtonActionPerformed(evt);
             }
         });
-        dayTourPanel.add(dayTourSearchButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 140, -1, -1));
+        dayTourPanel.add(dayTourSearchButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 140, -1, -1));
         dayTourPanel.add(dayTourDatePicker, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 60, -1, -1));
 
         jLabel14.setText("Date");
         dayTourPanel.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 40, -1, -1));
 
-        jLabel15.setText("Trip");
+        jLabel15.setText("Type");
         dayTourPanel.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 120, -1, -1));
 
         dayTourResultsTable.setModel(new javax.swing.table.DefaultTableModel(
@@ -528,15 +526,17 @@ public class Window extends javax.swing.JFrame {
         ArrayList<Flight> results = flightSearch.search(depFlightDatePicker.getDate(), fromFlightComboBox.getSelectedItem().toString(), toFlightComboBox.getSelectedItem().toString(), Integer.parseInt(numberOfTicketsComboBox.getItemAt(numberOfTicketsComboBox.getSelectedIndex())) );
        
         if(results.get(0).getTotalPrice()!= 0) {
-            createFlightTable(results, flightResultTable);
+            createFlightTable(results, jdepFlightResultTable);
             
         }
         
-        if (!oneWayCheckBox.isSelected()){
+        if (!oneWayCheckBox.isSelected() ){
             
             ArrayList<Flight> resultsArr = flightSearchArr.search(arrFlightDatePicker.getDate(), toFlightComboBox.getSelectedItem().toString(), fromFlightComboBox.getSelectedItem().toString(), Integer.parseInt(numberOfTicketsComboBox.getItemAt(numberOfTicketsComboBox.getSelectedIndex())));
-             if(results.get(0).getTotalPrice()!= 0) {
-                 createFlightTable(resultsArr, flightResultTable2);
+
+             if(resultsArr.get(0).getTotalPrice()!= 0) {
+                 createFlightTable(resultsArr, jArrFlightResultTable);
+
              }
         }
     }//GEN-LAST:event_flightSearchButtonActionPerformed
@@ -547,8 +547,8 @@ public class Window extends javax.swing.JFrame {
 
     private void nextFromFlightButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nextFromFlightButtonActionPerformed
         // ??
-        addSelectedFlights(flightResultTable, flightSearch);
-        if (!oneWayCheckBox.isSelected()) addSelectedFlights(flightResultTable2, flightSearchArr);
+        addSelectedFlights(jdepFlightResultTable, flightSearch);
+        if (!oneWayCheckBox.isSelected()) addSelectedFlights(jArrFlightResultTable, flightSearchArr);
         showPanel(hotelsPanel);
     }//GEN-LAST:event_nextFromFlightButtonActionPerformed
 
@@ -597,6 +597,11 @@ public class Window extends javax.swing.JFrame {
         addBookingToDatabase();
     }//GEN-LAST:event_jButton2ActionPerformed
 
+
+    private void arrFlightDatePickerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_arrFlightDatePickerActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_arrFlightDatePickerActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -639,7 +644,6 @@ public class Window extends javax.swing.JFrame {
     private org.jdesktop.swingx.JXDatePicker arrHotelDatePicker;
     private javax.swing.JPanel bookPanel;
     private javax.swing.JComboBox<String> childrenHotelComboBox;
-    private javax.swing.JComboBox<String> childrenTourComboBox;
     private org.jdesktop.swingx.painter.CompoundPainter compoundPainter1;
     private javax.swing.JPanel customerPanel;
     private org.jdesktop.swingx.JXDatePicker dayTourDatePicker;
@@ -649,8 +653,6 @@ public class Window extends javax.swing.JFrame {
     private org.jdesktop.swingx.JXDatePicker depFlightDatePicker;
     private org.jdesktop.swingx.JXDatePicker depHotelDatePicker;
     private javax.swing.JComboBox<String> destinationTourComboBox;
-    private javax.swing.JTable flightResultTable;
-    private javax.swing.JTable flightResultTable2;
     private javax.swing.JButton flightSearchButton;
     private javax.swing.JPanel flightsPanel;
     private javax.swing.JComboBox<String> fromFlightComboBox;
@@ -658,13 +660,14 @@ public class Window extends javax.swing.JFrame {
     private javax.swing.JTable hotelResultTable1;
     private javax.swing.JButton hotelSearchButton;
     private javax.swing.JPanel hotelsPanel;
+    private javax.swing.JTable jArrFlightResultTable;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
+    private javax.swing.JScrollPane jDepFlightTableScrollPane;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
@@ -687,11 +690,11 @@ public class Window extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
-    private javax.swing.JScrollPane jScrollPane6;
     private javax.swing.JTextArea jTextArea1;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
+    private javax.swing.JTable jdepFlightResultTable;
     private javax.swing.JComboBox<String> locationHotelComboBox;
     private javax.swing.JTabbedPane mainTabbedPane;
     private javax.swing.JButton nextFromDayTourButton;
@@ -705,10 +708,10 @@ public class Window extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
     
     private void init() {
-        flightResultTable.getColumnModel().getColumn(0).setMinWidth(0);
-        flightResultTable.getColumnModel().getColumn(0).setMaxWidth(0);
-        flightResultTable2.getColumnModel().getColumn(0).setMinWidth(0);
-        flightResultTable2.getColumnModel().getColumn(0).setMaxWidth(0);
+        jdepFlightResultTable.getColumnModel().getColumn(0).setMinWidth(0);
+        jdepFlightResultTable.getColumnModel().getColumn(0).setMaxWidth(0);
+        jArrFlightResultTable.getColumnModel().getColumn(0).setMinWidth(0);
+        jArrFlightResultTable.getColumnModel().getColumn(0).setMaxWidth(0);
         
         hotelResultTable.getColumnModel().getColumn(0).setMinWidth(0);
         hotelResultTable.getColumnModel().getColumn(0).setMaxWidth(0);
@@ -736,14 +739,12 @@ public class Window extends javax.swing.JFrame {
     
     private void oneWay(){
         if(oneWayCheckBox.isSelected()){
-            jScrollPane6.setVisible(false);
-            //flightResultTable2.setVisible(false);
+            jDepFlightTableScrollPane.setVisible(false);
             arrFlightDatePicker.setEnabled(false);
         }
         else{
             arrFlightDatePicker.setEnabled(true);
-            jScrollPane6.setVisible(true);
-            //flightResultTable2.setVisible(true);
+            jDepFlightTableScrollPane.setVisible(true);
         }
     }
     
