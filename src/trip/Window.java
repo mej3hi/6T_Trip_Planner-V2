@@ -126,6 +126,7 @@ public class Window extends javax.swing.JFrame {
         jLabel20 = new javax.swing.JLabel();
         jLabel21 = new javax.swing.JLabel();
         jLabel22 = new javax.swing.JLabel();
+        fieldForgotLabel = new javax.swing.JLabel();
         bookPanel = new javax.swing.JPanel();
         jScrollPane4 = new javax.swing.JScrollPane();
         jTextArea1 = new javax.swing.JTextArea();
@@ -523,6 +524,10 @@ public class Window extends javax.swing.JFrame {
         jLabel22.setText("Invalid Phone");
         customerPanel.add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 200, -1, -1));
 
+        fieldForgotLabel.setForeground(new java.awt.Color(255, 0, 51));
+        fieldForgotLabel.setText("Please fill out customer fields");
+        customerPanel.add(fieldForgotLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, -1, -1));
+
         mainTabbedPane.addTab("Customer", customerPanel);
 
         jTextArea1.setColumns(20);
@@ -664,6 +669,7 @@ public class Window extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         addBookingToDatabase();
+        updateFlightDatabase();
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void arrFlightDatePickerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_arrFlightDatePickerActionPerformed
@@ -763,6 +769,7 @@ public class Window extends javax.swing.JFrame {
     private javax.swing.JButton dayTourSearchButton;
     private org.jdesktop.swingx.JXDatePicker depFlightDatePicker;
     private org.jdesktop.swingx.JXDatePicker depHotelDatePicker;
+    private javax.swing.JLabel fieldForgotLabel;
     private javax.swing.JButton flightSearchButton;
     private javax.swing.JPanel flightsPanel;
     private javax.swing.JComboBox<String> fromFlightComboBox;
@@ -1035,6 +1042,13 @@ public class Window extends javax.swing.JFrame {
         HotelMock hotel = booking.hotel;
         ArrayList<DayTourMock> daytours = booking.daytour;
         
+        if(booking.customer.getName() == "" || booking.customer.getSsn() == "" 
+           || booking.customer.getPhone() == 0){
+            fieldForgotLabel.setVisible(true);
+            showPanel(customerPanel);
+            return;
+        }
+        
         for(int i=0; i<flights.size(); i++){
             bookingDatabase.addBooking(booking.customer, "f", flights.get(i).getID());
         }
@@ -1046,12 +1060,26 @@ public class Window extends javax.swing.JFrame {
             bookingDatabase.addBooking(booking.customer, "d", daytours.get(i).id);
         }
         
-    }
+
+    };
+    /**
+     * Responsible for updating databases of flight.
+     */
+    private void updateFlightDatabase(){
+        Booking booking = bookingManager.getBookings();
+        ArrayList<Flight> flights = booking.flight;
+        for(int i=0; i<flights.size(); i++){
+            flightSearch.updateDatabase(flights.get(i).getNumberOfPassengers(), 
+                 flights.get(i).getTicketsAvailable(), flights.get(i).getID());
+        }
+    };
+
     
     private void hideLabels(){
         jLabel20.setVisible(false);
         jLabel21.setVisible(false);
         jLabel22.setVisible(false);
+        fieldForgotLabel.setVisible(false);
     }
         
     //------------------- Hjálparföll ------------------------------
