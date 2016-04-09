@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package trip;
 
 import flugHopur.Flight;
@@ -19,8 +15,15 @@ import javax.swing.table.DefaultTableModel;
 import org.jdesktop.swingx.autocomplete.AutoCompleteDecorator;
 
 /**
- *
- * @author M
+ * Lýsing
+ * @author 6T_Trip_planner group
+ *     
+ * 
+ */
+
+/**
+ * Window shows user interface for meta-search engine.
+ * @author  6T_Trip_planner group
  */
 public class Window extends javax.swing.JFrame {
 
@@ -593,7 +596,14 @@ public class Window extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+    
+    /**
+     * Event handler when user clicks search button in flight tab. Search and 
+     * message display for user if no results were found or if user.
+     * doesn't pick a date.
+     * 
+     * @param evt 
+     */
     private void flightSearchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_flightSearchButtonActionPerformed
         bookFlightButtonGreenMessageLabel.setText("");
         bookFlightButtonMessageLabel.setText("");
@@ -629,15 +639,21 @@ public class Window extends javax.swing.JFrame {
         }
         
     }//GEN-LAST:event_flightSearchButtonActionPerformed
-
+    /**
+     * Handler for One Way checkbox in flight tab 
+     * @param evt 
+     */
     private void oneWayCheckBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_oneWayCheckBoxActionPerformed
         oneWay();
     }//GEN-LAST:event_oneWayCheckBoxActionPerformed
-
+    /**
+     * Hnadler for next button in flight tab
+     * @param evt 
+     */
     private void nextFromFlightButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nextFromFlightButtonActionPerformed
         showPanel(hotelsPanel);
     }//GEN-LAST:event_nextFromFlightButtonActionPerformed
-
+   
     private void hotelSearchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_hotelSearchButtonActionPerformed
         HotelMock[] results = hotelSearch.search(arrHotelDatePicker.getDate(), locationHotelComboBox.getSelectedItem().toString());
         createHotelTable(results);
@@ -872,6 +888,11 @@ public class Window extends javax.swing.JFrame {
         
     }
     
+    /**
+     * Creates row(s) with flight results from current search 
+     * @param x is the flight results
+     * @param table that the results are added to
+     */
     private void createFlightTable(ArrayList<Flight> x, JTable table) {
         DefaultTableModel model = (DefaultTableModel) table.getModel();
         model.setRowCount(0);
@@ -883,14 +904,16 @@ public class Window extends javax.swing.JFrame {
         }
     }
     
+    /**
+     * Enables or disables arrival date picker and hides arrival table and
+     * the arrival label for the table
+     */
     private void oneWay(){
         if(oneWayCheckBox.isSelected()){
-            arrFlightDatePicker.setEnabled(false);
-            
+            arrFlightDatePicker.setEnabled(false);         
             jDepFlightTableScrollPane.setVisible(false);
             jArrTableLabel.setVisible(false);
-            jArrFlightMessageLabel.setText("");
-            
+            jArrFlightMessageLabel.setText("");        
             
         }
         else{
@@ -900,6 +923,11 @@ public class Window extends javax.swing.JFrame {
         }
     }
     
+    /**
+     * Checks if one or more rows in table are selected
+     * @param table
+     * @return true if row(s) are selected
+     */
     private boolean isRowSelected (JTable table){
         for (int i = 0; i < table.getRowCount(); i++) {
             boolean isChecked = (Boolean) table.getValueAt(i, 9);
@@ -908,13 +936,20 @@ public class Window extends javax.swing.JFrame {
         return false;
     }
     
-    private void addSelectedFlights(JTable table, FlightSearch s) {
+    /**
+     * Checks if flight is selected and adds the selected flight 
+     * to bookingManager and enables booking tab if disabled 
+     * 
+     * @param table that has the selected flight
+     * @param results from current search
+     */
+    private void addSelectedFlights(JTable table, FlightSearch result) {
         for (int i = 0; i < table.getRowCount(); i++) {
             boolean isChecked = (Boolean) table.getValueAt(i, 9);
 
             if (isChecked) {
                 int index = (int) table.getValueAt(i, 0);
-                Flight tmp = s.getFlight(index);
+                Flight tmp = result.getFlight(index);
                 bookingManager.addFlight(tmp);       
             }
 
@@ -922,10 +957,19 @@ public class Window extends javax.swing.JFrame {
         mainTabbedPane.setEnabledAt(4, true);
     }
     
+    /**
+     * Displays panel
+     * @param panel to display
+     */
     private void showPanel(JPanel panel){
         mainTabbedPane.setSelectedComponent(panel);
     }
     
+    /**
+     * Creates row(s) with hotel results from current search
+     * @param x is the hotel results
+     * @param table that the results are added to
+     */
     private void createHotelTable(HotelMock[] x){
         DefaultTableModel model = (DefaultTableModel) hotelResultTable.getModel();
         model.setRowCount(0);
@@ -937,6 +981,11 @@ public class Window extends javax.swing.JFrame {
         }
     }
     
+    /**
+     * Checks if hotel is selected and adds the selected hotel
+     * to bookingManager and enables booking tab if disabled 
+     * booking tab if disabled
+     */
     private void addSelectedHotel() {
         for (int i = 0; i < hotelResultTable.getRowCount(); i++) {
             boolean isChecked = (Boolean) hotelResultTable.getValueAt(i, 4);
@@ -951,6 +1000,11 @@ public class Window extends javax.swing.JFrame {
         mainTabbedPane.setEnabledAt(4, true);
     }
     
+    /**
+     * Creates row(s) with day tour results from current search
+     * @param x is the day tour results
+     * 
+     */
     private void createDayTourTable(DayTourMock[] x){
         DefaultTableModel model = (DefaultTableModel) dayTourResultsTable.getModel();
         model.setRowCount(0);
@@ -962,6 +1016,11 @@ public class Window extends javax.swing.JFrame {
         }
     }
     
+    /**
+     * Checks if hotel is selected and adds the selected hotel
+     * to bookingManager and enables booking tab if disabled 
+     * booking tab if disabled
+     */
     private void addSelectedDayTours() {
         for (int i = 0; i < dayTourResultsTable.getRowCount(); i++) {
             boolean isChecked = (Boolean) dayTourResultsTable.getValueAt(i, 5);
@@ -976,6 +1035,10 @@ public class Window extends javax.swing.JFrame {
         mainTabbedPane.setEnabledAt(4, true);
     }
     
+    /**
+     * Adds customer to booking
+     */
+    
     private void addCustomer(){
         String name = jTextField1.getText().trim();
         String ssn = jTextField2.getText().trim();
@@ -985,7 +1048,14 @@ public class Window extends javax.swing.JFrame {
         bookingManager.updateCustomer(name, ssn, toInt(phone));
         showPanel(bookPanel);
     }
-    
+    /**
+     * Checks if name, ssn and phone from user is valid and displays 
+     * (invalid) message if not.
+     * @param name
+     * @param ssn
+     * @param phone
+     * @return true if all parameters are valid
+     */
     private boolean validateCustomer(String name, String ssn, String phone){
         boolean b = true;
         hideLabels();
@@ -1004,6 +1074,10 @@ public class Window extends javax.swing.JFrame {
         return b;
     }
     
+    /**
+     * Displays customer information, flight(s), hotel and day tours that user 
+     * has added to booking in textarea in the booking the tab.
+     */
     private void showBooking(){
         Booking booking = bookingManager.getBookings();
         
@@ -1052,6 +1126,9 @@ public class Window extends javax.swing.JFrame {
         
         jTextArea1.setText(s);
     }
+    /**
+     * Adds booking to booking database
+     */
     
     private void addBookingToDatabase(){
         Booking booking = bookingManager.getBookings();
@@ -1091,7 +1168,9 @@ public class Window extends javax.swing.JFrame {
         }
     };
 
-    
+    /**
+     * Hides customer invalid message
+     */
     private void hideLabels(){
         jLabel20.setVisible(false);
         jLabel21.setVisible(false);
