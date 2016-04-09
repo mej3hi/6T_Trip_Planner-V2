@@ -24,8 +24,8 @@ public class DatabaseController {
         }
         q+=")";
         p+=")";
-        System.out.println(q);
-        System.out.println(p);
+        //System.out.println(q);
+        //System.out.println(p);
         try{
             Class.forName("org.sqlite.JDBC");
             Connection con=DriverManager.getConnection("jdbc:sqlite:data.db");

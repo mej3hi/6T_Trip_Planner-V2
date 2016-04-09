@@ -17,7 +17,6 @@ public class Customer {
     
     
     public Customer(){
-        System.out.print("new customer");
         this.name = "";
         this.ssn = "";
         this.phone = 0;
