@@ -180,6 +180,11 @@ public class Window extends javax.swing.JFrame {
                 depFlightDatePickerActionPerformed(evt);
             }
         });
+        depFlightDatePicker.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+            public void propertyChange(java.beans.PropertyChangeEvent evt) {
+                depFlightDatePickerPropertyChange(evt);
+            }
+        });
         flightsPanel.add(depFlightDatePicker, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 140, -1, -1));
 
         arrFlightDatePicker.addActionListener(new java.awt.event.ActionListener() {
@@ -567,6 +572,7 @@ public class Window extends javax.swing.JFrame {
             jDepFlightMessageLabel.setText("Choose date");
             return;     
         }
+        
         if(arrFlightDatePicker.getDate() == null && !oneWayCheckBox.isSelected()) {
             jArrFlightMessageLabel.setText("Choose date or One Way");
             return;
@@ -683,6 +689,10 @@ public class Window extends javax.swing.JFrame {
     private void bookTourButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bookTourButtonActionPerformed
         addSelectedDayTours();
     }//GEN-LAST:event_bookTourButtonActionPerformed
+
+    private void depFlightDatePickerPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_depFlightDatePickerPropertyChange
+        arrFlightDatePicker.getMonthView().setLowerBound(depFlightDatePicker.getDate());
+    }//GEN-LAST:event_depFlightDatePickerPropertyChange
 
     /**
      * @param args the command line arguments
@@ -812,7 +822,10 @@ public class Window extends javax.swing.JFrame {
         dayTourResultsTable.getColumnModel().getColumn(0).setMaxWidth(0);
         
         depFlightDatePicker.setDate(new Date());
+        depFlightDatePicker.getMonthView().setLowerBound(new Date());
         arrFlightDatePicker.setDate(new Date());
+        
+       
         
         fromFlightComboBox.setSelectedIndex(1);
         
