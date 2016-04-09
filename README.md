@@ -6,19 +6,13 @@ Flug
 	Útfærsla á því hvernig við birtum leitarniðurstöður ef beðið er um 
 	fleiri miða en eru  til. (skilaboð ?)
 
-	Laga booking (next takkann, setja booking takka?, hægt að bóka oft)		Eiki
+	Það er hægt að bóka sama flug, hótel.... oft
 
 	Laga að það sé ekki hægt að bóka án þess að fylla út customer			 Martin
 	
 	Hvað við sendum þeim								 Martin
 	
-	Ef það finnst ekki neitt þá birta skilaboð					Eiki
-	
-	Ef það er ekki valin dags. í öðru hvoru dagtala þá birta skilaboð		  Eiki
-	
 	Athuga hvort hægt sé að afvirkja liðnar dags.					Skúli
-
-	Stækka glugga og töflur								Eiki
 
 	Testa allt mögulegt								 Allir
 
@@ -31,8 +25,6 @@ Tour
 	NumberofTickets
 	
 	Hverju á að leyta eftir
-	
-	Bæta við checkboxum fyrir restina
 	
 	Breyta í arraylist
 	
@@ -58,10 +50,6 @@ BookingDatabase
 	
 	Skoða (laga id fyrir flug, hotel, daytour)
 		Annaðhvort að setja nýja dálka eða hafa 3 töflur 
-
-
-
-
 
 
 Spurningar til Eyrúnar
