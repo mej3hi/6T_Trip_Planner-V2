@@ -1210,7 +1210,7 @@ public class Window extends javax.swing.JFrame {
             return false;
         }
         
-        if(!oneWayCheckBox.isSelected()) {
+        if(arrFlightDatePicker.getDate() == null && !oneWayCheckBox.isSelected()) {
             jArrFlightMessageLabel.setText("Choose date or One Way");
             return false;
         }
