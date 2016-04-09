@@ -342,10 +342,27 @@ public class Window extends javax.swing.JFrame {
 
         jLabel9.setText("Check in");
         hotelsPanel.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 120, -1, -1));
+
+        arrHotelDatePicker.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                arrHotelDatePickerActionPerformed(evt);
+            }
+        });
+        arrHotelDatePicker.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+            public void propertyChange(java.beans.PropertyChangeEvent evt) {
+                arrHotelDatePickerPropertyChange(evt);
+            }
+        });
         hotelsPanel.add(arrHotelDatePicker, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 140, -1, -1));
 
         jLabel10.setText("Check out");
         hotelsPanel.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 120, -1, -1));
+
+        depHotelDatePicker.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                depHotelDatePickerActionPerformed(evt);
+            }
+        });
         hotelsPanel.add(depHotelDatePicker, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 140, -1, -1));
 
         hotelSearchButton.setText("Search");
@@ -528,10 +545,6 @@ public class Window extends javax.swing.JFrame {
         jLabel22.setForeground(new java.awt.Color(255, 0, 51));
         jLabel22.setText("Invalid Phone");
         customerPanel.add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 200, -1, -1));
-
-        fieldForgotLabel.setForeground(new java.awt.Color(255, 0, 51));
-        fieldForgotLabel.setText("Please fill out customer fields");
-        customerPanel.add(fieldForgotLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, -1, -1));
 
         fieldForgotLabel.setForeground(new java.awt.Color(255, 0, 51));
         fieldForgotLabel.setText("Please fill out customer fields");
@@ -727,6 +740,18 @@ public class Window extends javax.swing.JFrame {
         arrFlightDatePicker.getMonthView().setLowerBound(depFlightDatePicker.getDate());
     }//GEN-LAST:event_depFlightDatePickerPropertyChange
 
+    private void arrHotelDatePickerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_arrHotelDatePickerActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_arrHotelDatePickerActionPerformed
+
+    private void depHotelDatePickerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_depHotelDatePickerActionPerformed
+        
+    }//GEN-LAST:event_depHotelDatePickerActionPerformed
+
+    private void arrHotelDatePickerPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_arrHotelDatePickerPropertyChange
+        depHotelDatePicker.getMonthView().setLowerBound(arrHotelDatePicker.getDate());
+    }//GEN-LAST:event_arrHotelDatePickerPropertyChange
+
     /**
      * @param args the command line arguments
      */
@@ -862,6 +887,13 @@ public class Window extends javax.swing.JFrame {
         depFlightDatePicker.setDate(new Date());
         depFlightDatePicker.getMonthView().setLowerBound(new Date());
         arrFlightDatePicker.setDate(new Date());
+        
+        arrHotelDatePicker.setDate(new Date());
+        arrHotelDatePicker.getMonthView().setLowerBound(new Date());
+        depHotelDatePicker.setDate(new Date());
+        
+        dayTourDatePicker.setDate(new Date());
+        dayTourDatePicker.getMonthView().setLowerBound(new Date());
         
        
         
