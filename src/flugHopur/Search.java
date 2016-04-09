@@ -52,14 +52,14 @@ public class Search{
 			//Initialize-um flights ArrayListann með einu flugi til að vita muninn á því annars vegar að notandinn hafi leitað að 
 			//flugi og enginn flug fundist og hins vegar að notandinn hafi ekki leitað að tilteknu flugi (t.d. einungis leitað að 
 			//brottfararflugi en ekki heimkomuflugi)
-			Flight flight0 = new Flight();
-			flight0.setTotalPrice(0);
-			flights.add(flight0);
+//                    Flight flight0 = new Flight();
+//                    flight0.setTotalPrice(0);
+//                    flights.add(flight0);
 			
 			//Ef einhverjar niðurstöður fundust í gagnagrunni þá tæmum við flights Arraylistann
-			if(numResults != 0){
-				flights.clear();
-			}
+//			if(numResults != 0){
+//				flights.clear();
+//			}
 			
 			//Búum til flughluti með þeim upplýsingum sem þarf að birta notanda og setjum þá í ArrayListann flights
 			while(flightResultSet.next()){

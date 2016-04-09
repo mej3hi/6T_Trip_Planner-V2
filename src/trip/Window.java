@@ -608,33 +608,22 @@ public class Window extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void flightSearchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_flightSearchButtonActionPerformed
-        bookFlightButtonGreenMessageLabel.setText("");
-        bookFlightButtonMessageLabel.setText("");
-        jDepFlightMessageLabel.setText("");
-        jArrFlightMessageLabel.setText("");
-        if(depFlightDatePicker.getDate() == null) {
-            jDepFlightMessageLabel.setText("Choose date");
-            return;     
-        }
-        
-        if(arrFlightDatePicker.getDate() == null && !oneWayCheckBox.isSelected()) {
-            jArrFlightMessageLabel.setText("Choose date or One Way");
-            return;
-        }
+        if(!validateFlights()) return;
+
         ArrayList<Flight> results = flightSearch.search(depFlightDatePicker.getDate(), fromFlightComboBox.getSelectedItem().toString(), 
                 toFlightComboBox.getSelectedItem().toString(), Integer.parseInt(numberOfTicketsComboBox.getItemAt(numberOfTicketsComboBox.getSelectedIndex())) );       
         
-        if(results.get(0).getTotalPrice()!= 0) {
+        if(!results.isEmpty())
             createFlightTable(results, jdepFlightResultTable);
-        }
-        else jDepFlightMessageLabel.setText("No flights from "+ fromFlightComboBox.getSelectedItem()+
+        else 
+            jDepFlightMessageLabel.setText("No flights from "+ fromFlightComboBox.getSelectedItem()+
                 " to "+ toFlightComboBox.getSelectedItem()+" on "+ depFlightDatePicker.getDate().toString().substring(0, 10)+" found");
       
         if (!oneWayCheckBox.isSelected() ){            
             ArrayList<Flight> resultsArr = flightSearchArr.search(arrFlightDatePicker.getDate(), toFlightComboBox.getSelectedItem().toString(), 
                     fromFlightComboBox.getSelectedItem().toString(), Integer.parseInt(numberOfTicketsComboBox.getItemAt(numberOfTicketsComboBox.getSelectedIndex())));
             
-            if(resultsArr.get(0).getTotalPrice()!= 0) {
+            if(!resultsArr.isEmpty()) {
                 createFlightTable(resultsArr, jArrFlightResultTable);
             }
             else jArrFlightMessageLabel.setText("No flights from "+ toFlightComboBox.getSelectedItem() +
@@ -885,7 +874,7 @@ public class Window extends javax.swing.JFrame {
         dayTourResultsTable.getColumnModel().getColumn(0).setMaxWidth(0);
         
         depFlightDatePicker.setDate(new Date());
-        depFlightDatePicker.getMonthView().setLowerBound(new Date());
+        //depFlightDatePicker.getMonthView().setLowerBound(new Date());
         arrFlightDatePicker.setDate(new Date());
         
         arrHotelDatePicker.setDate(new Date());
@@ -1129,6 +1118,29 @@ public class Window extends javax.swing.JFrame {
         jLabel21.setVisible(false);
         jLabel22.setVisible(false);
         fieldForgotLabel.setVisible(false);
+    }
+    
+    private boolean validateFlights(){
+        bookFlightButtonGreenMessageLabel.setText("");
+        bookFlightButtonMessageLabel.setText("");
+        jDepFlightMessageLabel.setText("");
+        jArrFlightMessageLabel.setText("");
+        
+        if(depFlightDatePicker.getDate() == null) {
+            jDepFlightMessageLabel.setText("Choose date");
+            return false;
+        }
+        
+        if(!oneWayCheckBox.isSelected()) {
+            jArrFlightMessageLabel.setText("Choose date or One Way");
+            return false;
+        }
+        
+        return true;
+        
+        
+        
+        
     }
         
     //------------------- Hjálparföll ------------------------------
