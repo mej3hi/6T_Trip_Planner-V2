@@ -1,6 +1,10 @@
 package tourHopur;
-
-
+        /* 
+        private String[] type = {"adventure", "city walk", "horseriding", "hiking",  "sightseeing"};
+        private String[] difficulty = {"easy", "medium", "hard"};
+        private String[] area = {"Capital region", "east", "north", "south", "west"};
+        private String[] language = {"danish", "english", "german", "icelandic", "spanish"};
+        */
 public class Tours {
 	private int id;
 	private double duration;
