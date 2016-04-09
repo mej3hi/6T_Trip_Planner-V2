@@ -71,3 +71,8 @@ dist/
 nbdist/
 nbactions.xml
 .nb-gradle/
+
+
+### Database ###
+data.db
+Verkefni6Flug.db

@@ -52,7 +52,8 @@ public class Window extends javax.swing.JFrame {
         compoundPainter1 = new org.jdesktop.swingx.painter.CompoundPainter();
         mainTabbedPane = new javax.swing.JTabbedPane();
         flightsPanel = new javax.swing.JPanel();
-        bookButtonMessageLabel = new javax.swing.JLabel();
+        bookFlightButtonGreenMessageLabel = new javax.swing.JLabel();
+        bookFlightButtonMessageLabel = new javax.swing.JLabel();
         jArrFlightMessageLabel = new javax.swing.JLabel();
         jDepFlightMessageLabel = new javax.swing.JLabel();
         numberOfTicketsComboBox = new javax.swing.JComboBox<>();
@@ -76,6 +77,8 @@ public class Window extends javax.swing.JFrame {
         jArrTableLabel = new javax.swing.JLabel();
         bookFlightButton = new javax.swing.JButton();
         hotelsPanel = new javax.swing.JPanel();
+        jHotelTableMessageLabel = new javax.swing.JLabel();
+        bookHotelButtonMessageLabel = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         locationHotelComboBox = new javax.swing.JComboBox<>();
         jLabel6 = new javax.swing.JLabel();
@@ -94,6 +97,7 @@ public class Window extends javax.swing.JFrame {
         nextFromHotelButton = new javax.swing.JButton();
         bookHotelButton = new javax.swing.JButton();
         dayTourPanel = new javax.swing.JPanel();
+        jArrFlightMessageLabel1 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
         areaTourComboBox = new javax.swing.JComboBox<>();
         ticketsTourComboBox = new javax.swing.JComboBox<>();
@@ -122,6 +126,7 @@ public class Window extends javax.swing.JFrame {
         jLabel20 = new javax.swing.JLabel();
         jLabel21 = new javax.swing.JLabel();
         jLabel22 = new javax.swing.JLabel();
+        fieldForgotLabel = new javax.swing.JLabel();
         bookPanel = new javax.swing.JPanel();
         jScrollPane4 = new javax.swing.JScrollPane();
         jTextArea1 = new javax.swing.JTextArea();
@@ -137,9 +142,14 @@ public class Window extends javax.swing.JFrame {
 
         flightsPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        bookButtonMessageLabel.setFont(new java.awt.Font("Lucida Grande", 2, 13)); // NOI18N
-        bookButtonMessageLabel.setPreferredSize(new java.awt.Dimension(53, 16));
-        flightsPanel.add(bookButtonMessageLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 610, 220, 30));
+        bookFlightButtonGreenMessageLabel.setFont(new java.awt.Font("Lucida Grande", 2, 13)); // NOI18N
+        bookFlightButtonGreenMessageLabel.setForeground(new java.awt.Color(0, 153, 102));
+        bookFlightButtonGreenMessageLabel.setPreferredSize(new java.awt.Dimension(53, 16));
+        flightsPanel.add(bookFlightButtonGreenMessageLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 610, 220, 30));
+
+        bookFlightButtonMessageLabel.setFont(new java.awt.Font("Lucida Grande", 2, 13)); // NOI18N
+        bookFlightButtonMessageLabel.setPreferredSize(new java.awt.Dimension(53, 16));
+        flightsPanel.add(bookFlightButtonMessageLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 610, 220, 30));
 
         jArrFlightMessageLabel.setFont(new java.awt.Font("Lucida Grande", 2, 13)); // NOI18N
         jArrFlightMessageLabel.setPreferredSize(new java.awt.Dimension(53, 16));
@@ -293,6 +303,14 @@ public class Window extends javax.swing.JFrame {
 
         hotelsPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jHotelTableMessageLabel.setFont(new java.awt.Font("Lucida Grande", 2, 13)); // NOI18N
+        jHotelTableMessageLabel.setPreferredSize(new java.awt.Dimension(53, 16));
+        hotelsPanel.add(jHotelTableMessageLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 190, 600, -1));
+
+        bookHotelButtonMessageLabel.setFont(new java.awt.Font("Lucida Grande", 2, 13)); // NOI18N
+        bookHotelButtonMessageLabel.setPreferredSize(new java.awt.Dimension(53, 16));
+        hotelsPanel.add(bookHotelButtonMessageLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 610, 220, 30));
+
         jLabel5.setText("Location");
         hotelsPanel.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, -1, -1));
 
@@ -379,11 +397,15 @@ public class Window extends javax.swing.JFrame {
                 bookHotelButtonActionPerformed(evt);
             }
         });
-        hotelsPanel.add(bookHotelButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 610, -1, -1));
+        hotelsPanel.add(bookHotelButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 610, -1, -1));
 
         mainTabbedPane.addTab("Hotels", hotelsPanel);
 
         dayTourPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jArrFlightMessageLabel1.setFont(new java.awt.Font("Lucida Grande", 2, 13)); // NOI18N
+        jArrFlightMessageLabel1.setPreferredSize(new java.awt.Dimension(53, 16));
+        dayTourPanel.add(jArrFlightMessageLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 190, 600, -1));
 
         jLabel11.setText("Area");
         dayTourPanel.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, -1, -1));
@@ -469,7 +491,7 @@ public class Window extends javax.swing.JFrame {
                 bookTourButtonActionPerformed(evt);
             }
         });
-        dayTourPanel.add(bookTourButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 610, -1, -1));
+        dayTourPanel.add(bookTourButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 610, -1, -1));
 
         mainTabbedPane.addTab("DayTours", dayTourPanel);
 
@@ -506,6 +528,14 @@ public class Window extends javax.swing.JFrame {
         jLabel22.setForeground(new java.awt.Color(255, 0, 51));
         jLabel22.setText("Invalid Phone");
         customerPanel.add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 200, -1, -1));
+
+        fieldForgotLabel.setForeground(new java.awt.Color(255, 0, 51));
+        fieldForgotLabel.setText("Please fill out customer fields");
+        customerPanel.add(fieldForgotLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, -1, -1));
+
+        fieldForgotLabel.setForeground(new java.awt.Color(255, 0, 51));
+        fieldForgotLabel.setText("Please fill out customer fields");
+        customerPanel.add(fieldForgotLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, -1, -1));
 
         mainTabbedPane.addTab("Customer", customerPanel);
 
@@ -565,7 +595,8 @@ public class Window extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void flightSearchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_flightSearchButtonActionPerformed
-        bookButtonMessageLabel.setText("");
+        bookFlightButtonGreenMessageLabel.setText("");
+        bookFlightButtonMessageLabel.setText("");
         jDepFlightMessageLabel.setText("");
         jArrFlightMessageLabel.setText("");
         if(depFlightDatePicker.getDate() == null) {
@@ -648,6 +679,7 @@ public class Window extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         addBookingToDatabase();
+        updateFlightDatabase();
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void arrFlightDatePickerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_arrFlightDatePickerActionPerformed
@@ -657,17 +689,18 @@ public class Window extends javax.swing.JFrame {
     private void bookFlightButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bookFlightButtonActionPerformed
         if (!oneWayCheckBox.isSelected()){
             if(!isRowSelected(jdepFlightResultTable) && !isRowSelected(jArrFlightResultTable)){
-                bookButtonMessageLabel.setText("No flights selected");
+                bookFlightButtonMessageLabel.setText("No flights selected");
                 return;
             }           
             else if (!isRowSelected(jdepFlightResultTable)){
-                bookButtonMessageLabel.setText("No departure flight selected");
+                bookFlightButtonMessageLabel.setText("No departure flight selected");
             }            
             else if (!isRowSelected(jArrFlightResultTable)){
-                bookButtonMessageLabel.setText("No arrival flight selected");
+                bookFlightButtonMessageLabel.setText("No arrival flight selected");
             }
             else if(isRowSelected(jdepFlightResultTable) && isRowSelected(jArrFlightResultTable)){
-                bookButtonMessageLabel.setText("");
+                bookFlightButtonMessageLabel.setText("");
+                bookFlightButtonGreenMessageLabel.setText("Flight added");
                 addSelectedFlights(jdepFlightResultTable, flightSearch);
                 addSelectedFlights(jArrFlightResultTable, flightSearchArr);
             }                     
@@ -675,10 +708,10 @@ public class Window extends javax.swing.JFrame {
         
         if (oneWayCheckBox.isSelected()){
             if (isRowSelected(jdepFlightResultTable)){
-                bookButtonMessageLabel.setText("");
+                bookFlightButtonMessageLabel.setText("");
                 addSelectedFlights(jdepFlightResultTable, flightSearch);
             }
-            else bookButtonMessageLabel.setText("No departure flight selected");
+            else bookFlightButtonMessageLabel.setText("No departure flight selected");
         }
     }//GEN-LAST:event_bookFlightButtonActionPerformed
 
@@ -734,9 +767,11 @@ public class Window extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> areaTourComboBox;
     private org.jdesktop.swingx.JXDatePicker arrFlightDatePicker;
     private org.jdesktop.swingx.JXDatePicker arrHotelDatePicker;
-    private javax.swing.JLabel bookButtonMessageLabel;
     private javax.swing.JButton bookFlightButton;
+    private javax.swing.JLabel bookFlightButtonGreenMessageLabel;
+    private javax.swing.JLabel bookFlightButtonMessageLabel;
     private javax.swing.JButton bookHotelButton;
+    private javax.swing.JLabel bookHotelButtonMessageLabel;
     private javax.swing.JPanel bookPanel;
     private javax.swing.JButton bookTourButton;
     private javax.swing.JComboBox<String> childrenHotelComboBox;
@@ -748,6 +783,7 @@ public class Window extends javax.swing.JFrame {
     private javax.swing.JButton dayTourSearchButton;
     private org.jdesktop.swingx.JXDatePicker depFlightDatePicker;
     private org.jdesktop.swingx.JXDatePicker depHotelDatePicker;
+    private javax.swing.JLabel fieldForgotLabel;
     private javax.swing.JButton flightSearchButton;
     private javax.swing.JPanel flightsPanel;
     private javax.swing.JComboBox<String> fromFlightComboBox;
@@ -756,12 +792,14 @@ public class Window extends javax.swing.JFrame {
     private javax.swing.JButton hotelSearchButton;
     private javax.swing.JPanel hotelsPanel;
     private javax.swing.JLabel jArrFlightMessageLabel;
+    private javax.swing.JLabel jArrFlightMessageLabel1;
     private javax.swing.JTable jArrFlightResultTable;
     private javax.swing.JLabel jArrTableLabel;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jDepFlightMessageLabel;
     private javax.swing.JScrollPane jDepFlightTableScrollPane;
     private javax.swing.JLabel jDepTableLabel;
+    private javax.swing.JLabel jHotelTableMessageLabel;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -1021,6 +1059,13 @@ public class Window extends javax.swing.JFrame {
         HotelMock hotel = booking.hotel;
         ArrayList<DayTourMock> daytours = booking.daytour;
         
+        if(booking.customer.getName() == "" || booking.customer.getSsn() == "" 
+           || booking.customer.getPhone() == 0){
+            fieldForgotLabel.setVisible(true);
+            showPanel(customerPanel);
+            return;
+        }
+        
         for(int i=0; i<flights.size(); i++){
             bookingDatabase.addBooking(booking.customer, "f", flights.get(i).getID());
         }
@@ -1032,12 +1077,26 @@ public class Window extends javax.swing.JFrame {
             bookingDatabase.addBooking(booking.customer, "d", daytours.get(i).id);
         }
         
-    }
+
+    };
+    /**
+     * Responsible for updating databases of flight.
+     */
+    private void updateFlightDatabase(){
+        Booking booking = bookingManager.getBookings();
+        ArrayList<Flight> flights = booking.flight;
+        for(int i=0; i<flights.size(); i++){
+            flightSearch.updateDatabase(flights.get(i).getNumberOfPassengers(), 
+                 flights.get(i).getTicketsAvailable(), flights.get(i).getID());
+        }
+    };
+
     
     private void hideLabels(){
         jLabel20.setVisible(false);
         jLabel21.setVisible(false);
         jLabel22.setVisible(false);
+        fieldForgotLabel.setVisible(false);
     }
         
     //------------------- Hjálparföll ------------------------------
