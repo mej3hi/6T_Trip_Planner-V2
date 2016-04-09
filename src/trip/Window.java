@@ -528,6 +528,10 @@ public class Window extends javax.swing.JFrame {
         fieldForgotLabel.setText("Please fill out customer fields");
         customerPanel.add(fieldForgotLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, -1, -1));
 
+        fieldForgotLabel.setForeground(new java.awt.Color(255, 0, 51));
+        fieldForgotLabel.setText("Please fill out customer fields");
+        customerPanel.add(fieldForgotLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, -1, -1));
+
         mainTabbedPane.addTab("Customer", customerPanel);
 
         jTextArea1.setColumns(20);
