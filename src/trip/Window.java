@@ -890,7 +890,7 @@ public class Window extends javax.swing.JFrame {
         dayTourResultsTable.getColumnModel().getColumn(0).setMaxWidth(0);
         
         depFlightDatePicker.setDate(new Date());
-        //depFlightDatePicker.getMonthView().setLowerBound(new Date());
+        depFlightDatePicker.getMonthView().setLowerBound(new Date());
         arrFlightDatePicker.setDate(new Date());
         
         arrHotelDatePicker.setDate(new Date());
@@ -1200,6 +1200,11 @@ public class Window extends javax.swing.JFrame {
     }
     
     private boolean validateFlights(){
+        DefaultTableModel model = (DefaultTableModel) jdepFlightResultTable.getModel();
+        model.setRowCount(0);
+        model = (DefaultTableModel) jArrFlightResultTable.getModel();
+        model.setRowCount(0);
+        
         bookFlightButtonGreenMessageLabel.setText("");
         bookFlightButtonMessageLabel.setText("");
         jDepFlightMessageLabel.setText("");
