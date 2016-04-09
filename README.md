@@ -7,20 +7,13 @@ Flug
 	fleiri miða en eru  til. (skilaboð ?)
 
 	Það er hægt að bóka sama flug, hótel.... oft
-
-	Laga að það sé ekki hægt að bóka án þess að fylla út customer			 Martin
 	
 	Hvað við sendum þeim								 Martin
-	
-	Athuga hvort hægt sé að afvirkja liðnar dags.					Skúli
 
 	Testa allt mögulegt								 Allir
 
 
 Tour
-
-	Útfærsla á því hvernig við birtum leitarniðurstöður ef beðið er um 
-	fleiri miða en eru  til. (skilaboð ? )
 
 	NumberofTickets
 	
@@ -33,9 +26,6 @@ Tour
 	Testa allt mögulegt						Allir
 
 Hotel
-
-	Útfærsla á því hvernig við birtum leitarniðurstöður ef beðið er um 
-	fleiri miða en eru  til. (skilaboð ? )
 
 	Bíða eftir klösum frá hóp
 
