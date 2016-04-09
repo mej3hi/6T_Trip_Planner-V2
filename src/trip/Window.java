@@ -975,7 +975,8 @@ public class Window extends javax.swing.JFrame {
         Booking booking = bookingManager.getBookings();
         ArrayList<Flight> flights = booking.flight;
         for(int i=0; i<flights.size(); i++){
-            flightSearch.updateDatabase(flights.get(i).getNumberOfPassengers(), flights.get(i).getTicketsAvailable(), flights.get(i).getID());
+            flightSearch.updateDatabase(flights.get(i).getNumberOfPassengers(), 
+                 flights.get(i).getTicketsAvailable(), flights.get(i).getID());
         }
     };
     
