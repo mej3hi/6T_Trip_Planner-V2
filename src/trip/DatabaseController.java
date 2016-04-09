@@ -32,7 +32,7 @@ public class DatabaseController {
             PreparedStatement statement = con.prepareStatement(
                 "INSERT INTO "+table+p+"VALUES"+q);
             statement.setString(1,customer.getName());
-            statement.setString(2,customer.getId());
+            statement.setString(2,customer.getSsn());
             statement.setInt(3,customer.getPhone());
             statement.setString(4,type);
             statement.setInt(5,id);

@@ -11,8 +11,17 @@ package trip;
  */
 public class Customer {
     private String name;
-    private String id;
+    private String ssn;
     private int phone;
+    
+    
+    
+    public Customer(){
+        System.out.print("new customer");
+        this.name = "";
+        this.ssn = "";
+        this.phone = 0;
+    }
     
     public void setName(String name){
         this.name = name;
@@ -22,12 +31,12 @@ public class Customer {
         return name;
     }
     
-    public void setId(String id){
-        this.id=id;
+    public void setSsn(String ssn){
+        this.ssn=ssn;
     }
     
-    public String getId(){
-        return id;
+    public String getSsn(){
+        return ssn;
     }
     
     public void setPhone(int phone){
