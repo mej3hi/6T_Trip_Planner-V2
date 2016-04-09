@@ -493,7 +493,7 @@ public class Window extends javax.swing.JFrame {
         typeTourComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Choose", "Adventure", "City walk", "Horse riding", "Hiking", "Sight seeing" }));
         dayTourPanel.add(typeTourComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 60, 130, -1));
 
-        languageCombobox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Choose", "Danish", "English", "German", "Icelandic", "Spanish", " ", " " }));
+        languageCombobox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Choose", "Danish", "English", "German", "Icelandic", "Spanish" }));
         dayTourPanel.add(languageCombobox, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 60, -1, -1));
 
         jLabel13.setText("Language");
@@ -920,6 +920,7 @@ public class Window extends javax.swing.JFrame {
         
     }
     
+   
     /**
      * Creates row(s) with flight results from current search 
      * @param x is the flight results
@@ -1049,7 +1050,7 @@ public class Window extends javax.swing.JFrame {
     }
     
     /**
-     * Checks if hotel is selected and adds the selected hotel
+     * Checks if day tour is selected and adds the selected tour
      * to bookingManager and enables booking tab if disabled 
      * booking tab if disabled
      */

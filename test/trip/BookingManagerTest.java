@@ -28,11 +28,11 @@ public class BookingManagerTest {
     public void setUp() {
         bookingManager = new BookingManager();
         bookingManager.getBookings().customer.setName("Svenni");
-        bookingManager.getBookings().customer.setId("1");
+        bookingManager.getBookings().customer.setSsn("1");
         bookingManager.getBookings().customer.setPhone(6789983);
         
-        flight = new FlightMock( 1,"Wow",new Date(2016-1900,3-1,3), "12:00", "15:00", "3:00", "Rvk", "Aey","6.000");
-        bookingManager.addFlight(flight);
+       // flight = new FlightMock( 1,"Wow",new Date(2016-1900,3-1,3), "12:00", "15:00", "3:00", "Rvk", "Aey","6.000");
+       // bookingManager.addFlight(flight);
         
     }
     
@@ -45,7 +45,7 @@ public class BookingManagerTest {
     public void testUpdateCustomer (){
         bookingManager.updateCustomer("Joi", "1", 1234);
         assertEquals("Joi", bookingManager.getBookings().customer.getName());
-        assertEquals("1",bookingManager.getBookings().customer.getId());
+        assertEquals("1",bookingManager.getBookings().customer.getSsn());
         assertEquals(1234,bookingManager.getBookings().customer.getPhone());
         
         

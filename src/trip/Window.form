@@ -874,15 +874,13 @@
             <Component class="javax.swing.JComboBox" name="languageCombobox">
               <Properties>
                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                  <StringArray count="8">
+                  <StringArray count="6">
                     <StringItem index="0" value="Choose"/>
                     <StringItem index="1" value="Danish"/>
                     <StringItem index="2" value="English"/>
                     <StringItem index="3" value="German"/>
                     <StringItem index="4" value="Icelandic"/>
                     <StringItem index="5" value="Spanish"/>
-                    <StringItem index="6" value=" "/>
-                    <StringItem index="7" value=" "/>
                   </StringArray>
                 </Property>
               </Properties>
