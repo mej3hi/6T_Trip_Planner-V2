@@ -10,8 +10,6 @@ Flug
 	fleiri miða en eru  til. (skilaboð ?)
 
 	Það er hægt að bóka sama flug, hótel.... oft
-	
-	Hvað við sendum þeim								 Martin
 
 	Testa allt mögulegt								 Allir
 
