@@ -34,6 +34,7 @@ public class Window extends javax.swing.JFrame {
     DayTourSearch dayTourSearch = new DayTourSearch();
     Validate validate = new Validate();
     BookingDatabase bookingDatabase = new BookingDatabase();
+    int numberOfbooking = 0;
         
     /**
      * Creates new form Window
@@ -584,12 +585,12 @@ public class Window extends javax.swing.JFrame {
             .addGroup(bookPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 462, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 131, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 147, Short.MAX_VALUE)
                 .addComponent(jButton2)
                 .addGap(30, 30, 30))
         );
 
-        mainTabbedPane.addTab("Booking", bookPanel);
+        mainTabbedPane.addTab("Booking  0", new javax.swing.ImageIcon("/home/martin/NetBeansProjects/6T_Trip_Planner-V2/cart.png"), bookPanel); // NOI18N
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -619,7 +620,7 @@ public class Window extends javax.swing.JFrame {
      */
     private void flightSearchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_flightSearchButtonActionPerformed
         if(!validateFlights()) return;
-
+        
         ArrayList<Flight> results = flightSearch.search(depFlightDatePicker.getDate(), fromFlightComboBox.getSelectedItem().toString(), 
                 toFlightComboBox.getSelectedItem().toString(), Integer.parseInt(numberOfTicketsComboBox.getItemAt(numberOfTicketsComboBox.getSelectedIndex())) );       
         
@@ -721,6 +722,7 @@ public class Window extends javax.swing.JFrame {
                 bookFlightButtonGreenMessageLabel.setText("Flight added");
                 addSelectedFlights(jdepFlightResultTable, flightSearch);
                 addSelectedFlights(jArrFlightResultTable, flightSearchArr);
+                increaseBookNumber(1);
             }                     
         }
         
@@ -728,6 +730,7 @@ public class Window extends javax.swing.JFrame {
             if (isRowSelected(jdepFlightResultTable)){
                 bookFlightButtonMessageLabel.setText("");
                 addSelectedFlights(jdepFlightResultTable, flightSearch);
+                increaseBookNumber(1);
             }
             else bookFlightButtonMessageLabel.setText("No departure flight selected");
         }
@@ -909,11 +912,20 @@ public class Window extends javax.swing.JFrame {
         fromFlightComboBox.setSelectedIndex(1);
         
         mainTabbedPane.setEnabledAt(4, false);
+        
+        
         hideLabels();
         
     }
+    /**
+     * Increase the book number in the tap booking.
+     * @param i is the number of booking that has been done.
+     */
+    private void increaseBookNumber (int i){
+        numberOfbooking += i; 
+        mainTabbedPane.setTitleAt(4, "booking  "+ Integer.toString(numberOfbooking));
+    }
     
-   
     /**
      * Creates row(s) with flight results from current search 
      * @param x is the flight results
