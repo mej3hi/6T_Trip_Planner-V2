@@ -21,8 +21,8 @@ public class Search {
     private ArrayList<Tours> results;
     public ArrayList<Tours> getResults(String dur, String type, String diff, String area , String lang, boolean pUp, boolean hCap, int date, int numberOfTickets){ 
         
-        
+    
         return results;
-}
-
+    }   
+    
 }
