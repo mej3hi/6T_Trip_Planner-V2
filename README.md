@@ -1,6 +1,9 @@
 # 6T_Trip_Planner-V2
 Meta-search
 
+Maggi kannski að þetta sé vesenið hjá þér með þetta username
+https://help.github.com/articles/why-are-my-commits-linked-to-the-wrong-user/
+
 Flug
 	
 	Útfærsla á því hvernig við birtum leitarniðurstöður ef beðið er um 
