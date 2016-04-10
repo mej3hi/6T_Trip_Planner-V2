@@ -12,6 +12,7 @@ import java.util.Date;
 import javax.swing.JPanel;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
+import tourHopur.Tours;
 
 /**
  * Lýsing
@@ -118,6 +119,8 @@ public class Window extends javax.swing.JFrame {
         pickupCheckBox = new javax.swing.JCheckBox();
         handicapCheckbox = new javax.swing.JCheckBox();
         bookTourButton = new javax.swing.JButton();
+        difficultyComboBox = new javax.swing.JComboBox<>();
+        jLabel23 = new javax.swing.JLabel();
         customerPanel = new javax.swing.JPanel();
         jLabel17 = new javax.swing.JLabel();
         jTextField1 = new javax.swing.JTextField();
@@ -248,7 +251,7 @@ public class Window extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(jdepFlightResultTable);
 
-        flightsPanel.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 210, 670, 180));
+        flightsPanel.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 210, 810, 180));
 
         nextFromFlightButton.setText("Next >");
         nextFromFlightButton.addActionListener(new java.awt.event.ActionListener() {
@@ -286,7 +289,7 @@ public class Window extends javax.swing.JFrame {
         });
         jDepFlightTableScrollPane.setViewportView(jArrFlightResultTable);
 
-        flightsPanel.add(jDepFlightTableScrollPane, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 420, 670, 180));
+        flightsPanel.add(jDepFlightTableScrollPane, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 420, 810, 180));
 
         jDepTableLabel.setText("Departure:");
         flightsPanel.add(jDepTableLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 190, -1, -1));
@@ -401,7 +404,7 @@ public class Window extends javax.swing.JFrame {
         });
         jScrollPane2.setViewportView(hotelResultTable);
 
-        hotelsPanel.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 210, 670, 350));
+        hotelsPanel.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 210, 810, 350));
 
         nextFromHotelButton.setText("Next >");
         nextFromHotelButton.addActionListener(new java.awt.event.ActionListener() {
@@ -452,21 +455,21 @@ public class Window extends javax.swing.JFrame {
         dayTourPanel.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 120, -1, -1));
 
         jLabel15.setText("Type");
-        dayTourPanel.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 40, -1, -1));
+        dayTourPanel.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 40, -1, -1));
 
         dayTourResultsTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "Id", "Trip", "City", "Time", "Price", "Select"
+                "Id", "Area", "Type", "Duration", "Language", "Difficulty", "Pickup", "Handicap", "Tickets", "Price", "Select"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Boolean.class
+                java.lang.Integer.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Boolean.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, true, true
+                false, false, false, false, false, false, false, false, false, false, true
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -480,7 +483,7 @@ public class Window extends javax.swing.JFrame {
         dayTourResultsTable.setColumnSelectionAllowed(true);
         jScrollPane3.setViewportView(dayTourResultsTable);
 
-        dayTourPanel.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 210, 670, 350));
+        dayTourPanel.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 210, 810, 350));
 
         nextFromDayTourButton.setText("Next >");
         nextFromDayTourButton.addActionListener(new java.awt.event.ActionListener() {
@@ -491,13 +494,13 @@ public class Window extends javax.swing.JFrame {
         dayTourPanel.add(nextFromDayTourButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 610, -1, -1));
 
         typeTourComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Choose", "Adventure", "City walk", "Horse riding", "Hiking", "Sight seeing" }));
-        dayTourPanel.add(typeTourComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 60, 130, -1));
+        dayTourPanel.add(typeTourComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 60, 130, -1));
 
         languageCombobox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Choose", "Danish", "English", "German", "Icelandic", "Spanish" }));
-        dayTourPanel.add(languageCombobox, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 60, -1, -1));
+        dayTourPanel.add(languageCombobox, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 60, -1, -1));
 
         jLabel13.setText("Language");
-        dayTourPanel.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 40, -1, -1));
+        dayTourPanel.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 40, -1, -1));
 
         pickupCheckBox.setText("Pickup");
         dayTourPanel.add(pickupCheckBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 140, -1, -1));
@@ -512,6 +515,12 @@ public class Window extends javax.swing.JFrame {
             }
         });
         dayTourPanel.add(bookTourButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 610, -1, -1));
+
+        difficultyComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Choose", "Esay", "Medium", "Hard" }));
+        dayTourPanel.add(difficultyComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 60, -1, -1));
+
+        jLabel23.setText("Difficulty");
+        dayTourPanel.add(jLabel23, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 40, -1, -1));
 
         mainTabbedPane.addTab("DayTours", dayTourPanel);
 
@@ -573,7 +582,7 @@ public class Window extends javax.swing.JFrame {
             .addGroup(bookPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(bookPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 698, Short.MAX_VALUE)
+                    .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 834, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, bookPanelLayout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(jButton2)))
@@ -589,15 +598,13 @@ public class Window extends javax.swing.JFrame {
                 .addGap(30, 30, 30))
         );
 
-        mainTabbedPane.addTab("Booking  0", new javax.swing.ImageIcon("/home/martin/NetBeansProjects/6T_Trip_Planner-V2/cart.png"), bookPanel); // NOI18N
+        mainTabbedPane.addTab("Booking  0", null, bookPanel);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(mainTabbedPane, javax.swing.GroupLayout.PREFERRED_SIZE, 731, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(mainTabbedPane)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -666,7 +673,17 @@ public class Window extends javax.swing.JFrame {
     }//GEN-LAST:event_nextFromHotelButtonActionPerformed
 
     private void dayTourSearchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dayTourSearchButtonActionPerformed
-        DayTourMock[] results = dayTourSearch.search(dayTourDatePicker.getDate(),areaTourComboBox.getSelectedItem().toString());
+        Date date = dayTourDatePicker.getDate();
+        String area = areaTourComboBox.getSelectedItem().toString();
+        String type = typeTourComboBox.getSelectedItem().toString();
+        String diff = difficultyComboBox.getSelectedItem().toString();
+        boolean pickup = pickupCheckBox.isSelected();
+        boolean hcap = handicapCheckbox.isSelected();
+        String lang = languageCombobox.getSelectedItem().toString();
+        int tickets = Integer.parseInt(ticketsTourComboBox.getItemAt(ticketsTourComboBox.getSelectedIndex()));
+        
+        ArrayList<Tours> results = dayTourSearch.search(date, area,  type, diff, pickup, hcap, lang, tickets);
+        
         createDayTourTable(results);
     }//GEN-LAST:event_dayTourSearchButtonActionPerformed
 
@@ -820,6 +837,7 @@ public class Window extends javax.swing.JFrame {
     private javax.swing.JButton dayTourSearchButton;
     private org.jdesktop.swingx.JXDatePicker depFlightDatePicker;
     private org.jdesktop.swingx.JXDatePicker depHotelDatePicker;
+    private javax.swing.JComboBox<String> difficultyComboBox;
     private javax.swing.JLabel fieldForgotLabel;
     private javax.swing.JButton flightSearchButton;
     private javax.swing.JPanel flightsPanel;
@@ -852,6 +870,7 @@ public class Window extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel22;
+    private javax.swing.JLabel jLabel23;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -923,7 +942,7 @@ public class Window extends javax.swing.JFrame {
      */
     private void increaseBookNumber (int i){
         numberOfbooking += i; 
-        mainTabbedPane.setTitleAt(4, "booking  "+ Integer.toString(numberOfbooking));
+        mainTabbedPane.setTitleAt(4, "Booking  "+ Integer.toString(numberOfbooking));
     }
     
     /**
@@ -1043,14 +1062,15 @@ public class Window extends javax.swing.JFrame {
      * @param x is the day tour results
      * 
      */
-    private void createDayTourTable(DayTourMock[] x){
+    private void createDayTourTable(ArrayList<Tours> x){
         DefaultTableModel model = (DefaultTableModel) dayTourResultsTable.getModel();
         model.setRowCount(0);
         if(x==null) return;
         
-        for(int i=0; i<x.length; i++){
-            if(x[i]==null){return;}
-            model.addRow(dToObj(x[i],i));
+        for(int i=0; i<x.size(); i++){
+            
+            if(x.get(i)==null){return;}
+            model.addRow(dToObj(x.get(i),i));
         }
     }
     
@@ -1065,8 +1085,8 @@ public class Window extends javax.swing.JFrame {
 
             if (isChecked) {
                 int index = (int) dayTourResultsTable.getValueAt(i, 0);
-                DayTourMock tmp = dayTourSearch.getDayTour(index);
-                bookingManager.addDayTour(tmp);
+                Tours tmp = dayTourSearch.getDayTour(index);
+                //bookingManager.addDayTour(tmp);
             }
 
         }
@@ -1256,7 +1276,7 @@ public class Window extends javax.swing.JFrame {
     //------------------- Hjálparföll ------------------------------
     private Object[] toObj(Flight x,int i){
         return new Object[]{i,x.getAirline(),x.getDepartureLocation(),x.getDepartureTime(),
-                x.getArrivalLocation(),x.getArrivalTime(),x.getDuration(),x.getNumberOfPassengers(),x.getTotalPrice(),false};
+                x.getArrivalLocation(),x.getArrivalTime(),x.getDuration()+" hours",x.getNumberOfPassengers(),x.getTotalPrice()+" ISK",false};
     }
     
     private String brief(String x){
@@ -1271,8 +1291,9 @@ public class Window extends javax.swing.JFrame {
         return new Object[]{i,x.name,x.city,x.price,false};
     }
     
-    private Object[] dToObj(DayTourMock x, int i){
-        return new Object[]{i,x.trip,x.city,x.time,x.price,false};
+    private Object[] dToObj(Tours x, int i){
+        return new Object[]{i,x.getArea(),x.getType(),x.getDuration()+" h",x.getLanguage(),
+            x.getDifficulty(), x.getPickup(), x.getHandicap(), x.getSeatsT(), x.getPrice()+" ISK",false};
     }
     
     private void echo(Object o){

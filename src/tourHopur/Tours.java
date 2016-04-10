@@ -106,4 +106,8 @@ public class Tours {
 	public void setSeatsT(int n) {
 		seatsTotal = n;
 	}
+        //??
+        public void setDate (int d){
+            date = d;
+        }
 }

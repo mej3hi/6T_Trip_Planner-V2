@@ -5,23 +5,42 @@
  */
 package trip;
 
+import java.util.ArrayList;
 import mock.TeamDayTour;
 import mock.DayTourMock;
 import java.util.Date;
+import tourHopur.Search;
+import tourHopur.Tours;
 
 /**
  *
  * @author M
  */
 public class DayTourSearch {
-    private DayTourMock[] results;
-    
-    public DayTourMock[] search(Date date, String at){
-        results = TeamDayTour.search(date, at);
+  
+    private ArrayList<Tours> results;
+    Search search = new Search();
+
+    public ArrayList<Tours> search(Date date, String area, String type, String difficulty,
+            boolean pickup, boolean handicap, String language, int numOfTickets ){
+        
+        /*
+        Þarf að Converta date í int 
+        
+         
+          
+        */
+       
+        // Fallið þeirra
+        //getResult(String dur, String type, String diff, String area , String lang, boolean pUp, 
+        //        boolean hCap, int date, int numberOfTickets){ }
+        
+        results = search.getResults();
         return results;
     }
     
-    public DayTourMock getDayTour(int index){
-        return results[index];
+     public Tours getDayTour(int index){
+        return results.get(index);
     }
+    
 }
