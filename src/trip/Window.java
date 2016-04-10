@@ -742,7 +742,11 @@ public class Window extends javax.swing.JFrame {
     }//GEN-LAST:event_bookTourButtonActionPerformed
 
     private void depFlightDatePickerPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_depFlightDatePickerPropertyChange
-        arrFlightDatePicker.getMonthView().setLowerBound(depFlightDatePicker.getDate());
+        if(depFlightDatePicker.getDate() != null){
+            arrFlightDatePicker.getMonthView().setLowerBound(depFlightDatePicker.getDate());
+            arrFlightDatePicker.setDate(depFlightDatePicker.getDate());
+        }
+        
     }//GEN-LAST:event_depFlightDatePickerPropertyChange
 
     private void arrHotelDatePickerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_arrHotelDatePickerActionPerformed
@@ -1158,7 +1162,7 @@ public class Window extends javax.swing.JFrame {
         HotelMock hotel = booking.hotel;
         ArrayList<DayTourMock> daytours = booking.daytour;
         
-        if(booking.customer.getName() == "" || booking.customer.getSsn() == "" 
+        if((booking.customer.getName()).equals("") || (booking.customer.getSsn()).equals("")
            || booking.customer.getPhone() == 0){
             fieldForgotLabel.setVisible(true);
             showPanel(customerPanel);
