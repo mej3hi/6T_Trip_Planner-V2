@@ -12,7 +12,6 @@ import java.util.Date;
 import javax.swing.JPanel;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
-import org.jdesktop.swingx.autocomplete.AutoCompleteDecorator;
 
 /**
  * Lýsing
@@ -612,8 +611,8 @@ public class Window extends javax.swing.JFrame {
     
     /**
      * Event handler when user clicks search button in flight tab. Search and 
-     * message display for user if no results were found or if user.
-     * doesn't pick a date.
+     * message display for user if no results were found or if user doesn't 
+     * pick a date.
      * 
      * @param evt 
      */
@@ -727,6 +726,7 @@ public class Window extends javax.swing.JFrame {
         if (oneWayCheckBox.isSelected()){
             if (isRowSelected(jdepFlightResultTable)){
                 bookFlightButtonMessageLabel.setText("");
+                bookFlightButtonGreenMessageLabel.setText("Flight added");
                 addSelectedFlights(jdepFlightResultTable, flightSearch);
             }
             else bookFlightButtonMessageLabel.setText("No departure flight selected");
@@ -1200,16 +1200,18 @@ public class Window extends javax.swing.JFrame {
         fieldForgotLabel.setVisible(false);
     }
     
+    /**
+     * Checks if user has selected a departure date and arrival date (if one way 
+     * is not checked) in flight tab.
+     * @return true if date is selected
+     */    
     private boolean validateFlights(){
         DefaultTableModel model = (DefaultTableModel) jdepFlightResultTable.getModel();
         model.setRowCount(0);
         model = (DefaultTableModel) jArrFlightResultTable.getModel();
         model.setRowCount(0);
         
-        bookFlightButtonGreenMessageLabel.setText("");
-        bookFlightButtonMessageLabel.setText("");
-        jDepFlightMessageLabel.setText("");
-        jArrFlightMessageLabel.setText("");
+        clearFlightMessages();
         
         if(depFlightDatePicker.getDate() == null) {
             jDepFlightMessageLabel.setText("Choose date");
@@ -1221,11 +1223,18 @@ public class Window extends javax.swing.JFrame {
             return false;
         }
         
-        return true;
-        
-        
-        
-        
+        return true;    
+    }
+    
+    /**
+     * Clears messages to user in flight tab
+     */
+    
+    public void clearFlightMessages(){
+        bookFlightButtonGreenMessageLabel.setText("");
+        bookFlightButtonMessageLabel.setText("");
+        jDepFlightMessageLabel.setText("");
+        jArrFlightMessageLabel.setText("");
     }
         
     //------------------- Hjálparföll ------------------------------
