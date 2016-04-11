@@ -116,6 +116,7 @@ public class Window extends javax.swing.JFrame {
         addressTextField = new javax.swing.JTextField();
         jLabel26 = new javax.swing.JLabel();
         nameTextField = new javax.swing.JTextField();
+        bookHotelButtonGreenMessageLabel = new javax.swing.JLabel();
         dayTourPanel = new javax.swing.JPanel();
         jArrFlightMessageLabel1 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
@@ -479,6 +480,12 @@ public class Window extends javax.swing.JFrame {
         nameTextField.setText("Name ????");
         hotelsPanel.add(nameTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 70, 80, -1));
 
+        bookHotelButtonGreenMessageLabel.setFont(new java.awt.Font("Lucida Bright", 2, 13)); // NOI18N
+        bookHotelButtonGreenMessageLabel.setForeground(new java.awt.Color(0, 153, 102));
+        bookHotelButtonGreenMessageLabel.setMaximumSize(new java.awt.Dimension(53, 16));
+        bookHotelButtonGreenMessageLabel.setPreferredSize(new java.awt.Dimension(53, 16));
+        hotelsPanel.add(bookHotelButtonGreenMessageLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(173, 606, 200, 40));
+
         mainTabbedPane.addTab("Hotels", hotelsPanel);
 
         dayTourPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -660,7 +667,7 @@ public class Window extends javax.swing.JFrame {
                 .addGap(30, 30, 30))
         );
 
-        mainTabbedPane.addTab("Booking  0", new javax.swing.ImageIcon("/home/martin/NetBeansProjects/6T_Trip_Planner-V2/cart.png"), bookPanel); // NOI18N
+        mainTabbedPane.addTab("Booking  0", bookPanel);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -838,7 +845,17 @@ public class Window extends javax.swing.JFrame {
     }//GEN-LAST:event_bookFlightButtonActionPerformed
 
     private void bookHotelButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bookHotelButtonActionPerformed
-        addSelectedHotel();
+        if(!isRowSelected2(hotelResultTable)){
+            bookHotelButtonMessageLabel.setText("No hotel selected");
+            return;
+        }
+        else if(isRowSelected2(hotelResultTable)){
+            bookHotelButtonMessageLabel.setText("");
+            bookHotelButtonGreenMessageLabel.setText("Hotel added");
+            addSelectedHotel(hotelResultTable, hotelSearch);
+        }
+        
+        //addSelectedHotel();
         increaseBookNumber(1);
         
     }//GEN-LAST:event_bookHotelButtonActionPerformed
@@ -923,6 +940,7 @@ public class Window extends javax.swing.JFrame {
     private javax.swing.JLabel bookFlightButtonGreenMessageLabel;
     private javax.swing.JLabel bookFlightButtonMessageLabel;
     private javax.swing.JButton bookHotelButton;
+    private javax.swing.JLabel bookHotelButtonGreenMessageLabel;
     private javax.swing.JLabel bookHotelButtonMessageLabel;
     private javax.swing.JPanel bookPanel;
     private javax.swing.JButton bookTourButton;
@@ -1119,6 +1137,14 @@ public class Window extends javax.swing.JFrame {
         }
         return false;
     }
+    //Bara prufa, Skúli
+    private boolean isRowSelected2 (JTable table){
+        for (int i = 0; i < table.getRowCount(); i++) {
+            boolean isChecked = (Boolean) table.getValueAt(i, 12);
+            if (isChecked) return true;
+        }
+        return false;
+    }
     
     
     
@@ -1172,13 +1198,13 @@ public class Window extends javax.swing.JFrame {
      * to bookingManager and enables booking tab if disabled 
      * booking tab if disabled
      */
-    private void addSelectedHotel() {
-        for (int i = 0; i < hotelResultTable.getRowCount(); i++) {
-            boolean isChecked = (Boolean) hotelResultTable.getValueAt(i, 4);
+    private void addSelectedHotel(JTable table, HotelSearch result) {
+        for (int i = 0; i < table.getRowCount(); i++) {
+            boolean isChecked = (Boolean) table.getValueAt(i, 12);
 
             if (isChecked) {
-                int index = (int) hotelResultTable.getValueAt(i, 0);
-                Hotel tmp = hotelSearch.getHotel(index);
+                int index = (int) table.getValueAt(i, 0);
+                Hotel tmp = result.getHotel(index);
                 //bookingManager.setHotel(tmp);
             }
 
@@ -1206,7 +1232,7 @@ public class Window extends javax.swing.JFrame {
     /**
      * Checks if day tour is selected and adds the selected tour
      * to bookingManager and enables booking tab if disabled 
-     * booking tab if disabled  VAR AÐEINS AÐ PRUFA AÐ BREYTA ÞESSU
+     * booking tab if disabled  
      */
     private void addSelectedDayTours(JTable table, DayTourSearch result ) {
         for (int i = 0; i < table.getRowCount(); i++) {
