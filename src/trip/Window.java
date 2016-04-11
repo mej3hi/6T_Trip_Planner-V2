@@ -9,6 +9,8 @@ import mock.HotelMock;
 import mock.DayTourMock;
 //import mock.FlightMock;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 import javax.swing.JPanel;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
@@ -1338,7 +1340,22 @@ public class Window extends javax.swing.JFrame {
         DateFormat formatter = new SimpleDateFormat("MM-dd-yyyy");
         return formatter.format(d);
     }
+    
+    private String lts(String[] x){
+    Map<String,String> lang = new HashMap<String, String>(){
+        {
+            put("english", "EN");
+            put("icelandic", "IS");
+        }
+    };
+
+    String y="";
+    for(int i=0; i<x.length; i++){
+        y+=" "+lang.get(x[i]);
+    }
+
+    return y.trim();
+}
     //----------------------------------------------------------------
-    
-    
+        
 }
