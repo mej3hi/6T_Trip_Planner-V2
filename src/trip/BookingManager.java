@@ -9,6 +9,7 @@ import flugHopur.Flight;
 import mock.HotelMock;
 import mock.DayTourMock;
 import ekkiInotkun.FlightMock;
+import tourHopur.Tours;
 
 /**
  *
@@ -16,6 +17,7 @@ import ekkiInotkun.FlightMock;
  */
 public class BookingManager {
     private final Booking booking = new Booking();
+    
     
     public Booking getBookings(){
         return booking;
@@ -28,11 +30,11 @@ public class BookingManager {
     public void setHotel(HotelMock hotel){
         booking.hotel = hotel;
     }
-    
-    public void addDayTour(DayTourMock dayTour){
+    /*
+    public void addDayTour(Tours dayTour){
         booking.daytour.add(dayTour);
     }
-    
+    */
     public void updateCustomer(String name, String ssn, int phone){
         booking.customer.setName(name);
         booking.customer.setSsn(ssn);

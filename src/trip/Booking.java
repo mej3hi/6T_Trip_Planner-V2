@@ -10,7 +10,7 @@ import mock.HotelMock;
 import mock.DayTourMock;
 import ekkiInotkun.FlightMock;
 import java.util.ArrayList;
-//prufa
+
 /**
  *
  * @author M

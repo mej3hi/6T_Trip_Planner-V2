@@ -61,7 +61,7 @@ public class WindowTest {
         bolungarvik = null;
         
     }
-    
+    /*
     @Test
     public void testFlightSearch(){
         Date departure = new Date(2016-1900,3-1,3);
@@ -82,7 +82,7 @@ public class WindowTest {
         
         
     }
-    
+    */
     @Test
     public void testSearchHotel(){
         Date departure = new Date(2016-1900,3-1,3);
