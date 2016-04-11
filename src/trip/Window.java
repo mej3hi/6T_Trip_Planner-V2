@@ -2,6 +2,7 @@
 package trip;
 
 import flugHopur.Flight;
+import hotelHopur.Hotel;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -100,6 +101,19 @@ public class Window extends javax.swing.JFrame {
         hotelResultTable = new javax.swing.JTable();
         nextFromHotelButton = new javax.swing.JButton();
         bookHotelButton = new javax.swing.JButton();
+        wifiCheckBox1 = new javax.swing.JCheckBox();
+        freewifiCheckBox = new javax.swing.JCheckBox();
+        smokeCheckBox = new javax.swing.JCheckBox();
+        spoolCheckBox = new javax.swing.JCheckBox();
+        gymCheckBox = new javax.swing.JCheckBox();
+        tvCheckBox = new javax.swing.JCheckBox();
+        postcodeTextField = new javax.swing.JTextField();
+        cityTextField = new javax.swing.JTextField();
+        jLabel24 = new javax.swing.JLabel();
+        jLabel25 = new javax.swing.JLabel();
+        addressTextField = new javax.swing.JTextField();
+        jLabel26 = new javax.swing.JLabel();
+        nameTextField = new javax.swing.JTextField();
         dayTourPanel = new javax.swing.JPanel();
         jArrFlightMessageLabel1 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
@@ -340,7 +354,7 @@ public class Window extends javax.swing.JFrame {
         adultsHotelComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4" }));
         hotelsPanel.add(adultsHotelComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 60, -1, -1));
 
-        jLabel8.setText("Children");
+        jLabel8.setText("???????");
         hotelsPanel.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 40, -1, -1));
 
         childrenHotelComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "0", "1", "2", "3" }));
@@ -377,21 +391,21 @@ public class Window extends javax.swing.JFrame {
                 hotelSearchButtonActionPerformed(evt);
             }
         });
-        hotelsPanel.add(hotelSearchButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 140, -1, -1));
+        hotelsPanel.add(hotelSearchButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 140, -1, -1));
 
         hotelResultTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "Id", "Hotel", "City", "Price", "Select"
+                "Id", "Name", "Address", "Postcode", "City", "Wifi", "Free Wifi", "Smoke", "S.Pool", "Gym", "Tv", "Check in???", "Select"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Boolean.class
+                java.lang.Integer.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Boolean.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, true
+                false, false, false, false, false, false, false, false, false, false, false, false, true
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -421,6 +435,45 @@ public class Window extends javax.swing.JFrame {
             }
         });
         hotelsPanel.add(bookHotelButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 610, -1, -1));
+
+        wifiCheckBox1.setText("Wifi");
+        hotelsPanel.add(wifiCheckBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 20, -1, -1));
+
+        freewifiCheckBox.setText("FreeWifi");
+        hotelsPanel.add(freewifiCheckBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 20, -1, -1));
+
+        smokeCheckBox.setText("Smoke");
+        hotelsPanel.add(smokeCheckBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 20, -1, -1));
+
+        spoolCheckBox.setText("Swimming pool");
+        hotelsPanel.add(spoolCheckBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 60, -1, -1));
+
+        gymCheckBox.setText("Gym");
+        hotelsPanel.add(gymCheckBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 20, -1, -1));
+
+        tvCheckBox.setText("Tv");
+        hotelsPanel.add(tvCheckBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 60, -1, -1));
+
+        postcodeTextField.setText("??");
+        hotelsPanel.add(postcodeTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 140, 70, -1));
+
+        cityTextField.setText("??");
+        hotelsPanel.add(cityTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 140, 80, -1));
+
+        jLabel24.setText("City");
+        hotelsPanel.add(jLabel24, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 120, -1, -1));
+
+        jLabel25.setText("Postcode");
+        hotelsPanel.add(jLabel25, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 120, -1, -1));
+
+        addressTextField.setText("???");
+        hotelsPanel.add(addressTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 140, 80, -1));
+
+        jLabel26.setText("Address");
+        hotelsPanel.add(jLabel26, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 120, -1, -1));
+
+        nameTextField.setText("Name ????");
+        hotelsPanel.add(nameTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 70, 80, -1));
 
         mainTabbedPane.addTab("Hotels", hotelsPanel);
 
@@ -664,7 +717,26 @@ public class Window extends javax.swing.JFrame {
     }//GEN-LAST:event_nextFromFlightButtonActionPerformed
    
     private void hotelSearchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_hotelSearchButtonActionPerformed
-        HotelMock[] results = hotelSearch.search(arrHotelDatePicker.getDate(), locationHotelComboBox.getSelectedItem().toString());
+        Date datein = arrHotelDatePicker.getDate();
+        Date dateout = depHotelDatePicker.getDate();
+        
+        String name = nameTextField.getText();
+        String rooms = roomHotelComboBox.getSelectedItem().toString();
+        String address = addressTextField.getText();
+        String city = cityTextField.getText();
+        
+        Boolean wifi = wifiCheckBox1.isSelected();
+        Boolean freewifi = freewifiCheckBox.isSelected();
+        Boolean smoke = smokeCheckBox.isSelected();
+        Boolean spool = spoolCheckBox.isSelected();     
+        Boolean gym = gymCheckBox.isSelected();
+        Boolean tv = tvCheckBox.isSelected();
+        
+        String postcode = postcodeTextField.getText();
+        
+        
+        //search(Date datein, Date dateout, String name, String room, String address, String city, boolean wifi, boolean freewifi, boolean smoke, boolean spool, boolean gym, boolean tv )
+        ArrayList<Hotel> results = hotelSearch.search(datein, dateout, name, rooms , address, city, wifi, freewifi, smoke, spool, gym, tv);
         createHotelTable(results);
     }//GEN-LAST:event_hotelSearchButtonActionPerformed
 
@@ -682,8 +754,8 @@ public class Window extends javax.swing.JFrame {
         String lang = languageCombobox.getSelectedItem().toString();
         int tickets = Integer.parseInt(ticketsTourComboBox.getItemAt(ticketsTourComboBox.getSelectedIndex()));
         
-        ArrayList<Tours> results = dayTourSearch.search(date, area,  type, diff, pickup, hcap, lang, tickets);
-        
+        ArrayList<Tours> results = dayTourSearch.search(date, area, type, diff, pickup, hcap, lang, tickets);
+        //(String dur, String type, String diff, String area , String lang, boolean pUp, boolean hCap, int date, int numberOfTickets)
         createDayTourTable(results);
     }//GEN-LAST:event_dayTourSearchButtonActionPerformed
 
@@ -817,6 +889,7 @@ public class Window extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField addressTextField;
     private javax.swing.JComboBox<String> adultsHotelComboBox;
     private javax.swing.JComboBox<String> areaTourComboBox;
     private org.jdesktop.swingx.JXDatePicker arrFlightDatePicker;
@@ -829,6 +902,7 @@ public class Window extends javax.swing.JFrame {
     private javax.swing.JPanel bookPanel;
     private javax.swing.JButton bookTourButton;
     private javax.swing.JComboBox<String> childrenHotelComboBox;
+    private javax.swing.JTextField cityTextField;
     private org.jdesktop.swingx.painter.CompoundPainter compoundPainter1;
     private javax.swing.JPanel customerPanel;
     private org.jdesktop.swingx.JXDatePicker dayTourDatePicker;
@@ -841,7 +915,9 @@ public class Window extends javax.swing.JFrame {
     private javax.swing.JLabel fieldForgotLabel;
     private javax.swing.JButton flightSearchButton;
     private javax.swing.JPanel flightsPanel;
+    private javax.swing.JCheckBox freewifiCheckBox;
     private javax.swing.JComboBox<String> fromFlightComboBox;
+    private javax.swing.JCheckBox gymCheckBox;
     private javax.swing.JCheckBox handicapCheckbox;
     private javax.swing.JTable hotelResultTable;
     private javax.swing.JButton hotelSearchButton;
@@ -871,6 +947,9 @@ public class Window extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel23;
+    private javax.swing.JLabel jLabel24;
+    private javax.swing.JLabel jLabel25;
+    private javax.swing.JLabel jLabel26;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -890,6 +969,7 @@ public class Window extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> languageCombobox;
     private javax.swing.JComboBox<String> locationHotelComboBox;
     private javax.swing.JTabbedPane mainTabbedPane;
+    private javax.swing.JTextField nameTextField;
     private javax.swing.JButton nextFromCustomerButton;
     private javax.swing.JButton nextFromDayTourButton;
     private javax.swing.JButton nextFromFlightButton;
@@ -897,10 +977,15 @@ public class Window extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> numberOfTicketsComboBox;
     private javax.swing.JCheckBox oneWayCheckBox;
     private javax.swing.JCheckBox pickupCheckBox;
+    private javax.swing.JTextField postcodeTextField;
     private javax.swing.JComboBox<String> roomHotelComboBox;
+    private javax.swing.JCheckBox smokeCheckBox;
+    private javax.swing.JCheckBox spoolCheckBox;
     private javax.swing.JComboBox<String> ticketsTourComboBox;
     private javax.swing.JComboBox<String> toFlightComboBox;
+    private javax.swing.JCheckBox tvCheckBox;
     private javax.swing.JComboBox<String> typeTourComboBox;
+    private javax.swing.JCheckBox wifiCheckBox1;
     // End of variables declaration//GEN-END:variables
     
     private void init() {
@@ -1027,14 +1112,14 @@ public class Window extends javax.swing.JFrame {
      * @param x is the hotel results
      * @param table that the results are added to
      */
-    private void createHotelTable(HotelMock[] x){
+    private void createHotelTable(ArrayList<Hotel> x){
         DefaultTableModel model = (DefaultTableModel) hotelResultTable.getModel();
         model.setRowCount(0);
         if(x==null) return;
         
-        for(int i=0; i<x.length; i++){
-            if(x[i]==null){return;}
-            model.addRow(hToObj(x[i],i));
+        for(int i=0; i<x.size(); i++){  
+            if(x.get(i)==null){return;}
+            model.addRow(hToObj(x.get(i),i));
         }
     }
     
@@ -1049,8 +1134,8 @@ public class Window extends javax.swing.JFrame {
 
             if (isChecked) {
                 int index = (int) hotelResultTable.getValueAt(i, 0);
-                HotelMock tmp = hotelSearch.getHotel(index);
-                bookingManager.setHotel(tmp);
+                Hotel tmp = hotelSearch.getHotel(index);
+                //bookingManager.setHotel(tmp);
             }
 
         }
@@ -1287,8 +1372,9 @@ public class Window extends javax.swing.JFrame {
         return "";
     }
     
-    private Object[] hToObj(HotelMock x, int i){
-        return new Object[]{i,x.name,x.city,x.price,false};
+    private Object[] hToObj(Hotel x, int i){
+        return new Object[]{i,x.getName(), x.getAddress(), x.getPostcode(), 
+            x.getCity(), x.getWifi(), x.getFreeWifi(), x.getSmoke(), x.getPool(), x.getGym(), x.getTV(), arrHotelDatePicker.getDate().toString(), false};
     }
     
     private Object[] dToObj(Tours x, int i){

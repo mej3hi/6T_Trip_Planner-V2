@@ -16,10 +16,10 @@ import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 /**
  *
- * @author Eiríkur Kristinn Hlöðversson, Háskóli Íslands, ekh9@hi.is
+ * 
  */
 public interface sqlworkBenchInterface {
-    static String qry = "";
+        static String qry = "";
 	static String qry2 = "";
 	static ResultSet rs = null;
 
@@ -53,7 +53,7 @@ public interface sqlworkBenchInterface {
 
 	// A method that inserts into roomreserved in the database. So that the
 	// program can
-	// later see if a hotel is fully booked.
+        // later see if a hotel is fully booked.
 	public static void reservedroom(int hotelid, int reservationid,
 			String date, int roomtype) {
 	}
