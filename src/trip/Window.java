@@ -1205,7 +1205,7 @@ public class Window extends javax.swing.JFrame {
             if (isChecked) {
                 int index = (int) table.getValueAt(i, 0);
                 Hotel tmp = result.getHotel(index);
-                //bookingManager.setHotel(tmp);
+                bookingManager.addHotel(tmp);
             }
 
         }
@@ -1317,12 +1317,18 @@ public class Window extends javax.swing.JFrame {
                 "\t"+y.getNumberOfPassengers()+"\t"+y.getTotalPrice()+"\n";
         }
         
-        HotelMock hb = booking.hotel;
-        if(hb!=null){
-            s+="\n\nHotel\n\n";
-            s+="Name\tCity\tPrice\tDate\n";
-            s+="----------\t-----------\t----------\t----------\n";
-            s+=hb.name+"\t"+hb.city+"\t"+hb.price+"\t"+dts(hb.date);
+        ArrayList<Hotel> hb = booking.hotel;
+        for(int i=0; i<hb.size(); i++){
+            if(i==0){
+                s+="\n\nHotel\n\n";
+                s+="Name\tAddress\tPostCode\tCity\tWifi\tFree Wifi\tSmoke\tS.Pool\tGym\tTv\tCheck in\n";
+                s+="----------\t-----------\t----------\t----------\t----------\t-----------\t----------\t----------\t----------\t-----------\t----------\n";
+                }
+            Hotel y = hb.get(i);
+            s+= y.getName()+"\t"+y.getAddress()+"\t"+y.getPostcode()+"\t"+
+                y.getCity()+"\t"+y.getWifi()+"\t"+y.getFreeWifi()+"\t"+
+                y.getSmoke()+"\t"+y.getPool()+"\t"+y.getGym()+"\t"+
+                y.getTV()+"\t"+y.getID()+"\n";
         }
         
         ArrayList<Tours> db = booking.daytour;
@@ -1351,7 +1357,7 @@ public class Window extends javax.swing.JFrame {
     private void addBookingToDatabase(){
         Booking booking = bookingManager.getBookings();
         ArrayList<Flight> flights = booking.flight;
-        HotelMock hotel = booking.hotel;
+        ArrayList<Hotel> hotel = booking.hotel;
         ArrayList<Tours> daytours = booking.daytour;
         
         if((booking.customer.getName()).equals("") || (booking.customer.getSsn()).equals("")
@@ -1365,9 +1371,9 @@ public class Window extends javax.swing.JFrame {
             bookingDatabase.addBooking(booking.customer, "Flight", flights.get(i).getID());
         }
         
-        if(hotel!=null)
-            bookingDatabase.addBooking(booking.customer, "Hotel", hotel.id);
-        
+        for(int i=0; i<hotel.size();i++){
+            bookingDatabase.addBooking(booking.customer, "Hotel", hotel.get(i).getID());
+        }
         for(int i=0; i<daytours.size(); i++){
 
             bookingDatabase.addBooking(booking.customer, "DayTours", daytours.get(i).getId());
@@ -1473,12 +1479,14 @@ public class Window extends javax.swing.JFrame {
     public void clearDayTourMessages(){
         jArrFlightMessageLabel1.setText("");
         jBookDayTourMessageLabel.setText("");
+        jBookDayTourGreenMessageLabel.setText("");
     }
     
     //Var að bæta þessu við, Skúli
     public void clearHotelMessages(){
         jHotelTableMessageLabel.setText("");
         bookHotelButtonMessageLabel.setText("");
+        bookHotelButtonGreenMessageLabel.setText("");
     }
         
     //------------------- Hjálparföll ------------------------------
