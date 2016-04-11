@@ -1180,8 +1180,8 @@ public class Window extends javax.swing.JFrame {
         for(int i=0; i<db.size(); i++){
             if(i==0){
                 s+="\n\nDay Tours\n\n";
-                s+="Name\tCity\tPrice\tTime\tDate\n";
-                s+="----------\t-----------\t----------\t----------\t---------\n";
+                s+="Type\tDuration\tDifficulty\tLanguaget\tArea\tHandicap\tPickup\tPrice\n";
+                s+="----------\t-----------\t----------\t----------\t----------\t----------\t----------\t---------\n";
             }
            Tours y = db.get(i);
             s+= y.getType()+"\t"+y.getDuration()+"\t"+y.getDifficulty()+"\t"+
