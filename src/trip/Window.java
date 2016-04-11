@@ -12,6 +12,7 @@ import java.util.Date;
 import javax.swing.JPanel;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
+//import javax.swing.table.JTableHeader; //var að bæta þessu við
 import tourHopur.Tours;
 
 /**
@@ -121,6 +122,8 @@ public class Window extends javax.swing.JFrame {
         bookTourButton = new javax.swing.JButton();
         difficultyComboBox = new javax.swing.JComboBox<>();
         jLabel23 = new javax.swing.JLabel();
+        jBookDayTourMessageLabel = new javax.swing.JLabel();
+        jBookDayTourGreenMessageLabel = new javax.swing.JLabel();
         customerPanel = new javax.swing.JPanel();
         jLabel17 = new javax.swing.JLabel();
         jTextField1 = new javax.swing.JTextField();
@@ -521,6 +524,11 @@ public class Window extends javax.swing.JFrame {
 
         jLabel23.setText("Difficulty");
         dayTourPanel.add(jLabel23, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 40, -1, -1));
+        dayTourPanel.add(jBookDayTourMessageLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 610, 140, 30));
+
+        jBookDayTourGreenMessageLabel.setFont(new java.awt.Font("Lucida Bright", 2, 13)); // NOI18N
+        jBookDayTourGreenMessageLabel.setForeground(new java.awt.Color(0, 153, 102));
+        dayTourPanel.add(jBookDayTourGreenMessageLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 604, 120, 40));
 
         mainTabbedPane.addTab("DayTours", dayTourPanel);
 
@@ -598,7 +606,7 @@ public class Window extends javax.swing.JFrame {
                 .addGap(30, 30, 30))
         );
 
-        mainTabbedPane.addTab("Booking  0", null, bookPanel);
+        mainTabbedPane.addTab("Booking  0", bookPanel);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -664,6 +672,7 @@ public class Window extends javax.swing.JFrame {
     }//GEN-LAST:event_nextFromFlightButtonActionPerformed
    
     private void hotelSearchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_hotelSearchButtonActionPerformed
+        if(!validateHotels()) return;
         HotelMock[] results = hotelSearch.search(arrHotelDatePicker.getDate(), locationHotelComboBox.getSelectedItem().toString());
         createHotelTable(results);
     }//GEN-LAST:event_hotelSearchButtonActionPerformed
@@ -673,6 +682,8 @@ public class Window extends javax.swing.JFrame {
     }//GEN-LAST:event_nextFromHotelButtonActionPerformed
 
     private void dayTourSearchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dayTourSearchButtonActionPerformed
+        if(!validateDayTours()) return;
+        
         Date date = dayTourDatePicker.getDate();
         String area = areaTourComboBox.getSelectedItem().toString();
         String type = typeTourComboBox.getSelectedItem().toString();
@@ -850,6 +861,8 @@ public class Window extends javax.swing.JFrame {
     private javax.swing.JLabel jArrFlightMessageLabel1;
     private javax.swing.JTable jArrFlightResultTable;
     private javax.swing.JLabel jArrTableLabel;
+    private javax.swing.JLabel jBookDayTourGreenMessageLabel;
+    private javax.swing.JLabel jBookDayTourMessageLabel;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jDepFlightMessageLabel;
     private javax.swing.JScrollPane jDepFlightTableScrollPane;
@@ -926,7 +939,14 @@ public class Window extends javax.swing.JFrame {
         dayTourDatePicker.setDate(new Date());
         dayTourDatePicker.getMonthView().setLowerBound(new Date());
         
-       
+        //Svo ekki sé hægt að draga/hreyfa dálkana í jTable og fokka up töflunum 
+        dayTourResultsTable.getTableHeader().setReorderingAllowed(false);
+        hotelResultTable.getTableHeader().setReorderingAllowed(false);
+        jdepFlightResultTable.getTableHeader().setReorderingAllowed(false);
+        jArrFlightResultTable.getTableHeader().setReorderingAllowed(false);
+        
+        //Svo ekki sé hægt að skrifa inní bókunina í lokin
+        jTextArea1.setEditable(false);
         
         fromFlightComboBox.setSelectedIndex(1);
         
@@ -992,6 +1012,8 @@ public class Window extends javax.swing.JFrame {
         }
         return false;
     }
+    
+    
     
     /**
      * Checks if flight is selected and adds the selected flight 
@@ -1262,6 +1284,42 @@ public class Window extends javax.swing.JFrame {
         return true;    
     }
     
+    //Var að bæta þessu við, Skúli
+    private boolean validateDayTours(){
+        DefaultTableModel model = (DefaultTableModel) dayTourResultsTable.getModel();
+        model.setRowCount(0);
+
+        clearDayTourMessages();
+
+        if(dayTourDatePicker.getDate() == null){
+            jArrFlightMessageLabel1.setText("Choose date");
+            return false;
+        }
+        return true;
+    }
+    
+    //Var að bæta þessu við, Skúli
+    private boolean validateHotels(){
+        DefaultTableModel model = (DefaultTableModel) hotelResultTable.getModel();
+        model.setRowCount(0);
+        
+        clearHotelMessages();
+        
+        if(arrHotelDatePicker.getDate() == null && depHotelDatePicker.getDate() == null){
+            jHotelTableMessageLabel.setText("Choose date for check in and check out");
+            return false;
+        }
+        if(arrHotelDatePicker.getDate() == null && depHotelDatePicker.getDate() != null){
+            jHotelTableMessageLabel.setText("Choose date for check in");
+            return false;
+        }
+        if(arrHotelDatePicker.getDate() != null && depHotelDatePicker.getDate() == null){
+            jHotelTableMessageLabel.setText("Choose date for check out");
+            return false;
+        }
+        return true;
+    }
+    
     /**
      * Clears messages to user in flight tab
      */
@@ -1271,6 +1329,18 @@ public class Window extends javax.swing.JFrame {
         bookFlightButtonMessageLabel.setText("");
         jDepFlightMessageLabel.setText("");
         jArrFlightMessageLabel.setText("");
+    }
+    
+    // Var að bæta þessu við. Skúli
+    public void clearDayTourMessages(){
+        jArrFlightMessageLabel1.setText("");
+        jBookDayTourMessageLabel.setText("");
+    }
+    
+    //Var að bæta þessu við, Skúli
+    public void clearHotelMessages(){
+        jHotelTableMessageLabel.setText("");
+        bookHotelButtonMessageLabel.setText("");
     }
         
     //------------------- Hjálparföll ------------------------------
