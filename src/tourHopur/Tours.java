@@ -110,4 +110,8 @@ public class Tours {
         public void setDate (int d){
             date = d;
         }
+        
+        public int getDate(){
+            return date;
+        }
 }

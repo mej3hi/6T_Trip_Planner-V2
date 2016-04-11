@@ -30,11 +30,11 @@ public class BookingManager {
     public void setHotel(HotelMock hotel){
         booking.hotel = hotel;
     }
-    /*
+    
     public void addDayTour(Tours dayTour){
         booking.daytour.add(dayTour);
     }
-    */
+    
     public void updateCustomer(String name, String ssn, int phone){
         booking.customer.setName(name);
         booking.customer.setSsn(ssn);
