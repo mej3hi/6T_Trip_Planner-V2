@@ -9,6 +9,8 @@ import mock.HotelMock;
 import mock.DayTourMock;
 //import mock.FlightMock;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 import javax.swing.JPanel;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
@@ -1103,12 +1105,12 @@ public class Window extends javax.swing.JFrame {
      */
     private void addSelectedDayTours() {
         for (int i = 0; i < dayTourResultsTable.getRowCount(); i++) {
-            boolean isChecked = (Boolean) dayTourResultsTable.getValueAt(i, 5);
+            boolean isChecked = (Boolean) dayTourResultsTable.getValueAt(i, 10);
 
             if (isChecked) {
                 int index = (int) dayTourResultsTable.getValueAt(i, 0);
                 Tours tmp = dayTourSearch.getDayTour(index);
-                //bookingManager.addDayTour(tmp);
+                bookingManager.addDayTour(tmp);
             }
 
         }
@@ -1192,15 +1194,15 @@ public class Window extends javax.swing.JFrame {
             s+=hb.name+"\t"+hb.city+"\t"+hb.price+"\t"+dts(hb.date);
         }
         
-        ArrayList<DayTourMock> db = booking.daytour;
+        ArrayList<Tours> db = booking.daytour;
         for(int i=0; i<db.size(); i++){
             if(i==0){
                 s+="\n\nDay Tours\n\n";
                 s+="Name\tCity\tPrice\tTime\tDate\n";
                 s+="----------\t-----------\t----------\t----------\t---------\n";
             }
-            DayTourMock y = db.get(i);
-            s+= y.trip+"\t"+y.city+"\t"+y.price+"\t"+y.time+"\t"+dts(y.date)+"\n";
+            Tours y = db.get(i);
+            s+= y.getType()+"\t"+y.getArea()+"\t"+y.getPrice()+"\t"+y.getDuration()+"\t"+y.getDate()+"\n";
         }
             
         
@@ -1214,7 +1216,7 @@ public class Window extends javax.swing.JFrame {
         Booking booking = bookingManager.getBookings();
         ArrayList<Flight> flights = booking.flight;
         HotelMock hotel = booking.hotel;
-        ArrayList<DayTourMock> daytours = booking.daytour;
+        ArrayList<Tours> daytours = booking.daytour;
         
         if((booking.customer.getName()).equals("") || (booking.customer.getSsn()).equals("")
            || booking.customer.getPhone() == 0){
@@ -1231,7 +1233,7 @@ public class Window extends javax.swing.JFrame {
             bookingDatabase.addBooking(booking.customer, "h", hotel.id);
         
         for(int i=0; i<daytours.size(); i++){
-            bookingDatabase.addBooking(booking.customer, "d", daytours.get(i).id);
+            bookingDatabase.addBooking(booking.customer, "d", daytours.get(i).getId());
         }
         
 
@@ -1362,7 +1364,7 @@ public class Window extends javax.swing.JFrame {
     }
     
     private Object[] dToObj(Tours x, int i){
-        return new Object[]{i,x.getArea(),x.getType(),x.getDuration()+" h",x.getLanguage(),
+        return new Object[]{i,x.getArea(),x.getType(),x.getDuration()+" h",lts(x.getLanguage()),
             x.getDifficulty(), x.getPickup(), x.getHandicap(), x.getSeatsT(), x.getPrice()+" ISK",false};
     }
     
@@ -1378,7 +1380,22 @@ public class Window extends javax.swing.JFrame {
         DateFormat formatter = new SimpleDateFormat("MM-dd-yyyy");
         return formatter.format(d);
     }
+    
+    private String lts(String[] x){
+        Map<String,String> lang = new HashMap<String, String>(){
+            {
+                put("english", "EN");
+                put("icelandic", "IS");
+            }
+        };
+
+        String y="";
+        for(int i=0; i<x.length; i++){
+            y+=" "+lang.get(x[i]);
+        }
+
+        return y.trim();
+    }
     //----------------------------------------------------------------
-    
-    
+        
 }
