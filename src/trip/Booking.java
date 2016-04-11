@@ -6,6 +6,7 @@
 package trip;
 
 import flugHopur.Flight;
+import tourHopur.Tours;
 import mock.HotelMock;
 import mock.DayTourMock;
 import ekkiInotkun.FlightMock;
