@@ -32,7 +32,7 @@ public class Search {
         tour1.setType("Horse riding");
         tour1.setDifficulty("Easy");
         tour1.setArea("East");
-        String [] l = {"english"}; 
+        String [] l = {"english","danish"}; 
         tour1.setLanguage(l);
         tour1.setPickup(true);
         tour1.setHandicap(true);
@@ -48,8 +48,8 @@ public class Search {
         tour2.setType("Hiking");
         tour2.setDifficulty("Hard");
         tour2.setArea("West");
-        
-        tour2.setLanguage(l);
+        String [] y = {"english"}; 
+        tour2.setLanguage(y);
         tour2.setPickup(false);
         tour2.setHandicap(false);
         tour2.setDate(160314);

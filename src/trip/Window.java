@@ -593,12 +593,12 @@ public class Window extends javax.swing.JFrame {
             .addGroup(bookPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 462, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 147, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 144, Short.MAX_VALUE)
                 .addComponent(jButton2)
                 .addGap(30, 30, 30))
         );
 
-        mainTabbedPane.addTab("Booking  0", null, bookPanel);
+        mainTabbedPane.addTab("Booking  0", new javax.swing.ImageIcon("/home/martin/NetBeansProjects/6T_Trip_Planner-V2/cart.png"), bookPanel); // NOI18N
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -755,10 +755,14 @@ public class Window extends javax.swing.JFrame {
 
     private void bookHotelButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bookHotelButtonActionPerformed
         addSelectedHotel();
+        increaseBookNumber(1);
+        
     }//GEN-LAST:event_bookHotelButtonActionPerformed
 
     private void bookTourButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bookTourButtonActionPerformed
         addSelectedDayTours();
+        increaseBookNumber(1);
+        
     }//GEN-LAST:event_bookTourButtonActionPerformed
 
     private void depFlightDatePickerPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_depFlightDatePickerPropertyChange
@@ -1081,12 +1085,12 @@ public class Window extends javax.swing.JFrame {
      */
     private void addSelectedDayTours() {
         for (int i = 0; i < dayTourResultsTable.getRowCount(); i++) {
-            boolean isChecked = (Boolean) dayTourResultsTable.getValueAt(i, 5);
+            boolean isChecked = (Boolean) dayTourResultsTable.getValueAt(i, 10);
 
             if (isChecked) {
                 int index = (int) dayTourResultsTable.getValueAt(i, 0);
                 Tours tmp = dayTourSearch.getDayTour(index);
-                //bookingManager.addDayTour(tmp);
+                bookingManager.addDayTour(tmp);
             }
 
         }
@@ -1170,29 +1174,34 @@ public class Window extends javax.swing.JFrame {
             s+=hb.name+"\t"+hb.city+"\t"+hb.price+"\t"+dts(hb.date);
         }
         
-        ArrayList<DayTourMock> db = booking.daytour;
+        ArrayList<Tours> db = booking.daytour;
         for(int i=0; i<db.size(); i++){
             if(i==0){
                 s+="\n\nDay Tours\n\n";
                 s+="Name\tCity\tPrice\tTime\tDate\n";
                 s+="----------\t-----------\t----------\t----------\t---------\n";
             }
-            DayTourMock y = db.get(i);
-            s+= y.trip+"\t"+y.city+"\t"+y.price+"\t"+y.time+"\t"+dts(y.date)+"\n";
+           Tours y = db.get(i);
+            s+= y.getType()+"\t"+y.getDuration()+"\t"+y.getDifficulty()+"\t"+
+                conArryStringToOne(y.getLanguage())+"\t"+y.getArea()+"\t"+
+                conFalseTrueToYesNO(y.getHandicap())+"\t"+
+                conFalseTrueToYesNO(y.getPickup())+"\t"+y.getPrice()+"\n";
         }
             
         
         jTextArea1.setText(s);
-    }
+    };
+    
+
+    
     /**
      * Adds booking to booking database
-     */
-    
+     */    
     private void addBookingToDatabase(){
         Booking booking = bookingManager.getBookings();
         ArrayList<Flight> flights = booking.flight;
         HotelMock hotel = booking.hotel;
-        ArrayList<DayTourMock> daytours = booking.daytour;
+        ArrayList<Tours> daytours = booking.daytour;
         
         if((booking.customer.getName()).equals("") || (booking.customer.getSsn()).equals("")
            || booking.customer.getPhone() == 0){
@@ -1202,14 +1211,14 @@ public class Window extends javax.swing.JFrame {
         }
         
         for(int i=0; i<flights.size(); i++){
-            bookingDatabase.addBooking(booking.customer, "f", flights.get(i).getID());
+            bookingDatabase.addBooking(booking.customer, "Flight", flights.get(i).getID());
         }
         
         if(hotel!=null)
-            bookingDatabase.addBooking(booking.customer, "h", hotel.id);
+            bookingDatabase.addBooking(booking.customer, "Hotel", hotel.id);
         
         for(int i=0; i<daytours.size(); i++){
-            bookingDatabase.addBooking(booking.customer, "d", daytours.get(i).id);
+            bookingDatabase.addBooking(booking.customer, "DayTours", daytours.get(i).getId());
         }
         
 
@@ -1276,25 +1285,46 @@ public class Window extends javax.swing.JFrame {
     //------------------- Hjálparföll ------------------------------
     private Object[] toObj(Flight x,int i){
         return new Object[]{i,x.getAirline(),x.getDepartureLocation(),x.getDepartureTime(),
-                x.getArrivalLocation(),x.getArrivalTime(),x.getDuration()+" hours",x.getNumberOfPassengers(),x.getTotalPrice()+" ISK",false};
+                x.getArrivalLocation(),x.getArrivalTime(),x.getDuration()+" H",
+                x.getNumberOfPassengers(),x.getTotalPrice()+" ISK",false};
     }
     
-    private String brief(String x){
-        if("Akureyri".equals(x))
-            return "aey";
-        else if("Reykjavík".equals(x))
-            return "rvk";
-        return "";
-    }
-    
+
     private Object[] hToObj(HotelMock x, int i){
         return new Object[]{i,x.name,x.city,x.price,false};
     }
     
     private Object[] dToObj(Tours x, int i){
-        return new Object[]{i,x.getArea(),x.getType(),x.getDuration()+" h",x.getLanguage(),
-            x.getDifficulty(), x.getPickup(), x.getHandicap(), x.getSeatsT(), x.getPrice()+" ISK",false};
+        return new Object[]{i,x.getArea(),x.getType(),x.getDuration()+" H",
+            conArryStringToOne(x.getLanguage()),x.getDifficulty(), 
+            conFalseTrueToYesNO(x.getPickup()), 
+            conFalseTrueToYesNO(x.getHandicap()), x.getSeatsT(), 
+            x.getPrice()+" ISK",false};
     }
+   
+    private String conArryStringToOne(String[] x){
+        String y = "";
+        String[] lang = {"danish", "english", "german", "spanish","icelandic"};
+        String[] shortLang = {"DA ", "EN ", "DE ","ES ","ISK "};
+        for (int i = 0; i < x.length; i++) { 
+            for (int k = 0; k < lang.length; k++){
+                if((x[i]).equals(lang[k])){
+                    y += shortLang[k];                   
+                }              
+            }
+        }
+        return y;
+    };
+    
+    private String conFalseTrueToYesNO(boolean x){
+        if(x){
+            return "Yes";
+        }
+        else{
+            return "No";
+        }      
+    };
+    
     
     private void echo(Object o){
         System.out.println(o);
