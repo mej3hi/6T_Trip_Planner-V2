@@ -1294,7 +1294,7 @@ public class Window extends javax.swing.JFrame {
     }
     
     private Object[] dToObj(Tours x, int i){
-        return new Object[]{i,x.getArea(),x.getType(),x.getDuration()+" h",x.getLanguage(),
+        return new Object[]{i,x.getArea(),x.getType(),x.getDuration()+" h",lts(x.getLanguage()),
             x.getDifficulty(), x.getPickup(), x.getHandicap(), x.getSeatsT(), x.getPrice()+" ISK",false};
     }
     
@@ -1310,9 +1310,8 @@ public class Window extends javax.swing.JFrame {
         DateFormat formatter = new SimpleDateFormat("MM-dd-yyyy");
         return formatter.format(d);
     }
-    //----------------------------------------------------------------
     
-    private String prufa(String[] x){
+        private String lts(String[] x){
         Map<String,String> lang = new HashMap<String, String>(){
             {
                 put("english", "EN");
@@ -1327,5 +1326,6 @@ public class Window extends javax.swing.JFrame {
         
         return y.trim();
     }
-    
+    //----------------------------------------------------------------
+        
 }
