@@ -1311,21 +1311,21 @@ public class Window extends javax.swing.JFrame {
         return formatter.format(d);
     }
     
-        private String lts(String[] x){
-        Map<String,String> lang = new HashMap<String, String>(){
-            {
-                put("english", "EN");
-                put("icelandic", "IS");
-            }
-        };
-
-        String y="";
-        for(int i=0; i<x.length; i++){
-            y+=" "+lang.get(x[i]);
+    private String lts(String[] x){
+    Map<String,String> lang = new HashMap<String, String>(){
+        {
+            put("english", "EN");
+            put("icelandic", "IS");
         }
-        
-        return y.trim();
+    };
+
+    String y="";
+    for(int i=0; i<x.length; i++){
+        y+=" "+lang.get(x[i]);
     }
+
+    return y.trim();
+}
     //----------------------------------------------------------------
         
 }
