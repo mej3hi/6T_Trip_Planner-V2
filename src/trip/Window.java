@@ -14,7 +14,6 @@ import java.util.Map;
 import javax.swing.JPanel;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
-//import javax.swing.table.JTableHeader; //var að bæta þessu við
 import tourHopur.Tours;
 
 /**
@@ -773,7 +772,16 @@ public class Window extends javax.swing.JFrame {
     }//GEN-LAST:event_bookHotelButtonActionPerformed
 
     private void bookTourButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bookTourButtonActionPerformed
-        addSelectedDayTours();
+        if(!isRowSelected1(dayTourResultsTable)){
+            jBookDayTourMessageLabel.setText("No DayTour selected");
+            return;
+        }
+        else if(isRowSelected1(dayTourResultsTable)){
+            jBookDayTourMessageLabel.setText("");
+            jBookDayTourGreenMessageLabel.setText("DayTour added");
+            addSelectedDayTours(dayTourResultsTable, dayTourSearch);
+        }
+        //addSelectedDayTours();
         increaseBookNumber(1);
         
     }//GEN-LAST:event_bookTourButtonActionPerformed
@@ -1018,6 +1026,14 @@ public class Window extends javax.swing.JFrame {
         }
         return false;
     }
+    //Bara prufa, Skúli
+    private boolean isRowSelected1 (JTable table){
+        for (int i = 0; i < table.getRowCount(); i++) {
+            boolean isChecked = (Boolean) table.getValueAt(i, 10);
+            if (isChecked) return true;
+        }
+        return false;
+    }
     
     
     
@@ -1105,15 +1121,15 @@ public class Window extends javax.swing.JFrame {
     /**
      * Checks if day tour is selected and adds the selected tour
      * to bookingManager and enables booking tab if disabled 
-     * booking tab if disabled
+     * booking tab if disabled  VAR AÐEINS AÐ PRUFA AÐ BREYTA ÞESSU
      */
-    private void addSelectedDayTours() {
-        for (int i = 0; i < dayTourResultsTable.getRowCount(); i++) {
-            boolean isChecked = (Boolean) dayTourResultsTable.getValueAt(i, 10);
+    private void addSelectedDayTours(JTable table, DayTourSearch result ) {
+        for (int i = 0; i < table.getRowCount(); i++) {
+            boolean isChecked = (Boolean) table.getValueAt(i, 10);
 
             if (isChecked) {
-                int index = (int) dayTourResultsTable.getValueAt(i, 0);
-                Tours tmp = dayTourSearch.getDayTour(index);
+                int index = (int) table.getValueAt(i, 0);
+                Tours tmp = result.getDayTour(index);
                 bookingManager.addDayTour(tmp);
             }
 
