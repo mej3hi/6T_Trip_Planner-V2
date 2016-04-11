@@ -1220,9 +1220,9 @@ public class Window extends javax.swing.JFrame {
             bookingDatabase.addBooking(booking.customer, "Hotel", hotel.id);
         
         for(int i=0; i<daytours.size(); i++){
+
             bookingDatabase.addBooking(booking.customer, "DayTours", daytours.get(i).getId());
         }
-        
 
     };
     /**
@@ -1342,20 +1342,20 @@ public class Window extends javax.swing.JFrame {
     }
     
     private String lts(String[] x){
-    Map<String,String> lang = new HashMap<String, String>(){
-        {
-            put("english", "EN");
-            put("icelandic", "IS");
+        Map<String,String> lang = new HashMap<String, String>(){
+            {
+                put("english", "EN");
+                put("icelandic", "IS");
+            }
+        };
+
+        String y="";
+        for(int i=0; i<x.length; i++){
+            y+=" "+lang.get(x[i]);
         }
-    };
 
-    String y="";
-    for(int i=0; i<x.length; i++){
-        y+=" "+lang.get(x[i]);
+        return y.trim();
     }
-
-    return y.trim();
-}
     //----------------------------------------------------------------
         
 }
