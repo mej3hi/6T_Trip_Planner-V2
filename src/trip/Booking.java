@@ -6,10 +6,12 @@
 package trip;
 
 import flugHopur.Flight;
+import tourHopur.Tours;
 import mock.HotelMock;
 import mock.DayTourMock;
 import ekkiInotkun.FlightMock;
 import java.util.ArrayList;
+import tourHopur.Tours;
 
 /**
  *
@@ -18,7 +20,7 @@ import java.util.ArrayList;
 public class Booking {
     public ArrayList<Flight> flight = new ArrayList<>();
     public HotelMock hotel;
-    public ArrayList<DayTourMock> daytour = new ArrayList<>();
+    public ArrayList<Tours> daytour = new ArrayList<>();
     public Customer customer = new Customer();
     
 }

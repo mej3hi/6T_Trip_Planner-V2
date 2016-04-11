@@ -10,9 +10,12 @@ import mock.HotelMock;
 import mock.DayTourMock;
 //import mock.FlightMock;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 import javax.swing.JPanel;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
+//import javax.swing.table.JTableHeader; //var að bæta þessu við
 import tourHopur.Tours;
 
 /**
@@ -135,6 +138,8 @@ public class Window extends javax.swing.JFrame {
         bookTourButton = new javax.swing.JButton();
         difficultyComboBox = new javax.swing.JComboBox<>();
         jLabel23 = new javax.swing.JLabel();
+        jBookDayTourMessageLabel = new javax.swing.JLabel();
+        jBookDayTourGreenMessageLabel = new javax.swing.JLabel();
         customerPanel = new javax.swing.JPanel();
         jLabel17 = new javax.swing.JLabel();
         jTextField1 = new javax.swing.JTextField();
@@ -574,6 +579,11 @@ public class Window extends javax.swing.JFrame {
 
         jLabel23.setText("Difficulty");
         dayTourPanel.add(jLabel23, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 40, -1, -1));
+        dayTourPanel.add(jBookDayTourMessageLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 610, 140, 30));
+
+        jBookDayTourGreenMessageLabel.setFont(new java.awt.Font("Lucida Bright", 2, 13)); // NOI18N
+        jBookDayTourGreenMessageLabel.setForeground(new java.awt.Color(0, 153, 102));
+        dayTourPanel.add(jBookDayTourGreenMessageLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 604, 120, 40));
 
         mainTabbedPane.addTab("DayTours", dayTourPanel);
 
@@ -646,12 +656,12 @@ public class Window extends javax.swing.JFrame {
             .addGroup(bookPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 462, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 147, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 144, Short.MAX_VALUE)
                 .addComponent(jButton2)
                 .addGap(30, 30, 30))
         );
 
-        mainTabbedPane.addTab("Booking  0", null, bookPanel);
+        mainTabbedPane.addTab("Booking  0", new javax.swing.ImageIcon("/home/martin/NetBeansProjects/6T_Trip_Planner-V2/cart.png"), bookPanel); // NOI18N
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -717,6 +727,7 @@ public class Window extends javax.swing.JFrame {
     }//GEN-LAST:event_nextFromFlightButtonActionPerformed
    
     private void hotelSearchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_hotelSearchButtonActionPerformed
+
         Date datein = arrHotelDatePicker.getDate();
         Date dateout = depHotelDatePicker.getDate();
         
@@ -734,7 +745,7 @@ public class Window extends javax.swing.JFrame {
         
         String postcode = postcodeTextField.getText();
         
-        
+        if(!validateHotels()) return;
         //search(Date datein, Date dateout, String name, String room, String address, String city, boolean wifi, boolean freewifi, boolean smoke, boolean spool, boolean gym, boolean tv )
         ArrayList<Hotel> results = hotelSearch.search(datein, dateout, name, rooms , address, city, wifi, freewifi, smoke, spool, gym, tv);
         createHotelTable(results);
@@ -745,6 +756,8 @@ public class Window extends javax.swing.JFrame {
     }//GEN-LAST:event_nextFromHotelButtonActionPerformed
 
     private void dayTourSearchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dayTourSearchButtonActionPerformed
+        if(!validateDayTours()) return;
+        
         Date date = dayTourDatePicker.getDate();
         String area = areaTourComboBox.getSelectedItem().toString();
         String type = typeTourComboBox.getSelectedItem().toString();
@@ -827,10 +840,14 @@ public class Window extends javax.swing.JFrame {
 
     private void bookHotelButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bookHotelButtonActionPerformed
         addSelectedHotel();
+        increaseBookNumber(1);
+        
     }//GEN-LAST:event_bookHotelButtonActionPerformed
 
     private void bookTourButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bookTourButtonActionPerformed
         addSelectedDayTours();
+        increaseBookNumber(1);
+        
     }//GEN-LAST:event_bookTourButtonActionPerformed
 
     private void depFlightDatePickerPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_depFlightDatePickerPropertyChange
@@ -926,6 +943,8 @@ public class Window extends javax.swing.JFrame {
     private javax.swing.JLabel jArrFlightMessageLabel1;
     private javax.swing.JTable jArrFlightResultTable;
     private javax.swing.JLabel jArrTableLabel;
+    private javax.swing.JLabel jBookDayTourGreenMessageLabel;
+    private javax.swing.JLabel jBookDayTourMessageLabel;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jDepFlightMessageLabel;
     private javax.swing.JScrollPane jDepFlightTableScrollPane;
@@ -1011,7 +1030,14 @@ public class Window extends javax.swing.JFrame {
         dayTourDatePicker.setDate(new Date());
         dayTourDatePicker.getMonthView().setLowerBound(new Date());
         
-       
+        //Svo ekki sé hægt að draga/hreyfa dálkana í jTable og fokka up töflunum 
+        dayTourResultsTable.getTableHeader().setReorderingAllowed(false);
+        hotelResultTable.getTableHeader().setReorderingAllowed(false);
+        jdepFlightResultTable.getTableHeader().setReorderingAllowed(false);
+        jArrFlightResultTable.getTableHeader().setReorderingAllowed(false);
+        
+        //Svo ekki sé hægt að skrifa inní bókunina í lokin
+        jTextArea1.setEditable(false);
         
         fromFlightComboBox.setSelectedIndex(1);
         
@@ -1077,6 +1103,8 @@ public class Window extends javax.swing.JFrame {
         }
         return false;
     }
+    
+    
     
     /**
      * Checks if flight is selected and adds the selected flight 
@@ -1166,12 +1194,12 @@ public class Window extends javax.swing.JFrame {
      */
     private void addSelectedDayTours() {
         for (int i = 0; i < dayTourResultsTable.getRowCount(); i++) {
-            boolean isChecked = (Boolean) dayTourResultsTable.getValueAt(i, 5);
+            boolean isChecked = (Boolean) dayTourResultsTable.getValueAt(i, 10);
 
             if (isChecked) {
                 int index = (int) dayTourResultsTable.getValueAt(i, 0);
                 Tours tmp = dayTourSearch.getDayTour(index);
-                //bookingManager.addDayTour(tmp);
+                bookingManager.addDayTour(tmp);
             }
 
         }
@@ -1255,29 +1283,34 @@ public class Window extends javax.swing.JFrame {
             s+=hb.name+"\t"+hb.city+"\t"+hb.price+"\t"+dts(hb.date);
         }
         
-        ArrayList<DayTourMock> db = booking.daytour;
+        ArrayList<Tours> db = booking.daytour;
         for(int i=0; i<db.size(); i++){
             if(i==0){
                 s+="\n\nDay Tours\n\n";
-                s+="Name\tCity\tPrice\tTime\tDate\n";
-                s+="----------\t-----------\t----------\t----------\t---------\n";
+                s+="Type\tDuration\tDifficulty\tLanguaget\tArea\tHandicap\tPickup\tPrice\n";
+                s+="----------\t-----------\t----------\t----------\t----------\t----------\t----------\t---------\n";
             }
-            DayTourMock y = db.get(i);
-            s+= y.trip+"\t"+y.city+"\t"+y.price+"\t"+y.time+"\t"+dts(y.date)+"\n";
+           Tours y = db.get(i);
+            s+= y.getType()+"\t"+y.getDuration()+"\t"+y.getDifficulty()+"\t"+
+                conArryStringToOne(y.getLanguage())+"\t"+y.getArea()+"\t"+
+                conFalseTrueToYesNO(y.getHandicap())+"\t"+
+                conFalseTrueToYesNO(y.getPickup())+"\t"+y.getPrice()+"\n";
         }
             
         
         jTextArea1.setText(s);
-    }
+    };
+    
+
+    
     /**
      * Adds booking to booking database
-     */
-    
+     */    
     private void addBookingToDatabase(){
         Booking booking = bookingManager.getBookings();
         ArrayList<Flight> flights = booking.flight;
         HotelMock hotel = booking.hotel;
-        ArrayList<DayTourMock> daytours = booking.daytour;
+        ArrayList<Tours> daytours = booking.daytour;
         
         if((booking.customer.getName()).equals("") || (booking.customer.getSsn()).equals("")
            || booking.customer.getPhone() == 0){
@@ -1287,16 +1320,16 @@ public class Window extends javax.swing.JFrame {
         }
         
         for(int i=0; i<flights.size(); i++){
-            bookingDatabase.addBooking(booking.customer, "f", flights.get(i).getID());
+            bookingDatabase.addBooking(booking.customer, "Flight", flights.get(i).getID());
         }
         
         if(hotel!=null)
-            bookingDatabase.addBooking(booking.customer, "h", hotel.id);
+            bookingDatabase.addBooking(booking.customer, "Hotel", hotel.id);
         
         for(int i=0; i<daytours.size(); i++){
-            bookingDatabase.addBooking(booking.customer, "d", daytours.get(i).id);
+
+            bookingDatabase.addBooking(booking.customer, "DayTours", daytours.get(i).getId());
         }
-        
 
     };
     /**
@@ -1347,6 +1380,42 @@ public class Window extends javax.swing.JFrame {
         return true;    
     }
     
+    //Var að bæta þessu við, Skúli
+    private boolean validateDayTours(){
+        DefaultTableModel model = (DefaultTableModel) dayTourResultsTable.getModel();
+        model.setRowCount(0);
+
+        clearDayTourMessages();
+
+        if(dayTourDatePicker.getDate() == null){
+            jArrFlightMessageLabel1.setText("Choose date");
+            return false;
+        }
+        return true;
+    }
+    
+    //Var að bæta þessu við, Skúli
+    private boolean validateHotels(){
+        DefaultTableModel model = (DefaultTableModel) hotelResultTable.getModel();
+        model.setRowCount(0);
+        
+        clearHotelMessages();
+        
+        if(arrHotelDatePicker.getDate() == null && depHotelDatePicker.getDate() == null){
+            jHotelTableMessageLabel.setText("Choose date for check in and check out");
+            return false;
+        }
+        if(arrHotelDatePicker.getDate() == null && depHotelDatePicker.getDate() != null){
+            jHotelTableMessageLabel.setText("Choose date for check in");
+            return false;
+        }
+        if(arrHotelDatePicker.getDate() != null && depHotelDatePicker.getDate() == null){
+            jHotelTableMessageLabel.setText("Choose date for check out");
+            return false;
+        }
+        return true;
+    }
+    
     /**
      * Clears messages to user in flight tab
      */
@@ -1357,30 +1426,64 @@ public class Window extends javax.swing.JFrame {
         jDepFlightMessageLabel.setText("");
         jArrFlightMessageLabel.setText("");
     }
+    
+    // Var að bæta þessu við. Skúli
+    public void clearDayTourMessages(){
+        jArrFlightMessageLabel1.setText("");
+        jBookDayTourMessageLabel.setText("");
+    }
+    
+    //Var að bæta þessu við, Skúli
+    public void clearHotelMessages(){
+        jHotelTableMessageLabel.setText("");
+        bookHotelButtonMessageLabel.setText("");
+    }
         
     //------------------- Hjálparföll ------------------------------
     private Object[] toObj(Flight x,int i){
         return new Object[]{i,x.getAirline(),x.getDepartureLocation(),x.getDepartureTime(),
-                x.getArrivalLocation(),x.getArrivalTime(),x.getDuration()+" hours",x.getNumberOfPassengers(),x.getTotalPrice()+" ISK",false};
+                x.getArrivalLocation(),x.getArrivalTime(),x.getDuration()+" H",
+                x.getNumberOfPassengers(),x.getTotalPrice()+" ISK",false};
     }
     
-    private String brief(String x){
-        if("Akureyri".equals(x))
-            return "aey";
-        else if("Reykjavík".equals(x))
-            return "rvk";
-        return "";
-    }
     
     private Object[] hToObj(Hotel x, int i){
         return new Object[]{i,x.getName(), x.getAddress(), x.getPostcode(), 
             x.getCity(), x.getWifi(), x.getFreeWifi(), x.getSmoke(), x.getPool(), x.getGym(), x.getTV(), arrHotelDatePicker.getDate().toString(), false};
+
     }
     
     private Object[] dToObj(Tours x, int i){
-        return new Object[]{i,x.getArea(),x.getType(),x.getDuration()+" h",x.getLanguage(),
-            x.getDifficulty(), x.getPickup(), x.getHandicap(), x.getSeatsT(), x.getPrice()+" ISK",false};
+        return new Object[]{i,x.getArea(),x.getType(),x.getDuration()+" H",
+            conArryStringToOne(x.getLanguage()),x.getDifficulty(), 
+            conFalseTrueToYesNO(x.getPickup()), 
+            conFalseTrueToYesNO(x.getHandicap()), x.getSeatsT(), 
+            x.getPrice()+" ISK",false};
     }
+   
+    private String conArryStringToOne(String[] x){
+        String y = "";
+        String[] lang = {"danish", "english", "german", "spanish","icelandic"};
+        String[] shortLang = {"DA ", "EN ", "DE ","ES ","ISK "};
+        for (int i = 0; i < x.length; i++) { 
+            for (int k = 0; k < lang.length; k++){
+                if((x[i]).equals(lang[k])){
+                    y += shortLang[k];                   
+                }              
+            }
+        }
+        return y;
+    };
+    
+    private String conFalseTrueToYesNO(boolean x){
+        if(x){
+            return "Yes";
+        }
+        else{
+            return "No";
+        }      
+    };
+    
     
     private void echo(Object o){
         System.out.println(o);
@@ -1394,7 +1497,22 @@ public class Window extends javax.swing.JFrame {
         DateFormat formatter = new SimpleDateFormat("MM-dd-yyyy");
         return formatter.format(d);
     }
+    
+    private String lts(String[] x){
+        Map<String,String> lang = new HashMap<String, String>(){
+            {
+                put("english", "EN");
+                put("icelandic", "IS");
+            }
+        };
+
+        String y="";
+        for(int i=0; i<x.length; i++){
+            y+=" "+lang.get(x[i]);
+        }
+
+        return y.trim();
+    }
     //----------------------------------------------------------------
-    
-    
+        
 }
