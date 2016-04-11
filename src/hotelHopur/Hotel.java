@@ -50,19 +50,19 @@ public class Hotel {
 
     }
 
-    String getName(){
+    public String getName(){
             return name;
     }
 
-    int getID(){
+    public int getID(){
             return id;
     }
 
-    String getAddress(){
+    public String getAddress(){
             return address;
     }
 
-    int getPostcode(){
+    public int getPostcode(){
             return postcode;
     }
 
@@ -70,41 +70,41 @@ public class Hotel {
             return city;
     }
 
-    String getURL(){
+    public String getURL(){
             return URL;
     }
 
-    int getWifi(){
+    public int getWifi(){
 
             return Wifi;
     }
-    int getFreeWifi(){
+    public int getFreeWifi(){
 
             return FreeWifi;
     }
-    int getSmoke(){
+    public int getSmoke(){
 
             return Smoke;
     }
-    int getPool(){
+    public int getPool(){
 
             return SPool;
     }
-    int getGym(){
+    public int getGym(){
 
             return Gym;
     }
-    int getTV(){
+    public int getTV(){
 
             return TV;
     }
 
-    /*
+    
     int[] getPrice(){
             int ID = this.getID();
             int[] i = new int[6];
-                    i =	sqlWorkBench.price(ID);
+                    //i =	sqlWorkBench.price(ID);
             return i;
     }
-    */
+    
 }

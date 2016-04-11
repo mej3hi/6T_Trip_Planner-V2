@@ -5,8 +5,10 @@
  */
 package trip;
 
-import mock.TeamHotelMock;
-import mock.HotelMock;
+import hotelHopur.Hotel;
+import hotelHopur.SearchMock;
+import hotelHopur.sqlworkBenchInterface;
+import java.util.ArrayList;
 import java.util.Date;
 
 /**
@@ -14,14 +16,28 @@ import java.util.Date;
  * @author M
  */
 public class HotelSearch {
-    private HotelMock[] results;
     
-    public HotelMock[] search(Date date, String at){
-        results = TeamHotelMock.search(date, at);
+    
+    private ArrayList<Hotel> results;
+    SearchMock search = new SearchMock();
+    
+    
+    //???
+    public ArrayList<Hotel> search(Date datein, Date dateout, String name, String room, String address, String city, boolean wifi,
+            boolean freewifi, boolean smoke, boolean spool, boolean gym, boolean tv ){
+        
+       
+        
+        results = search.getResults();
+        
+        System.out.println("HotelSearch"+results);
         return results;
     }
     
-    public HotelMock getHotel(int index){
-        return results[index];
+  
+    
+    public Hotel getHotel(int index){
+        return results.get(index);
     }
+    
 }
