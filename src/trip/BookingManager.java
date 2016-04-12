@@ -10,6 +10,7 @@ import mock.HotelMock;
 import mock.DayTourMock;
 import ekkiInotkun.FlightMock;
 import tourHopur.Tours;
+import hotelHopur.Hotel;
 
 /**
  *
@@ -27,8 +28,8 @@ public class BookingManager {
         booking.flight.add(flight);
     }
     
-    public void setHotel(HotelMock hotel){
-        booking.hotel = hotel;
+    public void addHotel(Hotel hotel){
+        booking.hotel.add(hotel);
     }
     
     public void addDayTour(Tours dayTour){

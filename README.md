@@ -16,14 +16,6 @@ Flug
 
 Tour
 
-	NumberofTickets
-	
-	Hverju á að leyta eftir
-	
-	Breyta í arraylist
-	
-	Breyta attributes í töflu
-
 	Testa allt mögulegt						Allir
 
 Hotel
