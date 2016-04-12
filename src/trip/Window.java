@@ -661,7 +661,7 @@ public class Window extends javax.swing.JFrame {
                 .addGap(30, 30, 30))
         );
 
-        mainTabbedPane.addTab("Booking  0", new javax.swing.ImageIcon("/home/martin/NetBeansProjects/6T_Trip_Planner-V2/cart.png"), bookPanel); // NOI18N
+        mainTabbedPane.addTab("Booking  0", new javax.swing.ImageIcon("/Users/ekh/netbeansProjectsNytt/6T_Trip_Planner-V2/cart.png"), bookPanel); // NOI18N
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -1287,11 +1287,11 @@ public class Window extends javax.swing.JFrame {
         for(int i=0; i<db.size(); i++){
             if(i==0){
                 s+="\n\nDay Tours\n\n";
-                s+="Type\tDuration\tDifficulty\tLanguaget\tArea\tHandicap\tPickup\tPrice\n";
-                s+="----------\t-----------\t----------\t----------\t----------\t----------\t----------\t---------\n";
+                s+="Date\tType\tDuration\tDifficulty\tLanguaget\tArea\tHandicap\tPickup\tPrice\n";
+                s+="----------\t-----------\t----------\t----------\t----------\t----------\t----------\t---------\t---------\n";
             }
            Tours y = db.get(i);
-            s+= y.getType()+"\t"+y.getDuration()+"\t"+y.getDifficulty()+"\t"+
+            s+= y.getDate()+"\t"+ y.getType()+"\t"+y.getDuration()+"\t"+y.getDifficulty()+"\t"+
                 conArryStringToOne(y.getLanguage())+"\t"+y.getArea()+"\t"+
                 conFalseTrueToYesNO(y.getHandicap())+"\t"+
                 conFalseTrueToYesNO(y.getPickup())+"\t"+y.getPrice()+"\n";
@@ -1442,7 +1442,7 @@ public class Window extends javax.swing.JFrame {
     //------------------- Hjálparföll ------------------------------
     private Object[] toObj(Flight x,int i){
         return new Object[]{i,x.getAirline(),x.getDepartureLocation(),x.getDepartureTime(),
-                x.getArrivalLocation(),x.getArrivalTime(),x.getDuration()+" H",
+                x.getArrivalLocation(),x.getArrivalTime(),x.getDuration()+" hours",
                 x.getNumberOfPassengers(),x.getTotalPrice()+" ISK",false};
     }
     
@@ -1454,7 +1454,7 @@ public class Window extends javax.swing.JFrame {
     }
     
     private Object[] dToObj(Tours x, int i){
-        return new Object[]{i,x.getArea(),x.getType(),x.getDuration()+" H",
+        return new Object[]{i,x.getArea(),x.getType(),x.getDuration()+" hours",
             conArryStringToOne(x.getLanguage()),x.getDifficulty(), 
             conFalseTrueToYesNO(x.getPickup()), 
             conFalseTrueToYesNO(x.getHandicap()), x.getSeatsT(), 
