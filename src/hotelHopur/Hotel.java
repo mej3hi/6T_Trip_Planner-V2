@@ -8,7 +8,7 @@ package hotelHopur;
 import java.beans.Statement;
 /**
  *
- * @author Eiríkur Kristinn Hlöðversson, Háskóli Íslands, ekh9@hi.is
+ * @author Hotel Group
  */
 public class Hotel {
     private int id;
@@ -23,6 +23,13 @@ public class Hotel {
     private int SPool;
     private int Gym;
     private int TV;
+    private int roomPrice1;
+    private int roomPrice2;
+    private int roomPrice3;
+    private int roomCount1;
+    private int roomCount2;
+    private int roomCount3;
+    private int OrderPrice;
 
 
     /* Hotel is an object that contains all the details of a 
@@ -100,11 +107,86 @@ public class Hotel {
     }
 
     
-    int[] getPrice(){
-            int ID = this.getID();
-            int[] i = new int[6];
-                    //i =	sqlWorkBench.price(ID);
-            return i;
+    
+    int getPriceOfRoomType1(){
+
+            return roomPrice1;
+    }
+
+    int getPriceOfRoomType2(){
+
+            return roomPrice2;
+    }
+
+    int getPriceOfRoomType3(){
+
+            return roomPrice3;
+    }
+    int getRoomType1Count(){
+
+            return roomCount1;
+    }
+    int getRoomType2Count(){
+
+            return roomCount2;
+    }
+    int getRoomType3Count(){
+
+            return roomCount3;
+    }
+
+
+    void setPriceOfRoomType1(int x){
+
+            roomPrice1=x;
+    }
+
+    void setPriceOfRoomType2(int x){
+
+            roomPrice2=x;
+    }
+
+    void setPriceOfRoomType3(int x){
+
+            roomPrice3=x;
+    }
+    void setRoomType1Count(int x){
+
+            roomCount1 = x;
+    }
+    void setRoomType2Count(int x){
+
+            roomCount2 = x;
+    }
+    void setRoomType3Count(int x){
+
+            roomCount3 = x;
+    }
+
+    //Þessi föll er hægt að kalla á til þess að reikna verðið á pöntuninni.
+    int getOrderPriceRoomType1(int nrClients, int nrRooms){
+            if(nrClients == nrRooms){
+                    OrderPrice = (int) (nrClients*nrRooms*roomPrice1*0.8);
+            }else{
+                    OrderPrice=nrClients*nrRooms*roomPrice1;
+            }
+            return OrderPrice;
+    }
+    int getOrderPriceRoomType2(int nrClients, int nrRooms){
+            if(nrClients == nrRooms){
+                    OrderPrice = (int) (nrClients*nrRooms*roomPrice2*0.8);
+            }else{
+                    OrderPrice=nrClients*nrRooms*roomPrice2;
+            }
+            return OrderPrice;
+    }
+    int getOrderPriceRoomType3(int nrClients, int nrRooms){
+            if(nrClients == nrRooms){
+                    OrderPrice = (int) (nrClients*nrRooms*roomPrice3*0.8);
+            }else{
+                    OrderPrice=nrClients*nrRooms*roomPrice3;
+            }
+            return OrderPrice;
     }
     
 }
