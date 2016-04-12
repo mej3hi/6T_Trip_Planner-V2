@@ -28,6 +28,7 @@ public class SearchMock {
         results.add(0,hotel1);        
         results.add(1,hotel2);
         
+        System.out.println("SearchMock"+ results);
         return results;
     }
 }

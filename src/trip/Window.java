@@ -15,7 +15,7 @@ import java.util.Map;
 import javax.swing.JPanel;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
-import tourHopur.Tours;
+import tourHopur.model.Tours;
 
 /**
  * Lýsing
@@ -1340,7 +1340,7 @@ public class Window extends javax.swing.JFrame {
             }
            Tours y = db.get(i);
             s+= y.getDate()+"\t"+ y.getType()+"\t"+y.getDuration()+"\t"+y.getDifficulty()+"\t"+
-                conArryStringToOne(y.getLanguage())+"\t"+y.getArea()+"\t"+
+                y.getLanguage()+"\t"+y.getArea()+"\t"+
                 conFalseTrueToYesNO(y.getHandicap())+"\t"+
                 conFalseTrueToYesNO(y.getPickup())+"\t"+y.getPrice()+"\n";
         }
@@ -1496,7 +1496,8 @@ public class Window extends javax.swing.JFrame {
                 x.getNumberOfPassengers(),x.getTotalPrice()+" ISK",false};
     }
     
-    
+    // spurning um að bæta við getRoomType1Count, getRoomType2Count.... og getPriceOfRoomType1, getPriceOfRoomType2
+    // og ná í það úr töflu þegar búið er að velja eitthvað í töflunni   
     private Object[] hToObj(Hotel x, int i){
         return new Object[]{i,x.getName(), x.getAddress(), x.getPostcode(), 
             x.getCity(), x.getWifi(), x.getFreeWifi(), x.getSmoke(), x.getPool(), x.getGym(), x.getTV(), arrHotelDatePicker.getDate().toString(), false};
@@ -1505,9 +1506,9 @@ public class Window extends javax.swing.JFrame {
     
     private Object[] dToObj(Tours x, int i){
         return new Object[]{i,x.getArea(),x.getType(),x.getDuration()+" hours",
-            conArryStringToOne(x.getLanguage()),x.getDifficulty(), 
+            x.getLanguage(),x.getDifficulty(), 
             conFalseTrueToYesNO(x.getPickup()), 
-            conFalseTrueToYesNO(x.getHandicap()), x.getSeatsT(), 
+            conFalseTrueToYesNO(x.getHandicap()), x.getSeatsTotal(), 
             x.getPrice()+" ISK",false};
     }
    

@@ -9,8 +9,9 @@ import java.util.ArrayList;
 import mock.TeamDayTour;
 import mock.DayTourMock;
 import java.util.Date;
-import tourHopur.Search;
-import tourHopur.Tours;
+import tourHopur.controller.Search;
+import tourHopur.controller.SearchMock;
+import tourHopur.model.Tours;
 
 /**
  *
@@ -19,24 +20,25 @@ import tourHopur.Tours;
 public class DayTourSearch {
   
     private ArrayList<Tours> results;
+    private ArrayList<Tours> resultsTmp;
+   
+    
+    //SearchMock search = new SearchMock();
     Search search = new Search();
 
     public ArrayList<Tours> search(Date date, String area, String type, String difficulty,
             boolean pickup, boolean handicap, String language, int numOfTickets ){
         
-        /*
-        Þarf að Converta date í int 
+        String convertedDate = String.format("%1$td.%1$tm.%1$tY", date);
+        String convertedType = type.toLowerCase().replaceAll("\\s+","");;
         
-         
-          
-        */
        
-        // Fallið þeirra
-        //getResult(String dur, String type, String diff, String area , String lang, boolean pUp, 
-        //        boolean hCap, int date, int numberOfTickets){ }
-        
-        results = search.getResults();
+        // Þurfum aðeins að breyta því sem kemur úr comboboxunum til að það passi við gagnagrunnninn
+        results = search.getResults(0.0, convertedType, difficulty, area, 0, 0, language, pickup, handicap, convertedDate , numOfTickets);
         return results;
+        // Fallið þeirra     
+       //getResults(double duration, String type, String difficulty, String area, int minPrice, int maxPrice, 
+       //   String language, boolean pickup, boolean handicap, String date, int availableTickets) 
     }
     
      public Tours getDayTour(int index){

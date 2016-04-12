@@ -1,10 +1,6 @@
-package tourHopur;
-        /* 
-        private String[] type = {"adventure", "city walk", "horseriding", "hiking",  "sightseeing"};
-        private String[] difficulty = {"easy", "medium", "hard"};
-        private String[] area = {"Capital region", "east", "north", "south", "west"};
-        private String[] language = {"danish", "english", "german", "icelandic", "spanish"};
-        */
+package tourHopur.model;
+
+
 public class Tours {
 	private int id;
 	private double duration;
@@ -13,11 +9,11 @@ public class Tours {
 	private String area;
 	private int price;
 	private int seatsTotal;
-	private int seatsBooked;
-	private String[] language;
+	private int seatsAvailable;
+	private String language;
 	private boolean pickup;
 	private boolean handicap;
-	private int date;
+	private String date; // form of date = DD.MM.YYYY
 	
 	public int getPrice() {
 		return price;
@@ -43,7 +39,7 @@ public class Tours {
 		return handicap;
 	}
 	
-	public String[] getLanguage() {
+	public String getLanguage() {
 		return language;
 	}
 	
@@ -55,13 +51,16 @@ public class Tours {
 		return id;
 	}
 	
-	public int getSeatsT() {
+	public int getSeatsTotal() {
 		return seatsTotal;
 	}
 	
-	public int getSeatsB() {
-		return seatsBooked;
+	public int getSeatsAvailable() {
+		return seatsAvailable;
 	}
+        public String getDate() {
+            return date;
+        }
 	
 	public void setPrice(int n) {
 		price = n;
@@ -71,7 +70,7 @@ public class Tours {
 		type = n;
 	}
 	
-	public void setDuration(int n) {
+	public void setDuration(double n) {
 		duration = n;
 	}
 	
@@ -87,7 +86,7 @@ public class Tours {
 		handicap = isHandy;
 	}
 	
-	public void setLanguage(String[] lang) {
+	public void setLanguage(String lang) {
 		language = lang;
 	}
 	
@@ -99,19 +98,14 @@ public class Tours {
 		id = n;
 	}
 	
-	public void setSeatsB(int n) {
-		seatsBooked = n;
+	public void setSeatsAvailable(int n) {
+		seatsAvailable = n;
 	}
 	
-	public void setSeatsT(int n) {
+	public void setSeatsTotal(int n) {
 		seatsTotal = n;
 	}
-        //??
-        public void setDate (int d){
-            date = d;
-        }
-        
-        public int getDate(){
-            return date;
+        public void setDate(String n) {
+            date = n;
         }
 }

@@ -6,6 +6,7 @@
 package trip;
 
 import hotelHopur.Hotel;
+import hotelHopur.SearchControl;
 import hotelHopur.SearchMock;
 import hotelHopur.sqlworkBenchInterface;
 import java.util.ArrayList;
@@ -19,7 +20,7 @@ public class HotelSearch {
     
     
     private ArrayList<Hotel> results;
-    SearchMock search = new SearchMock();
+    SearchControl searchControl = new SearchControl();
     
     
     //???
@@ -28,13 +29,10 @@ public class HotelSearch {
         
        
         
-        results = search.getResults();
+        results = searchControl.LeitaHotel("r", "24 mar. 2016", "24 mar. 2016");
         
-        System.out.println("HotelSearch"+results);
         return results;
     }
-    
-  
     
     public Hotel getHotel(int index){
         return results.get(index);

@@ -6,12 +6,12 @@
 package trip;
 
 import flugHopur.Flight;
-import tourHopur.Tours;
+import tourHopur.model.Tours;
 import mock.HotelMock;
 import mock.DayTourMock;
 import ekkiInotkun.FlightMock;
 import java.util.ArrayList;
-import tourHopur.Tours;
+import tourHopur.model.Tours;
 import hotelHopur.Hotel;
 
 /**

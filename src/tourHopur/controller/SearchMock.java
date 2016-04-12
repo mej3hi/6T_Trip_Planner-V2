@@ -1,10 +1,13 @@
+
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package tourHopur;
+package tourHopur.controller;
 
+import tourHopur.model.Tours;
 import java.util.ArrayList;
 
 /**
@@ -17,7 +20,7 @@ import java.util.ArrayList;
  * Svona verður þetta hjá þeim og við sendum tóma strenginn ef við viljum 
  * ekki leita eftir einhverju ákveðnu.
  */
-public class Search {
+public class SearchMock {
     private ArrayList<Tours> results;
     
     //public ArrayList<Tours> getResults(String dur, String type, String diff, String area , String lang, boolean pUp, boolean hCap, int date, int numberOfTickets){ 
@@ -32,14 +35,14 @@ public class Search {
         tour1.setType("Horse riding");
         tour1.setDifficulty("Easy");
         tour1.setArea("East");
-        String [] l = {"english","danish"}; 
-        tour1.setLanguage(l);
+         
+        tour1.setLanguage("english");
         tour1.setPickup(true);
         tour1.setHandicap(true);
-        tour1.setDate(120314);
+        tour1.setDate("");
         tour1.setPrice(10000);
         //??
-        tour1.setSeatsT(30);
+       
         
         results.add(0,tour1);
         
@@ -49,13 +52,13 @@ public class Search {
         tour2.setDifficulty("Hard");
         tour2.setArea("West");
         String [] y = {"english"}; 
-        tour2.setLanguage(y);
+        tour2.setLanguage("english");
         tour2.setPickup(false);
         tour2.setHandicap(false);
-        tour2.setDate(160314);
+        tour2.setDate("");
         tour2.setPrice(13000);
         //?
-        tour2.setSeatsT(30);
+        
         
         results.add(1,tour2);
         
