@@ -9,6 +9,7 @@ import java.util.HashMap;
 import java.util.Map;
 import javax.swing.JPanel;
 import javax.swing.JTable;
+import javax.swing.UIManager;
 import javax.swing.table.DefaultTableModel;
 import tourHopur.model.Tours;
 
@@ -694,6 +695,7 @@ public class Window extends javax.swing.JFrame {
         //search(Date datein, Date dateout, String name, String room, String address, String city, boolean wifi, boolean freewifi, boolean smoke, boolean spool, boolean gym, boolean tv )
         ArrayList<Hotel> results = hotelSearch.search(datein, dateout, rooms , city, wifi, freewifi, smoke, spool, gym, tv);
         createHotelTable(results);
+        System.out.println(daysBetween(datein,dateout));
     }//GEN-LAST:event_hotelSearchButtonActionPerformed
 
     private void nextFromHotelButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nextFromHotelButtonActionPerformed
@@ -1007,9 +1009,8 @@ public class Window extends javax.swing.JFrame {
         
         mainTabbedPane.setIconAt(4, new javax.swing.ImageIcon("cart.png"));
         
-        
         hideLabels();
-        
+          
     }
     /**
      * Increase the book number in the tap booking.
@@ -1017,7 +1018,7 @@ public class Window extends javax.swing.JFrame {
      */
     private void increaseBookNumber (int i){
         numberOfbooking += i; 
-        mainTabbedPane.setTitleAt(4, "Booking  "+ Integer.toString(numberOfbooking));
+        mainTabbedPane.setTitleAt(4, "Booking  "+ numberOfbooking);
     }
     
     /**
@@ -1486,6 +1487,10 @@ public class Window extends javax.swing.JFrame {
 
         return y.trim();
     }
+    
+     public int daysBetween(Date d1, Date d2){
+             return (int)( (d2.getTime() - d1.getTime()) / (1000 * 60 * 60 * 24));
+     }
     //----------------------------------------------------------------
         
 }
