@@ -4,7 +4,6 @@ package trip;
 import flugHopur.Flight;
 import hotelHopur.Hotel;
 import java.util.ArrayList;
-//import mock.FlightMock;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
@@ -1457,7 +1456,6 @@ public class Window extends javax.swing.JFrame {
             x.getPrice()+" ISK",false};
     }
    
-    
     private String conFalseTrueToYesNO(boolean x){
         return x==true ? "Yes" : "No";
     }
