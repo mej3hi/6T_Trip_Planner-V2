@@ -662,12 +662,12 @@ public class Window extends javax.swing.JFrame {
             .addGroup(bookPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 462, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 144, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 140, Short.MAX_VALUE)
                 .addComponent(jButton2)
                 .addGap(30, 30, 30))
         );
 
-        mainTabbedPane.addTab("Booking  0", null, bookPanel);
+        mainTabbedPane.addTab("Booking  0", new javax.swing.ImageIcon("/home/martin/NetBeansProjects/6T_Trip_Planner-V2/cart.png"), bookPanel); // NOI18N
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -811,6 +811,7 @@ public class Window extends javax.swing.JFrame {
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         addBookingToDatabase();
         updateFlightDatabase();
+        updateToursDatabase();
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void arrFlightDatePickerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_arrFlightDatePickerActionPerformed
@@ -1340,12 +1341,12 @@ public class Window extends javax.swing.JFrame {
         for(int i=0; i<db.size(); i++){
             if(i==0){
                 s+="\n\nDay Tours\n\n";
-                s+="Date\tType\tDuration\tDifficulty\tLanguaget\tArea\tHandicap\tPickup\tPrice\n";
+                s+="Date\tType\tDuration\tDifficulty\tLanguage\tArea\tHandicap\tPickup\tPrice\n";
                 s+="----------\t-----------\t----------\t----------\t----------\t----------\t----------\t---------\t---------\n";
             }
            Tours y = db.get(i);
             s+= y.getDate()+"\t"+ y.getType()+"\t"+y.getDuration()+"\t"+y.getDifficulty()+"\t"+
-                y.getLanguage()+"\t"+y.getArea()+"\t"+
+                lts(y.getLanguage())+"\t"+y.getArea()+"\t"+
                 conFalseTrueToYesNO(y.getHandicap())+"\t"+
                 conFalseTrueToYesNO(y.getPickup())+"\t"+y.getPrice()+"\n";
         }
@@ -1394,6 +1395,15 @@ public class Window extends javax.swing.JFrame {
         for(int i=0; i<flights.size(); i++){
             flightSearch.updateDatabase(flights.get(i).getNumberOfPassengers(), 
                  flights.get(i).getTicketsAvailable(), flights.get(i).getID());
+        }
+    };
+    
+    private void updateToursDatabase(){
+        Booking booking = bookingManager.getBookings();
+        ArrayList<Tours> tours = booking.daytour;
+        for(int i=0; i<tours.size(); i++){
+            int tickets = Integer.parseInt(ticketsTourComboBox.getItemAt(ticketsTourComboBox.getSelectedIndex())); 
+            dayTourSearch.updateDatabase(tours.get(i).getId(),tickets);
         }
     };
 
@@ -1511,25 +1521,12 @@ public class Window extends javax.swing.JFrame {
     
     private Object[] dToObj(Tours x, int i){
         return new Object[]{i,x.getArea(),x.getType(),x.getDuration()+" hours",
-            x.getLanguage(),x.getDifficulty(), 
+            lts(x.getLanguage()),x.getDifficulty(), 
             conFalseTrueToYesNO(x.getPickup()), 
             conFalseTrueToYesNO(x.getHandicap()), x.getSeatsTotal(), 
             x.getPrice()+" ISK",false};
     }
    
-    private String conArryStringToOne(String[] x){
-        String y = "";
-        String[] lang = {"danish", "english", "german", "spanish","icelandic"};
-        String[] shortLang = {"DA ", "EN ", "DE ","ES ","ISK "};
-        for (int i = 0; i < x.length; i++) { 
-            for (int k = 0; k < lang.length; k++){
-                if((x[i]).equals(lang[k])){
-                    y += shortLang[k];                   
-                }              
-            }
-        }
-        return y;
-    };
     
     private String conFalseTrueToYesNO(boolean x){
         if(x){
@@ -1557,8 +1554,11 @@ public class Window extends javax.swing.JFrame {
     private String lts(String[] x){
         Map<String,String> lang = new HashMap<String, String>(){
             {
-                put("english", "EN");
-                put("icelandic", "IS");
+                put("English", "EN");
+                put("Icelandic", "IS");
+                put("Danish", "DK");
+                put("Spanish", "ES");
+                put("German", "DE");
             }
         };
 

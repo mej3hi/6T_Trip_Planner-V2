@@ -12,6 +12,7 @@ import java.util.Date;
 import tourHopur.controller.Search;
 import tourHopur.controller.SearchMock;
 import tourHopur.model.Tours;
+import tourHopur.controller.Booking;
 
 /**
  *
@@ -19,13 +20,15 @@ import tourHopur.model.Tours;
  */
 public class DayTourSearch {
     Search search = new Search();
+    Booking booking = new Booking();
     private ArrayList<Tours> results = new ArrayList<Tours>();
 
     public ArrayList<Tours> search(Date date, String area, String type, String difficulty,
             boolean pickup, boolean handicap, String language, int numOfTickets ){
         
         String convertedDate = String.format("%1$td.%1$tm.%1$tY", date);
-        String convertedType = type.toLowerCase().replaceAll("\\s+","");;
+        String convertedType = type.toLowerCase().replaceAll("\\s+","");
+        
         if(date == null) convertedDate = "";
         // Þurfum aðeins að breyta því sem kemur úr comboboxunum til að það passi við gagnagrunnninn
         results.clear();
@@ -38,6 +41,10 @@ public class DayTourSearch {
     
      public Tours getDayTour(int index){
         return results.get(index);
+    }
+
+    void updateDatabase(int id, int tickets) {
+        booking.makeBooking(id, tickets);
     }
     
 }
