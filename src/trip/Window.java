@@ -3,17 +3,11 @@ package trip;
 
 import flugHopur.Flight;
 import hotelHopur.Hotel;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import mock.HotelMock;
-import mock.DayTourMock;
 //import mock.FlightMock;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
-import javax.swing.Icon;
-import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
@@ -180,11 +174,6 @@ public class Window extends javax.swing.JFrame {
         flightsPanel.add(jDepFlightMessageLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 190, 600, -1));
 
         numberOfTicketsComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9" }));
-        numberOfTicketsComboBox.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                numberOfTicketsComboBoxActionPerformed(evt);
-            }
-        });
         flightsPanel.add(numberOfTicketsComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 60, 70, -1));
 
         jLabel1.setText("From");
@@ -205,23 +194,12 @@ public class Window extends javax.swing.JFrame {
         jLabel4.setText("Arrival");
         flightsPanel.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 120, -1, -1));
 
-        depFlightDatePicker.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                depFlightDatePickerActionPerformed(evt);
-            }
-        });
         depFlightDatePicker.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
             public void propertyChange(java.beans.PropertyChangeEvent evt) {
                 depFlightDatePickerPropertyChange(evt);
             }
         });
         flightsPanel.add(depFlightDatePicker, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 140, -1, -1));
-
-        arrFlightDatePicker.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                arrFlightDatePickerActionPerformed(evt);
-            }
-        });
         flightsPanel.add(arrFlightDatePicker, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 140, -1, -1));
 
         oneWayCheckBox.setText("One Way");
@@ -341,11 +319,6 @@ public class Window extends javax.swing.JFrame {
         hotelsPanel.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 40, -1, -1));
 
         roomHotelComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4" }));
-        roomHotelComboBox.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                roomHotelComboBoxActionPerformed(evt);
-            }
-        });
         hotelsPanel.add(roomHotelComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 60, -1, -1));
 
         jLabel7.setText("Adults");
@@ -357,11 +330,6 @@ public class Window extends javax.swing.JFrame {
         jLabel9.setText("Check in");
         hotelsPanel.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 120, -1, -1));
 
-        checkinHotelDatePicker.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                checkinHotelDatePickerActionPerformed(evt);
-            }
-        });
         checkinHotelDatePicker.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
             public void propertyChange(java.beans.PropertyChangeEvent evt) {
                 checkinHotelDatePickerPropertyChange(evt);
@@ -371,12 +339,6 @@ public class Window extends javax.swing.JFrame {
 
         jLabel10.setText("Check out");
         hotelsPanel.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 120, -1, -1));
-
-        checkoutHotelDatePicker.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                checkoutHotelDatePickerActionPerformed(evt);
-            }
-        });
         hotelsPanel.add(checkoutHotelDatePicker, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 140, -1, -1));
 
         hotelSearchButton.setText("Search");
@@ -431,11 +393,6 @@ public class Window extends javax.swing.JFrame {
         hotelsPanel.add(bookHotelButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 610, -1, -1));
 
         wifiCheckBox1.setText("Wifi");
-        wifiCheckBox1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                wifiCheckBox1ActionPerformed(evt);
-            }
-        });
         hotelsPanel.add(wifiCheckBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 20, -1, -1));
 
         freewifiCheckBox.setText("FreeWifi");
@@ -747,7 +704,7 @@ public class Window extends javax.swing.JFrame {
     private void dayTourSearchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dayTourSearchButtonActionPerformed
         //if(!validateDayTours()) return;
         Date date = dayTourDatePicker.getDate();       
-        String area = areaTourComboBox.getSelectedItem().toString();;       
+        String area = areaTourComboBox.getSelectedItem().toString();       
         String type = typeTourComboBox.getSelectedItem().toString();
         String diff = difficultyComboBox.getSelectedItem().toString();
         boolean pickup = pickupCheckBox.isSelected();
@@ -769,18 +726,6 @@ public class Window extends javax.swing.JFrame {
     private void nextFromDayTourButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nextFromDayTourButtonActionPerformed
         showPanel(customerPanel);
     }//GEN-LAST:event_nextFromDayTourButtonActionPerformed
-
-    private void roomHotelComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_roomHotelComboBoxActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_roomHotelComboBoxActionPerformed
-
-    private void numberOfTicketsComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_numberOfTicketsComboBoxActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_numberOfTicketsComboBoxActionPerformed
-
-    private void depFlightDatePickerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_depFlightDatePickerActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_depFlightDatePickerActionPerformed
 
     private void nextFromCustomerButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nextFromCustomerButtonActionPerformed
         addCustomer();
@@ -809,10 +754,6 @@ public class Window extends javax.swing.JFrame {
         
         
     }//GEN-LAST:event_finalBookingButtonActionPerformed
-
-    private void arrFlightDatePickerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_arrFlightDatePickerActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_arrFlightDatePickerActionPerformed
 
     private void bookFlightButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bookFlightButtonActionPerformed
         if (!oneWayCheckBox.isSelected()){
@@ -889,24 +830,12 @@ public class Window extends javax.swing.JFrame {
         
     }//GEN-LAST:event_depFlightDatePickerPropertyChange
 
-    private void checkinHotelDatePickerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkinHotelDatePickerActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_checkinHotelDatePickerActionPerformed
-
-    private void checkoutHotelDatePickerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkoutHotelDatePickerActionPerformed
-        
-    }//GEN-LAST:event_checkoutHotelDatePickerActionPerformed
-
     private void checkinHotelDatePickerPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_checkinHotelDatePickerPropertyChange
         if(checkinHotelDatePicker.getDate() != null){
             checkoutHotelDatePicker.getMonthView().setLowerBound(checkinHotelDatePicker.getDate());
             checkoutHotelDatePicker.setDate(checkinHotelDatePicker.getDate());
         }
     }//GEN-LAST:event_checkinHotelDatePickerPropertyChange
-
-    private void wifiCheckBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_wifiCheckBox1ActionPerformed
-        
-    }//GEN-LAST:event_wifiCheckBox1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -1537,14 +1466,9 @@ public class Window extends javax.swing.JFrame {
         return x==1 ? "Yes" : "No";
     }
     
-    
-    
-    
     private int toInt(String s){
         return Integer.parseInt(s.replaceAll("[- ]", ""));
     }
-    
-    
     
     private String lts(String[] x){
         Map<String,String> lang = new HashMap<String, String>(){
