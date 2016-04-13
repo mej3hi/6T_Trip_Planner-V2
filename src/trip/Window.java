@@ -12,6 +12,8 @@ import mock.DayTourMock;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
@@ -1074,6 +1076,8 @@ public class Window extends javax.swing.JFrame {
         fromFlightComboBox.setSelectedIndex(1);
         
         mainTabbedPane.setEnabledAt(4, false);
+        
+        mainTabbedPane.setIconAt(4, new javax.swing.ImageIcon("cart.png"));
         
         
         hideLabels();
