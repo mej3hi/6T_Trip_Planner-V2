@@ -1140,22 +1140,7 @@ public class Window extends javax.swing.JFrame {
         }
         return false;
     }
-    //Bara prufa, Skúli
-    private boolean isRowSelected1 (JTable table){
-        for (int i = 0; i < table.getRowCount(); i++) {
-            boolean isChecked = (Boolean) table.getValueAt(i, 10);
-            if (isChecked) return true;
-        }
-        return false;
-    }
-    //Bara prufa, Skúli
-    private boolean isRowSelected2 (JTable table){
-        for (int i = 0; i < table.getRowCount(); i++) {
-            boolean isChecked = (Boolean) table.getValueAt(i, 12);
-            if (isChecked) return true;
-        }
-        return false;
-    }
+    
     
     
     
@@ -1465,19 +1450,7 @@ public class Window extends javax.swing.JFrame {
         return true;    
     }
     
-    //Var að bæta þessu við, Skúli
-    private boolean validateDayTours(){
-        DefaultTableModel model = (DefaultTableModel) dayTourResultsTable.getModel();
-        model.setRowCount(0);
-
-        clearDayTourMessages();
-
-        if(dayTourDatePicker.getDate() == null){
-            jArrFlightMessageLabel1.setText("Choose date");
-            return false;
-        }
-        return true;
-    }
+    
     
     //Var að bæta þessu við, Skúli
     private boolean validateHotels(){
@@ -1557,36 +1530,21 @@ public class Window extends javax.swing.JFrame {
    
     
     private String conFalseTrueToYesNO(boolean x){
-        if(x){
-            return "Yes";
-        }
-        else{
-            return "No";
-        }      
-    };
+        return x==true ? "Yes" : "No";
+    }
     
     private String conIntToString(int x){
-        if(x==1){
-            return "Yes";
-        }
-        else{
-            return "No";
-        }      
-    };
-    
-    
-    private void echo(Object o){
-        System.out.println(o);
+        return x==1 ? "Yes" : "No";
     }
+    
+    
+    
     
     private int toInt(String s){
         return Integer.parseInt(s.replaceAll("[- ]", ""));
     }
     
-    private String dts(Date d){
-        DateFormat formatter = new SimpleDateFormat("MM-dd-yyyy");
-        return formatter.format(d);
-    }
+    
     
     private String lts(String[] x){
         Map<String,String> lang = new HashMap<String, String>(){
