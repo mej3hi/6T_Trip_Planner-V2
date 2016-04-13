@@ -8,8 +8,6 @@ package trip;
 import hotelHopur.FinaliseBooking;
 import hotelHopur.Hotel;
 import hotelHopur.SearchControl;
-import hotelHopur.SearchMock;
-import hotelHopur.sqlworkBenchInterface;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -21,7 +19,6 @@ public class HotelSearch {
     
     
     private ArrayList<Hotel> results;
-    SearchControl searchControl = new SearchControl();
     
     
     //???
@@ -33,14 +30,14 @@ public class HotelSearch {
         String dateinS = FinaliseBooking.dateToString(datein);
 	String dateoutS = FinaliseBooking.dateToString(dateout);    
         
-        results = searchControl.LeitaHotel(city, dateinS, dateoutS);
+        results = SearchControl.LeitaHotel(city, dateinS, dateoutS);
         
-        if (wifi) results = searchControl.detailedSearch(results, 0);
-        if (freewifi) results = searchControl.detailedSearch(results, 1);
-        if (spool) results = searchControl.detailedSearch(results, 2);
-        if (gym) results = searchControl.detailedSearch(results, 3);
-        if (tv) results = searchControl.detailedSearch(results, 4);
-        if (smoke) results = searchControl.detailedSearch(results, 5);
+        if (wifi) results = SearchControl.detailedSearch(results, 0);
+        if (freewifi) results = SearchControl.detailedSearch(results, 1);
+        if (spool) results = SearchControl.detailedSearch(results, 2);
+        if (gym) results = SearchControl.detailedSearch(results, 3);
+        if (tv) results = SearchControl.detailedSearch(results, 4);
+        if (smoke) results = SearchControl.detailedSearch(results, 5);
         
         
         

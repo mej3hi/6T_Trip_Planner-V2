@@ -6,11 +6,8 @@
 package trip;
 
 import java.util.ArrayList;
-import mock.TeamDayTour;
-import mock.DayTourMock;
 import java.util.Date;
 import tourHopur.controller.Search;
-import tourHopur.controller.SearchMock;
 import tourHopur.model.Tours;
 import tourHopur.controller.Booking;
 
@@ -21,7 +18,7 @@ import tourHopur.controller.Booking;
 public class DayTourSearch {
     Search search = new Search();
     Booking booking = new Booking();
-    private ArrayList<Tours> results = new ArrayList<Tours>();
+    private ArrayList<Tours> results = new ArrayList<>();
 
     public ArrayList<Tours> search(Date date, String area, String type, String difficulty,
             boolean pickup, boolean handicap, String language, int numOfTickets ){

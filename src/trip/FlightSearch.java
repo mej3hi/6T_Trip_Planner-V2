@@ -7,8 +7,6 @@ package trip;
 
 import flugHopur.Flight;
 import java.util.ArrayList;
-import ekkiInotkun.FlightMock;
-import ekkiInotkun.TeamFlightMock;
 import java.util.Date;
 import flugHopur.Search;
 import flugHopur.BookingController;
