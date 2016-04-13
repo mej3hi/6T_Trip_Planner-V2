@@ -92,12 +92,10 @@ public class Window extends javax.swing.JFrame {
         roomHotelComboBox = new javax.swing.JComboBox<>();
         jLabel7 = new javax.swing.JLabel();
         adultsHotelComboBox = new javax.swing.JComboBox<>();
-        jLabel8 = new javax.swing.JLabel();
-        childrenHotelComboBox = new javax.swing.JComboBox<>();
         jLabel9 = new javax.swing.JLabel();
-        arrHotelDatePicker = new org.jdesktop.swingx.JXDatePicker();
+        checkinHotelDatePicker = new org.jdesktop.swingx.JXDatePicker();
         jLabel10 = new javax.swing.JLabel();
-        depHotelDatePicker = new org.jdesktop.swingx.JXDatePicker();
+        checkoutHotelDatePicker = new org.jdesktop.swingx.JXDatePicker();
         hotelSearchButton = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         hotelResultTable = new javax.swing.JTable();
@@ -109,13 +107,6 @@ public class Window extends javax.swing.JFrame {
         spoolCheckBox = new javax.swing.JCheckBox();
         gymCheckBox = new javax.swing.JCheckBox();
         tvCheckBox = new javax.swing.JCheckBox();
-        postcodeTextField = new javax.swing.JTextField();
-        cityTextField = new javax.swing.JTextField();
-        jLabel24 = new javax.swing.JLabel();
-        jLabel25 = new javax.swing.JLabel();
-        addressTextField = new javax.swing.JTextField();
-        jLabel26 = new javax.swing.JLabel();
-        nameTextField = new javax.swing.JTextField();
         bookHotelButtonGreenMessageLabel = new javax.swing.JLabel();
         dayTourPanel = new javax.swing.JPanel();
         jArrFlightMessageLabel1 = new javax.swing.JLabel();
@@ -342,14 +333,14 @@ public class Window extends javax.swing.JFrame {
         bookHotelButtonMessageLabel.setPreferredSize(new java.awt.Dimension(53, 16));
         hotelsPanel.add(bookHotelButtonMessageLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 610, 220, 30));
 
-        jLabel5.setText("Location");
+        jLabel5.setText("City");
         hotelsPanel.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, -1, -1));
 
-        locationHotelComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Akureyri", "Reykjavík" }));
+        locationHotelComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Reykjavík", "Hafnarfjörður", "Kópavogur", "Hella", "Fáskrúðsfjörður" }));
         hotelsPanel.add(locationHotelComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, -1, -1));
 
         jLabel6.setText("Room");
-        hotelsPanel.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 40, -1, -1));
+        hotelsPanel.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 40, -1, -1));
 
         roomHotelComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4" }));
         roomHotelComboBox.addActionListener(new java.awt.event.ActionListener() {
@@ -357,44 +348,38 @@ public class Window extends javax.swing.JFrame {
                 roomHotelComboBoxActionPerformed(evt);
             }
         });
-        hotelsPanel.add(roomHotelComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 60, -1, -1));
+        hotelsPanel.add(roomHotelComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 60, -1, -1));
 
         jLabel7.setText("Adults");
-        hotelsPanel.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 40, -1, -1));
+        hotelsPanel.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 40, -1, -1));
 
         adultsHotelComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4" }));
-        hotelsPanel.add(adultsHotelComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 60, -1, -1));
-
-        jLabel8.setText("???????");
-        hotelsPanel.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 40, -1, -1));
-
-        childrenHotelComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "0", "1", "2", "3" }));
-        hotelsPanel.add(childrenHotelComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 60, 70, -1));
+        hotelsPanel.add(adultsHotelComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 60, -1, -1));
 
         jLabel9.setText("Check in");
         hotelsPanel.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 120, -1, -1));
 
-        arrHotelDatePicker.addActionListener(new java.awt.event.ActionListener() {
+        checkinHotelDatePicker.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                arrHotelDatePickerActionPerformed(evt);
+                checkinHotelDatePickerActionPerformed(evt);
             }
         });
-        arrHotelDatePicker.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+        checkinHotelDatePicker.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
             public void propertyChange(java.beans.PropertyChangeEvent evt) {
-                arrHotelDatePickerPropertyChange(evt);
+                checkinHotelDatePickerPropertyChange(evt);
             }
         });
-        hotelsPanel.add(arrHotelDatePicker, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 140, -1, -1));
+        hotelsPanel.add(checkinHotelDatePicker, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 140, -1, -1));
 
         jLabel10.setText("Check out");
         hotelsPanel.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 120, -1, -1));
 
-        depHotelDatePicker.addActionListener(new java.awt.event.ActionListener() {
+        checkoutHotelDatePicker.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                depHotelDatePickerActionPerformed(evt);
+                checkoutHotelDatePickerActionPerformed(evt);
             }
         });
-        hotelsPanel.add(depHotelDatePicker, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 140, -1, -1));
+        hotelsPanel.add(checkoutHotelDatePicker, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 140, -1, -1));
 
         hotelSearchButton.setText("Search");
         hotelSearchButton.addActionListener(new java.awt.event.ActionListener() {
@@ -409,14 +394,14 @@ public class Window extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Id", "Name", "Address", "Postcode", "City", "Wifi", "Free Wifi", "Smoke", "S.Pool", "Gym", "Tv", "Check in???", "Select"
+                "Id", "Name", "Address", "Postcode", "City", "Wifi", "Free Wifi", "Smoke", "S.Pool", "Gym", "Tv", "Select"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Boolean.class
+                java.lang.Integer.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Boolean.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false, false, false, false, false, false, true
+                false, false, false, false, false, false, false, false, false, false, false, true
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -448,6 +433,11 @@ public class Window extends javax.swing.JFrame {
         hotelsPanel.add(bookHotelButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 610, -1, -1));
 
         wifiCheckBox1.setText("Wifi");
+        wifiCheckBox1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                wifiCheckBox1ActionPerformed(evt);
+            }
+        });
         hotelsPanel.add(wifiCheckBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 20, -1, -1));
 
         freewifiCheckBox.setText("FreeWifi");
@@ -464,27 +454,6 @@ public class Window extends javax.swing.JFrame {
 
         tvCheckBox.setText("Tv");
         hotelsPanel.add(tvCheckBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 60, -1, -1));
-
-        postcodeTextField.setText("??");
-        hotelsPanel.add(postcodeTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 140, 70, -1));
-
-        cityTextField.setText("??");
-        hotelsPanel.add(cityTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 140, 80, -1));
-
-        jLabel24.setText("City");
-        hotelsPanel.add(jLabel24, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 120, -1, -1));
-
-        jLabel25.setText("Postcode");
-        hotelsPanel.add(jLabel25, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 120, -1, -1));
-
-        addressTextField.setText("???");
-        hotelsPanel.add(addressTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 140, 80, -1));
-
-        jLabel26.setText("Address");
-        hotelsPanel.add(jLabel26, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 120, -1, -1));
-
-        nameTextField.setText("Name ????");
-        hotelsPanel.add(nameTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 70, 80, -1));
 
         bookHotelButtonGreenMessageLabel.setFont(new java.awt.Font("Lucida Bright", 2, 13)); // NOI18N
         bookHotelButtonGreenMessageLabel.setForeground(new java.awt.Color(0, 153, 102));
@@ -747,14 +716,13 @@ public class Window extends javax.swing.JFrame {
    
     private void hotelSearchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_hotelSearchButtonActionPerformed
 
-        Date datein = arrHotelDatePicker.getDate();
-        Date dateout = depHotelDatePicker.getDate();
+        Date datein = checkinHotelDatePicker.getDate();
+        Date dateout = checkoutHotelDatePicker.getDate();
         
-        String name = nameTextField.getText();
         String rooms = roomHotelComboBox.getSelectedItem().toString();
-        String address = addressTextField.getText();
-        String city = cityTextField.getText();
-        
+        String city = locationHotelComboBox.getSelectedItem().toString();
+     
+    
         Boolean wifi = wifiCheckBox1.isSelected();
         Boolean freewifi = freewifiCheckBox.isSelected();
         Boolean smoke = smokeCheckBox.isSelected();
@@ -762,12 +730,15 @@ public class Window extends javax.swing.JFrame {
         Boolean gym = gymCheckBox.isSelected();
         Boolean tv = tvCheckBox.isSelected();
         
-        String postcode = postcodeTextField.getText();
+        
+        if (city.equals("Fáskrúðsfjörður")) city = "Fáskrúðsfirði";
+        if (city.equals("Reykjavík")) city = "Reykjavik";
+        System.out.println(city);
         
         if(!validateHotels()) return;
         bookHotelButton.setEnabled(true);
         //search(Date datein, Date dateout, String name, String room, String address, String city, boolean wifi, boolean freewifi, boolean smoke, boolean spool, boolean gym, boolean tv )
-        ArrayList<Hotel> results = hotelSearch.search(datein, dateout, name, rooms , address, city, wifi, freewifi, smoke, spool, gym, tv);
+        ArrayList<Hotel> results = hotelSearch.search(datein, dateout, rooms , city, wifi, freewifi, smoke, spool, gym, tv);
         createHotelTable(results);
     }//GEN-LAST:event_hotelSearchButtonActionPerformed
 
@@ -880,11 +851,11 @@ public class Window extends javax.swing.JFrame {
     }//GEN-LAST:event_bookFlightButtonActionPerformed
 
     private void bookHotelButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bookHotelButtonActionPerformed
-        if(!isRowSelected2(hotelResultTable)){
+        if(!isRowSelected(hotelResultTable)){
             bookHotelButtonMessageLabel.setText("No hotel selected");
             return;
         }
-        else if(isRowSelected2(hotelResultTable)){
+        else if(isRowSelected(hotelResultTable)){
             bookHotelButtonMessageLabel.setText("");
             bookHotelButtonGreenMessageLabel.setText("Hotel added");
             addSelectedHotel(hotelResultTable, hotelSearch);
@@ -897,11 +868,11 @@ public class Window extends javax.swing.JFrame {
     }//GEN-LAST:event_bookHotelButtonActionPerformed
 
     private void bookTourButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bookTourButtonActionPerformed
-        if(!isRowSelected1(dayTourResultsTable)){
+        if(!isRowSelected(dayTourResultsTable)){
             jBookDayTourMessageLabel.setText("No DayTour selected");
             return;
         }
-        else if(isRowSelected1(dayTourResultsTable)){
+        else if(isRowSelected(dayTourResultsTable)){    //1
             jBookDayTourMessageLabel.setText("");
             jBookDayTourGreenMessageLabel.setText("DayTour added");
             addSelectedDayTours(dayTourResultsTable, dayTourSearch);
@@ -920,24 +891,24 @@ public class Window extends javax.swing.JFrame {
         
     }//GEN-LAST:event_depFlightDatePickerPropertyChange
 
-    private void arrHotelDatePickerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_arrHotelDatePickerActionPerformed
+    private void checkinHotelDatePickerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkinHotelDatePickerActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_arrHotelDatePickerActionPerformed
+    }//GEN-LAST:event_checkinHotelDatePickerActionPerformed
 
-    private void depHotelDatePickerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_depHotelDatePickerActionPerformed
+    private void checkoutHotelDatePickerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkoutHotelDatePickerActionPerformed
         
-    }//GEN-LAST:event_depHotelDatePickerActionPerformed
+    }//GEN-LAST:event_checkoutHotelDatePickerActionPerformed
 
-    private void arrHotelDatePickerPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_arrHotelDatePickerPropertyChange
-        depHotelDatePicker.getMonthView().setLowerBound(arrHotelDatePicker.getDate());
-    }//GEN-LAST:event_arrHotelDatePickerPropertyChange
+    private void checkinHotelDatePickerPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_checkinHotelDatePickerPropertyChange
+        if(checkinHotelDatePicker.getDate() != null){
+            checkoutHotelDatePicker.getMonthView().setLowerBound(checkinHotelDatePicker.getDate());
+            checkoutHotelDatePicker.setDate(checkinHotelDatePicker.getDate());
+        }
+    }//GEN-LAST:event_checkinHotelDatePickerPropertyChange
 
-    private void mainTabbedPaneMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mainTabbedPaneMouseClicked
-        bookFlightButton.setEnabled(true);
-        bookHotelButton.setEnabled(true);
-        bookTourButton.setEnabled(true);
+    private void wifiCheckBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_wifiCheckBox1ActionPerformed
         
-    }//GEN-LAST:event_mainTabbedPaneMouseClicked
+    }//GEN-LAST:event_wifiCheckBox1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -975,11 +946,9 @@ public class Window extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField addressTextField;
     private javax.swing.JComboBox<String> adultsHotelComboBox;
     private javax.swing.JComboBox<String> areaTourComboBox;
     private org.jdesktop.swingx.JXDatePicker arrFlightDatePicker;
-    private org.jdesktop.swingx.JXDatePicker arrHotelDatePicker;
     private javax.swing.JButton bookFlightButton;
     private javax.swing.JLabel bookFlightButtonGreenMessageLabel;
     private javax.swing.JLabel bookFlightButtonMessageLabel;
@@ -988,9 +957,8 @@ public class Window extends javax.swing.JFrame {
     private javax.swing.JLabel bookHotelButtonMessageLabel;
     private javax.swing.JPanel bookPanel;
     private javax.swing.JButton bookTourButton;
-    private javax.swing.JLabel bookingMessageLabel;
-    private javax.swing.JComboBox<String> childrenHotelComboBox;
-    private javax.swing.JTextField cityTextField;
+    private org.jdesktop.swingx.JXDatePicker checkinHotelDatePicker;
+    private org.jdesktop.swingx.JXDatePicker checkoutHotelDatePicker;
     private org.jdesktop.swingx.painter.CompoundPainter compoundPainter1;
     private javax.swing.JPanel customerPanel;
     private org.jdesktop.swingx.JXDatePicker dayTourDatePicker;
@@ -998,7 +966,6 @@ public class Window extends javax.swing.JFrame {
     private javax.swing.JTable dayTourResultsTable;
     private javax.swing.JButton dayTourSearchButton;
     private org.jdesktop.swingx.JXDatePicker depFlightDatePicker;
-    private org.jdesktop.swingx.JXDatePicker depHotelDatePicker;
     private javax.swing.JComboBox<String> difficultyComboBox;
     private javax.swing.JLabel fieldForgotLabel;
     private javax.swing.JButton finalBookingButton;
@@ -1037,15 +1004,11 @@ public class Window extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel23;
-    private javax.swing.JLabel jLabel24;
-    private javax.swing.JLabel jLabel25;
-    private javax.swing.JLabel jLabel26;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
@@ -1059,7 +1022,6 @@ public class Window extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> languageCombobox;
     private javax.swing.JComboBox<String> locationHotelComboBox;
     private javax.swing.JTabbedPane mainTabbedPane;
-    private javax.swing.JTextField nameTextField;
     private javax.swing.JButton nextFromCustomerButton;
     private javax.swing.JButton nextFromDayTourButton;
     private javax.swing.JButton nextFromFlightButton;
@@ -1067,7 +1029,6 @@ public class Window extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> numberOfTicketsComboBox;
     private javax.swing.JCheckBox oneWayCheckBox;
     private javax.swing.JCheckBox pickupCheckBox;
-    private javax.swing.JTextField postcodeTextField;
     private javax.swing.JComboBox<String> roomHotelComboBox;
     private javax.swing.JCheckBox smokeCheckBox;
     private javax.swing.JCheckBox spoolCheckBox;
@@ -1094,9 +1055,12 @@ public class Window extends javax.swing.JFrame {
         depFlightDatePicker.getMonthView().setLowerBound(new Date());
         arrFlightDatePicker.setDate(new Date());
         
-        arrHotelDatePicker.setDate(new Date());
-        arrHotelDatePicker.getMonthView().setLowerBound(new Date());
-        depHotelDatePicker.setDate(new Date());
+       
+	
+        checkinHotelDatePicker.setDate(new Date());
+        checkinHotelDatePicker.getMonthView().setLowerBound(new Date());
+        checkoutHotelDatePicker.setDate(new Date());
+        
         
         dayTourDatePicker.setDate(new Date());
         dayTourDatePicker.getMonthView().setLowerBound(new Date());
@@ -1165,11 +1129,12 @@ public class Window extends javax.swing.JFrame {
     /**
      * Checks if one or more rows in table are selected
      * @param table
+     * @param count nr of columns
      * @return true if row(s) are selected
      */
     private boolean isRowSelected (JTable table){
         for (int i = 0; i < table.getRowCount(); i++) {
-            boolean isChecked = (Boolean) table.getValueAt(i, 9);
+            boolean isChecked = (Boolean) table.getValueAt(i, table.getColumnCount()-1);
             if (isChecked) return true;
         }
         return false;
@@ -1202,7 +1167,7 @@ public class Window extends javax.swing.JFrame {
      */
     private void addSelectedFlights(JTable table, FlightSearch result) {
         for (int i = 0; i < table.getRowCount(); i++) {
-            boolean isChecked = (Boolean) table.getValueAt(i, 9);
+            boolean isChecked = (Boolean) table.getValueAt(i, table.getColumnCount()-1);
 
             if (isChecked) {
                 int index = (int) table.getValueAt(i, 0);
@@ -1245,7 +1210,7 @@ public class Window extends javax.swing.JFrame {
      */
     private void addSelectedHotel(JTable table, HotelSearch result) {
         for (int i = 0; i < table.getRowCount(); i++) {
-            boolean isChecked = (Boolean) table.getValueAt(i, 12);
+            boolean isChecked = (Boolean) table.getValueAt(i, table.getColumnCount()-1);
 
             if (isChecked) {
                 int index = (int) table.getValueAt(i, 0);
@@ -1281,7 +1246,7 @@ public class Window extends javax.swing.JFrame {
      */
     private void addSelectedDayTours(JTable table, DayTourSearch result ) {
         for (int i = 0; i < table.getRowCount(); i++) {
-            boolean isChecked = (Boolean) table.getValueAt(i, 10);
+            boolean isChecked = (Boolean) table.getValueAt(i, table.getColumnCount()-1);
 
             if (isChecked) {
                 int index = (int) table.getValueAt(i, 0);
@@ -1508,15 +1473,15 @@ public class Window extends javax.swing.JFrame {
         
         clearHotelMessages();
         
-        if(arrHotelDatePicker.getDate() == null && depHotelDatePicker.getDate() == null){
+        if(checkinHotelDatePicker.getDate() == null && checkoutHotelDatePicker.getDate() == null){
             jHotelTableMessageLabel.setText("Choose date for check in and check out");
             return false;
         }
-        if(arrHotelDatePicker.getDate() == null && depHotelDatePicker.getDate() != null){
+        if(checkinHotelDatePicker.getDate() == null && checkoutHotelDatePicker.getDate() != null){
             jHotelTableMessageLabel.setText("Choose date for check in");
             return false;
         }
-        if(arrHotelDatePicker.getDate() != null && depHotelDatePicker.getDate() == null){
+        if(checkinHotelDatePicker.getDate() != null && checkoutHotelDatePicker.getDate() == null){
             jHotelTableMessageLabel.setText("Choose date for check out");
             return false;
         }
@@ -1563,7 +1528,9 @@ public class Window extends javax.swing.JFrame {
     // og ná í það úr töflu þegar búið er að velja eitthvað í töflunni   
     private Object[] hToObj(Hotel x, int i){
         return new Object[]{i,x.getName(), x.getAddress(), x.getPostcode(), 
-            x.getCity(), x.getWifi(), x.getFreeWifi(), x.getSmoke(), x.getPool(), x.getGym(), x.getTV(), arrHotelDatePicker.getDate().toString(), false};
+            x.getCity(), conIntToString(x.getWifi()), conIntToString(x.getFreeWifi()), 
+            conIntToString(x.getSmoke()), conIntToString(x.getPool()), conIntToString(x.getGym()), 
+            conIntToString(x.getTV()), false};
 
     }
     
@@ -1578,6 +1545,15 @@ public class Window extends javax.swing.JFrame {
     
     private String conFalseTrueToYesNO(boolean x){
         if(x){
+            return "Yes";
+        }
+        else{
+            return "No";
+        }      
+    };
+    
+    private String conIntToString(int x){
+        if(x==1){
             return "Yes";
         }
         else{
