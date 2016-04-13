@@ -667,7 +667,7 @@ public class Window extends javax.swing.JFrame {
                 .addGap(30, 30, 30))
         );
 
-        mainTabbedPane.addTab("Booking  0", new javax.swing.ImageIcon("/Users/ekh/netbeansProjectsNytt/6T_Trip_Planner-V2/cart.png"), bookPanel); // NOI18N
+        mainTabbedPane.addTab("Booking  0", null, bookPanel);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -762,19 +762,24 @@ public class Window extends javax.swing.JFrame {
     }//GEN-LAST:event_nextFromHotelButtonActionPerformed
 
     private void dayTourSearchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dayTourSearchButtonActionPerformed
-        if(!validateDayTours()) return;
-        
-        Date date = dayTourDatePicker.getDate();
-        String area = areaTourComboBox.getSelectedItem().toString();
+        //if(!validateDayTours()) return;
+        Date date = dayTourDatePicker.getDate();       
+        String area = areaTourComboBox.getSelectedItem().toString();;       
         String type = typeTourComboBox.getSelectedItem().toString();
         String diff = difficultyComboBox.getSelectedItem().toString();
         boolean pickup = pickupCheckBox.isSelected();
         boolean hcap = handicapCheckbox.isSelected();
         String lang = languageCombobox.getSelectedItem().toString();
-        int tickets = Integer.parseInt(ticketsTourComboBox.getItemAt(ticketsTourComboBox.getSelectedIndex()));
+        int tickets = Integer.parseInt(ticketsTourComboBox.getItemAt(ticketsTourComboBox.getSelectedIndex()));        
         
+        if(("Choose").equals(area)) area = "";
+        if(("Choose").equals(type)) type = "";
+        if(("Choose").equals(diff)) diff = "";        
+        if(("Choose").equals(lang)) lang = "";      
+             
         ArrayList<Tours> results = dayTourSearch.search(date, area, type, diff, pickup, hcap, lang, tickets);
         //(String dur, String type, String diff, String area , String lang, boolean pUp, boolean hCap, int date, int numberOfTickets)
+        
         createDayTourTable(results);
     }//GEN-LAST:event_dayTourSearchButtonActionPerformed
 

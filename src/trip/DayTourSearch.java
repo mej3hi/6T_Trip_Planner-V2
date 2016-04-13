@@ -18,22 +18,17 @@ import tourHopur.model.Tours;
  * @author M
  */
 public class DayTourSearch {
-  
-    private ArrayList<Tours> results;
-    private ArrayList<Tours> resultsTmp;
-   
-    
-    //SearchMock search = new SearchMock();
     Search search = new Search();
+    private ArrayList<Tours> results = new ArrayList<Tours>();
 
     public ArrayList<Tours> search(Date date, String area, String type, String difficulty,
             boolean pickup, boolean handicap, String language, int numOfTickets ){
         
         String convertedDate = String.format("%1$td.%1$tm.%1$tY", date);
         String convertedType = type.toLowerCase().replaceAll("\\s+","");;
-        
-       
+        if(date == null) convertedDate = "";
         // Þurfum aðeins að breyta því sem kemur úr comboboxunum til að það passi við gagnagrunnninn
+        results.clear();
         results = search.getResults(0.0, convertedType, difficulty, area, 0, 0, language, pickup, handicap, convertedDate , numOfTickets);
         return results;
         // Fallið þeirra     

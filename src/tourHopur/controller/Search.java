@@ -44,6 +44,7 @@ public class Search
         System.out.println(searchString);
         
         ArrayList<Tours> results = new ArrayList<Tours>();
+        
 
         ResultSet db = database.getData(searchString);
         try {
