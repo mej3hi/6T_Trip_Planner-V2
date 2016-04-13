@@ -1,11 +1,11 @@
-
+package tourHopur.controller;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package tourHopur.controller;
+
 
 import tourHopur.model.Tours;
 import java.util.ArrayList;
@@ -36,7 +36,7 @@ public class SearchMock {
         tour1.setDifficulty("Easy");
         tour1.setArea("East");
          
-        tour1.setLanguage("english");
+        //tour1.setLanguage("english");
         tour1.setPickup(true);
         tour1.setHandicap(true);
         tour1.setDate("");
@@ -52,7 +52,7 @@ public class SearchMock {
         tour2.setDifficulty("Hard");
         tour2.setArea("West");
         String [] y = {"english"}; 
-        tour2.setLanguage("english");
+        //tour2.setLanguage("english");
         tour2.setPickup(false);
         tour2.setHandicap(false);
         tour2.setDate("");
