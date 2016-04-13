@@ -1,4 +1,5 @@
 package hotelHopur;
+
 /**
  * SearchControl inniheldur fjórar aðferðir. Eina aðalaðferð sem finnur þau Hótel sem uppfylla
  * skilyrði notanda. Og þrjú hjálparföll sem aðalaðferðin notar til þess að vinna með dagsetningar.
@@ -64,7 +65,7 @@ public class SearchControl {
 		
 		try {
 			//Tenging við Hotel.db 
-			c = DriverManager.getConnection("jdbc:sqlite:Hotel.db");
+			c = sqliteConnection.dbConnector();
 			//Búum til sql skipun.
 			String qry = "Select * from Hotel,hotelfacilities, room_price where Hotel.id=Hotelfacilities.hotelid AND Hotel.id = Room_price.Hotelid AND ( Hotel.name LIKE'%"
 					+ tmp
@@ -132,13 +133,45 @@ public class SearchControl {
 			statement.close();
 
 		} catch (Exception e2) {
-			System.out.println(e2);
+			System.out.println(e2 + " hmm");
 
 		}
 
 		return theList;
 
 	}
+        
+        /* Usage: detailedSearch(hotelList, var);
+     * Pre: hotelList is an ArrayList<Hotel> and var is an integer.
+     * Post: The method returns a new ArrayList. It contains the
+     *       Hotels from hotelList that have specific facilities
+     *       that the client is looking for. i.e. wifi, gym, etc.
+     */
+    public static ArrayList<Hotel> detailedSearch(ArrayList<Hotel> hotelList, int var){
+   
+        ArrayList<Hotel> hoteltmp = new ArrayList<Hotel>();
+        for(int i = 0; i<hotelList.size();i++){
+            int facilities;
+            Hotel tmp = hotelList.get(i);
+            if(var==0){
+                facilities = tmp.getWifi();
+            }else if(var==1){
+                facilities=tmp.getFreeWifi();
+            }else if(var==2){
+                facilities=tmp.getPool();
+            }else if(var==3){
+                facilities=tmp.getGym();
+            }else if(var==4){
+                facilities=tmp.getTV();
+            }else{
+                facilities=tmp.getSmoke();
+            }
+            if(facilities==1){
+                hoteltmp.add(tmp);
+            }
+        }
+        return hoteltmp;
+    }
 
 	/* Þetta fall loopar í gegnum allar dagsetningar frá dateres til dateout.
 	 * Það finnur dagsetninguna með flestum bókunum og skilar fjölda bókanna þann
@@ -156,7 +189,7 @@ public class SearchControl {
 		ArrayList<String> myDays = datevinnsla(dateres, dateout);
 		for (int i = 0; i < myDays.size(); i++) {
 			try {
-////// EIKI ///////////                        c = sqliteConnection.dbConnector();
+				
 				String NoOfRoomsTaken = "select *, count(hotelid) as pi from roomreserved where hotelid='"
 						+ hotelid
 						+ "' and datereserved = '"
@@ -177,7 +210,7 @@ public class SearchControl {
 				}
 
 			} catch (Exception e2) {
-				System.err.println( e2.getClass().getName() + ": " + e2.getMessage() );
+				System.err.println( e2.getClass().getName() + ":  haa " + e2.getMessage() );
 	            System.exit(0);
 			}
 		}
