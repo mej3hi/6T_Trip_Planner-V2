@@ -1,4 +1,4 @@
-package Hotel;
+package hotelHopur;
 
 /**
  * FinaliseBooking inniheldur eina meginaðferð. Hún sér um að uppfæra allar töflur í databaseinum

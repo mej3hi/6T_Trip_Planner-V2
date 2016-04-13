@@ -5,7 +5,7 @@
  */
 package trip;
 
-import Hotel.FinaliseBooking;
+import hotelHopur.FinaliseBooking;
 import hotelHopur.Hotel;
 import hotelHopur.SearchControl;
 import hotelHopur.SearchMock;
@@ -28,20 +28,10 @@ public class HotelSearch {
     public ArrayList<Hotel> search(Date datein, Date dateout, String room, String city, boolean wifi,
             boolean freewifi, boolean smoke, boolean spool, boolean gym, boolean tv ){
         
-        //String convertedDatein = String.format("%1$td mar. %1$tY", datein);
-        //String convertedDateout = String.format("%1$td mar. %1$tY", dateout);
-      
-        //System.out.println(convertedDatein);
-        //System.out.println(convertedDateout);
-        
-        Date datein2 = new Date();
-        String dateinS = FinaliseBooking.dateToString(datein2);
-	Date dateout2 = FinaliseBooking.addDays(datein2, 10);
-	String dateoutS = FinaliseBooking.dateToString(dateout2);
-        
-        System.out.println(datein2);
-        System.out.println(dateout2);
-        
+    
+       
+        String dateinS = FinaliseBooking.dateToString(datein);
+	String dateoutS = FinaliseBooking.dateToString(dateout);    
         
         results = searchControl.LeitaHotel(city, dateinS, dateoutS);
         
@@ -59,6 +49,14 @@ public class HotelSearch {
     
     public Hotel getHotel(int index){
         return results.get(index);
+    }
+
+
+    void updateDatabase(int id, int i, Date checkIn, Date checkOut, int rooms, String clientid, String client_passw, int roomType) {
+        String dateIn = FinaliseBooking.dateToString(checkIn);
+        String dateOut = FinaliseBooking.dateToString(checkOut);
+        
+        FinaliseBooking.updateAllTheDataBase(id, rooms, dateIn, dateOut, rooms, clientid, client_passw, rooms);
     }
     
 }

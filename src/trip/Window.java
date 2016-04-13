@@ -17,6 +17,7 @@ import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import tourHopur.model.Tours;
 
+
 /**
  * Lýsing
  * @author 6T_Trip_planner group
@@ -1275,7 +1276,7 @@ public class Window extends javax.swing.JFrame {
         
         String name = booking.customer.getName();
         String ssn = booking.customer.getSsn();
-        int phone = booking.customer.getPhone();
+        String phone = booking.customer.getPhone()==0 ? "" : ""+booking.customer.getPhone();
         
         String s="";
         s+="Name: "+name+"\n"+"SSN: "+ssn+"\n"+"Phone: "+phone+"\n\n";
@@ -1305,9 +1306,9 @@ public class Window extends javax.swing.JFrame {
                 }
             Hotel y = hb.get(i);
             s+= y.getName()+"\t"+y.getAddress()+"\t"+y.getPostcode()+"\t"+
-                y.getCity()+"\t"+y.getWifi()+"\t"+y.getFreeWifi()+"\t"+
-                y.getSmoke()+"\t"+y.getPool()+"\t"+y.getGym()+"\t"+
-                y.getTV()+"\t"+y.getID()+"\n";
+                y.getCity()+"\t"+conIntToString(y.getWifi())+"\t"+conIntToString(y.getFreeWifi())+"\t"+
+                conIntToString(y.getSmoke())+"\t"+conIntToString(y.getPool())+"\t"+conIntToString(y.getGym())+"\t"+
+                conIntToString(y.getTV())+"\n";
         }
         
         ArrayList<Tours> db = booking.daytour;
@@ -1377,6 +1378,18 @@ public class Window extends javax.swing.JFrame {
         for(int i=0; i<tours.size(); i++){
             int tickets = Integer.parseInt(ticketsTourComboBox.getItemAt(ticketsTourComboBox.getSelectedIndex())); 
             dayTourSearch.updateDatabase(tours.get(i).getId(),tickets);
+        }
+    };
+    
+     private void updateHotelDatabase(){
+        Booking booking = bookingManager.getBookings();
+        ArrayList<Hotel> hotels = booking.hotel;
+        for(int i=0; i<hotels.size(); i++){
+            //(int hotelID, int reservationID, String datein, String dateout,int nrOfRooms,String clientid,String client_passw, int roomType)
+            int rooms = Integer.parseInt(roomHotelComboBox.getItemAt(roomHotelComboBox.getSelectedIndex())); 
+            
+            hotelSearch.updateDatabase(hotels.get(i).getID(),0,checkinHotelDatePicker.getDate()
+                    ,checkoutHotelDatePicker.getDate(),rooms,"","",1);
         }
     };
 
