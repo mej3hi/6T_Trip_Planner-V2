@@ -148,18 +148,13 @@ public class Window extends javax.swing.JFrame {
         jScrollPane4 = new javax.swing.JScrollPane();
         jTextArea1 = new javax.swing.JTextArea();
         finalBookingButton = new javax.swing.JButton();
-        bookingMessageLabel = new javax.swing.JLabel();
+        bookingMessageLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         mainTabbedPane.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
                 mainTabbedPaneStateChanged(evt);
-            }
-        });
-        mainTabbedPane.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                mainTabbedPaneMouseClicked(evt);
             }
         });
 
@@ -630,7 +625,7 @@ public class Window extends javax.swing.JFrame {
                     .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 834, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, bookPanelLayout.createSequentialGroup()
                         .addGap(74, 74, 74)
-                        .addComponent(bookingMessageLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 565, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(bookingMessageLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 565, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(finalBookingButton)))
                 .addContainerGap())
@@ -646,11 +641,11 @@ public class Window extends javax.swing.JFrame {
                         .addComponent(finalBookingButton))
                     .addGroup(bookPanelLayout.createSequentialGroup()
                         .addGap(39, 39, 39)
-                        .addComponent(bookingMessageLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 124, Short.MAX_VALUE)))
+                        .addComponent(bookingMessageLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 124, Short.MAX_VALUE)))
                 .addGap(30, 30, 30))
         );
 
-        mainTabbedPane.addTab("Booking  0", null, bookPanel);
+        mainTabbedPane.addTab("Booking  0", bookPanel);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -796,7 +791,7 @@ public class Window extends javax.swing.JFrame {
 
     private void finalBookingButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_finalBookingButtonActionPerformed
         Booking booking = bookingManager.getBookings();
-        bookingMessageLabel.setText("Successful booking. Thank you " + booking.customer.getName()+ " and have a pleasent trip. " );        
+        bookingMessageLabel1.setText("Successful booking. Thank you " + booking.customer.getName()+ " and have a pleasent trip. " );        
         mainTabbedPane.setEnabledAt(0,false);
         mainTabbedPane.setEnabledAt(1,false);
         mainTabbedPane.setEnabledAt(2,false);
@@ -958,6 +953,7 @@ public class Window extends javax.swing.JFrame {
     private javax.swing.JLabel bookHotelButtonMessageLabel;
     private javax.swing.JPanel bookPanel;
     private javax.swing.JButton bookTourButton;
+    private javax.swing.JLabel bookingMessageLabel1;
     private org.jdesktop.swingx.JXDatePicker checkinHotelDatePicker;
     private org.jdesktop.swingx.JXDatePicker checkoutHotelDatePicker;
     private org.jdesktop.swingx.painter.CompoundPainter compoundPainter1;
@@ -1527,7 +1523,7 @@ public class Window extends javax.swing.JFrame {
     }
     
     public void clearBookingMessage(){
-        bookingMessageLabel.setText("");
+        bookingMessageLabel1.setText("");
     }
         
     //------------------- Hjálparföll ------------------------------

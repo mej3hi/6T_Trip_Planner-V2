@@ -44,7 +44,6 @@
     <Container class="javax.swing.JTabbedPane" name="mainTabbedPane">
       <Events>
         <EventHandler event="stateChanged" listener="javax.swing.event.ChangeListener" parameters="javax.swing.event.ChangeEvent" handler="mainTabbedPaneStateChanged"/>
-        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="mainTabbedPaneMouseClicked"/>
       </Events>
 
       <Layout class="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout"/>
@@ -1206,7 +1205,7 @@
                           <Component id="jScrollPane4" alignment="0" pref="834" max="32767" attributes="0"/>
                           <Group type="102" alignment="1" attributes="0">
                               <EmptySpace min="-2" pref="74" max="-2" attributes="0"/>
-                              <Component id="bookingMessageLabel" min="-2" pref="565" max="-2" attributes="0"/>
+                              <Component id="bookingMessageLabel1" min="-2" pref="565" max="-2" attributes="0"/>
                               <EmptySpace max="32767" attributes="0"/>
                               <Component id="finalBookingButton" min="-2" max="-2" attributes="0"/>
                           </Group>
@@ -1227,7 +1226,7 @@
                           </Group>
                           <Group type="102" attributes="0">
                               <EmptySpace min="-2" pref="39" max="-2" attributes="0"/>
-                              <Component id="bookingMessageLabel" pref="124" max="32767" attributes="0"/>
+                              <Component id="bookingMessageLabel1" pref="124" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                       <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
@@ -1259,7 +1258,7 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="finalBookingButtonActionPerformed"/>
               </Events>
             </Component>
-            <Component class="javax.swing.JLabel" name="bookingMessageLabel">
+            <Component class="javax.swing.JLabel" name="bookingMessageLabel1">
             </Component>
           </SubComponents>
         </Container>
