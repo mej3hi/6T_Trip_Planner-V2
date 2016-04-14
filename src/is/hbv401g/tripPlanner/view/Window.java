@@ -768,12 +768,10 @@ public class Window extends javax.swing.JFrame {
      */
     private void finalBookingButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_finalBookingButtonActionPerformed
         Booking booking = bookingManager.getBookings();
-        bookingMessageLabel1.setText("Successful booking. Thank you " + booking.customer.getName()+ " and have a pleasent trip. " );        
-        mainTabbedPane.setEnabledAt(0,false);
-        mainTabbedPane.setEnabledAt(1,false);
-        mainTabbedPane.setEnabledAt(2,false);
-        mainTabbedPane.setEnabledAt(3,false);
-        mainTabbedPane.setEnabledAt(4,false);
+        bookingMessageLabel1.setText("Successful booking. Thank you " + booking.customer.getName()+ " and have a pleasent trip. " ); 
+        for(int i=0; i<5; i++){
+            mainTabbedPane.setEnabledAt(i, false);
+        }
         finalBookingButton.setEnabled(false);
         addBookingToDatabase();
         updateFlightDatabase();
