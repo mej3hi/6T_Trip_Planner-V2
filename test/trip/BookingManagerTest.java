@@ -5,6 +5,7 @@
  */
 package trip;
 
+import is.hbv401g.tripPlanner.model.BookingManager;
 import ekkiInotkun.FlightMock;
 import java.util.Date;
 import org.junit.After;

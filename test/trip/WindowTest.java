@@ -5,6 +5,7 @@
  */
 package trip;
 
+import is.hbv401g.tripPlanner.view.Window;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;

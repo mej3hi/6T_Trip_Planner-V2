@@ -5,6 +5,7 @@
  */
 package trip;
 
+import is.hbv401g.tripPlanner.model.Customer;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
