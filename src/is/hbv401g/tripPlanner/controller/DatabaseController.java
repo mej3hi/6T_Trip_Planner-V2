@@ -9,6 +9,7 @@ import is.hbv401g.tripPlanner.model.Customer;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.sql.SQLException;
 
 /**
  *
@@ -16,7 +17,6 @@ import java.sql.PreparedStatement;
  */
 public class DatabaseController {
     public static void insertInto(String table, String[] param, Customer customer, String type, int id){
-        //if(param.length==0) return;
         String q ="(?";
         String p =" ("+param[0];
         for(int i=1; i<param.length; i++){
@@ -25,8 +25,7 @@ public class DatabaseController {
         }
         q+=")";
         p+=")";
-        //System.out.println(q);
-        //System.out.println(p);
+
         try{
             Class.forName("org.sqlite.JDBC");
             Connection con=DriverManager.getConnection("jdbc:sqlite:data.db");
@@ -40,7 +39,7 @@ public class DatabaseController {
 
             statement.executeUpdate();   
         }
-        catch(Exception e){
+        catch(ClassNotFoundException | SQLException e){
             System.out.println(e);  
         }
     }
