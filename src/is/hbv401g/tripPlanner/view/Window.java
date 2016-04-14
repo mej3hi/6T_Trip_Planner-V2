@@ -365,7 +365,7 @@ public class Window extends javax.swing.JFrame {
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Integer.class, java.lang.Object.class, java.lang.Boolean.class
+                java.lang.Integer.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Boolean.class
             };
             boolean[] canEdit = new boolean [] {
                 false, false, false, false, false, false, false, false, false, false, false, false, true
@@ -1486,7 +1486,7 @@ public class Window extends javax.swing.JFrame {
             x.getCity(), conIntToString(x.getWifi()), conIntToString(x.getFreeWifi()), 
             conIntToString(x.getSmoke()), conIntToString(x.getPool()), conIntToString(x.getGym()), 
             conIntToString(x.getTV()),x.getOrderPriceRoomType1(Integer.parseInt(adultsHotelComboBox.getSelectedItem().toString()),
-            Integer.parseInt(roomHotelComboBox.getSelectedItem().toString())), false};
+            Integer.parseInt(roomHotelComboBox.getSelectedItem().toString()))+" ISK", false};
 
     }
     

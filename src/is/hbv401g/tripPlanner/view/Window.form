@@ -604,7 +604,7 @@
                         <Column editable="false" title="Smoke" type="java.lang.Object"/>
                         <Column editable="false" title="S.Pool" type="java.lang.Object"/>
                         <Column editable="false" title="Gym" type="java.lang.Object"/>
-                        <Column editable="false" title="Tv" type="java.lang.Integer"/>
+                        <Column editable="false" title="Tv" type="java.lang.Object"/>
                         <Column editable="false" title="Price" type="java.lang.Object"/>
                         <Column editable="true" title="Select" type="java.lang.Boolean"/>
                       </Table>
