@@ -164,7 +164,7 @@ public class Hotel {
     }
 
     //Þessi föll er hægt að kalla á til þess að reikna verðið á pöntuninni.
-    int getOrderPriceRoomType1(int nrClients, int nrRooms){
+    public int getOrderPriceRoomType1(int nrClients, int nrRooms){
             if(nrClients == nrRooms){
                     OrderPrice = (int) (nrClients*nrRooms*roomPrice1*0.8);
             }else{

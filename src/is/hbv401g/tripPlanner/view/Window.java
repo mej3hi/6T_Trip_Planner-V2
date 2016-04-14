@@ -361,14 +361,14 @@ public class Window extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Id", "Name", "Address", "Postcode", "City", "Wifi", "Free Wifi", "Smoke", "S.Pool", "Gym", "Tv", "Select"
+                "Id", "Name", "Address", "Postcode", "City", "Wifi", "Free Wifi", "Smoke", "S.Pool", "Gym", "Tv", "Price", "Select"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Boolean.class
+                java.lang.Integer.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Integer.class, java.lang.Object.class, java.lang.Boolean.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false, false, false, false, false, true
+                false, false, false, false, false, false, false, false, false, false, false, false, true
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -1485,7 +1485,8 @@ public class Window extends javax.swing.JFrame {
         return new Object[]{i,x.getName(), x.getAddress(), x.getPostcode(), 
             x.getCity(), conIntToString(x.getWifi()), conIntToString(x.getFreeWifi()), 
             conIntToString(x.getSmoke()), conIntToString(x.getPool()), conIntToString(x.getGym()), 
-            conIntToString(x.getTV()), false};
+            conIntToString(x.getTV()),x.getOrderPriceRoomType1(Integer.parseInt(adultsHotelComboBox.getSelectedItem().toString()),
+            Integer.parseInt(roomHotelComboBox.getSelectedItem().toString())), false};
 
     }
     
