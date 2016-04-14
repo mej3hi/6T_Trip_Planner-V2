@@ -18,7 +18,7 @@ import is.hbv401g.dayTour.controller.Booking;
 public class DayTourSearch {
     Search search = new Search();
     Booking booking = new Booking();
-    private ArrayList<Tours> results = new ArrayList<>();
+    private ArrayList<Tours> results;
 
     public ArrayList<Tours> search(Date date, String area, String type, String difficulty,
             boolean pickup, boolean handicap, String language, int numOfTickets ){
@@ -27,8 +27,8 @@ public class DayTourSearch {
         String convertedType = type.toLowerCase().replaceAll("\\s+","");
         
         if(date == null) convertedDate = "";
+        
         // Þurfum aðeins að breyta því sem kemur úr comboboxunum til að það passi við gagnagrunnninn
-        results.clear();
         results = search.getResults(0.0, convertedType, difficulty, area, 0, 0, language, pickup, handicap, convertedDate , numOfTickets);
         return results;
         // Fallið þeirra     

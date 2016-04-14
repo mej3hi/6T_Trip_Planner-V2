@@ -16,7 +16,7 @@ public class Search
 
     //private String[] language = {"danish", "english", "german", "icelandic", "spanish"};
     
-    private ArrayList<Tours> tour = new ArrayList<Tours>();
+    private ArrayList<Tours> tour;
 
     private SQLiteJDBC database;
     
@@ -45,6 +45,7 @@ public class Search
         
         ArrayList<Tours> results = new ArrayList<Tours>();
 
+        tour = new ArrayList<>();
         ResultSet db = database.getData(searchString);
         try {
             while (db.next()) {
