@@ -1,10 +1,15 @@
 # 6T_Trip_Planner-V2
 Meta-search
 
+ég er búinn að fá gagnagrunn fá flughópinn, bara munna að setja það inn 
+áðu við skiljum verkefnið, það er inná dropboxið
+
+
 Maggi kannski að þetta sé vesenið hjá þér með þetta username
 https://help.github.com/articles/why-are-my-commits-linked-to-the-wrong-user/
 
 Flug
+	
 	
 	Útfærsla á því hvernig við birtum leitarniðurstöður ef beðið er um 
 	fleiri miða en eru  til. (skilaboð ?)
