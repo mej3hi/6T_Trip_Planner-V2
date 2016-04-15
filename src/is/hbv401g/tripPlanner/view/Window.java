@@ -776,6 +776,7 @@ public class Window extends javax.swing.JFrame {
         addBookingToDatabase();
         updateFlightDatabase();
         updateToursDatabase();
+        updateHotelDatabase();
      
     }//GEN-LAST:event_finalBookingButtonActionPerformed
     /**
