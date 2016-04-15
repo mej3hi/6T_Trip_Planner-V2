@@ -1278,14 +1278,15 @@ public class Window extends javax.swing.JFrame {
         for(int i=0; i<hb.size(); i++){
             if(i==0){
                 s+="\n\nHotel\n\n";
-                s+="Name\tAddress\tPostCode\tCity\tWifi\tFree Wifi\tSmoke\tS.Pool\tGym\tTv\tCheck in\n";
+                s+="Name\tAddress\tPostCode\tCity\tWifi\tFree Wifi\tSmoke\tS.Pool\tGym\tTv\tPrice\n";
                 s+="----------\t-----------\t----------\t----------\t----------\t-----------\t----------\t----------\t----------\t-----------\t----------\n";
                 }
             Hotel y = hb.get(i);
             s+= y.getName()+"\t"+y.getAddress()+"\t"+y.getPostcode()+"\t"+
                 y.getCity()+"\t"+conIntToString(y.getWifi())+"\t"+conIntToString(y.getFreeWifi())+"\t"+
                 conIntToString(y.getSmoke())+"\t"+conIntToString(y.getPool())+"\t"+conIntToString(y.getGym())+"\t"+
-                conIntToString(y.getTV())+"\n";
+                conIntToString(y.getTV())+"\t"+(y.getOrderPriceRoomType1(Integer.parseInt(adultsHotelComboBox.getSelectedItem().toString()),
+                Integer.parseInt(roomHotelComboBox.getSelectedItem().toString()))+" ISK").replaceAll("([0-9])(?=(?:[0-9]{3})+\\b)", "$1.")+"\n";
         }
         
         ArrayList<Tours> db = booking.daytour;
