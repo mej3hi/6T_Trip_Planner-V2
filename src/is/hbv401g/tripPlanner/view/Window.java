@@ -1486,8 +1486,8 @@ public class Window extends javax.swing.JFrame {
         return new Object[]{i,x.getName(), x.getAddress(), x.getPostcode(), 
             x.getCity(), conIntToString(x.getWifi()), conIntToString(x.getFreeWifi()), 
             conIntToString(x.getSmoke()), conIntToString(x.getPool()), conIntToString(x.getGym()), 
-            conIntToString(x.getTV()),x.getOrderPriceRoomType1(Integer.parseInt(adultsHotelComboBox.getSelectedItem().toString()),
-            Integer.parseInt(roomHotelComboBox.getSelectedItem().toString()))+" ISK", false};
+            conIntToString(x.getTV()),(x.getOrderPriceRoomType1(Integer.parseInt(adultsHotelComboBox.getSelectedItem().toString()),
+            Integer.parseInt(roomHotelComboBox.getSelectedItem().toString()))+" ISK").replaceAll("([0-9])(?=(?:[0-9]{3})+\\b)", "$1."), false};
 
     }
     
