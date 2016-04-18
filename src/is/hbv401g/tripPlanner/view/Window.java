@@ -1497,7 +1497,7 @@ public class Window extends javax.swing.JFrame {
             lts(x.getLanguage()),x.getDifficulty(), 
             conFalseTrueToYesNO(x.getPickup()), 
             conFalseTrueToYesNO(x.getHandicap()), ticketsTourComboBox.getSelectedItem().toString(), 
-            x.getPrice()+" ISK",false};
+            (x.getPrice()+" ISK").replaceAll("([0-9])(?=(?:[0-9]{3})+\\b)", "$1."),false};
     }
    
     private String conFalseTrueToYesNO(boolean x){
