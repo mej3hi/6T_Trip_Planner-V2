@@ -112,6 +112,8 @@ public class Window extends javax.swing.JFrame {
         gymCheckBox = new javax.swing.JCheckBox();
         tvCheckBox = new javax.swing.JCheckBox();
         bookHotelButtonGreenMessageLabel = new javax.swing.JLabel();
+        roomType = new javax.swing.JComboBox<>();
+        jLabel8 = new javax.swing.JLabel();
         dayTourPanel = new javax.swing.JPanel();
         jArrFlightMessageLabel1 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
@@ -422,6 +424,12 @@ public class Window extends javax.swing.JFrame {
         bookHotelButtonGreenMessageLabel.setMaximumSize(new java.awt.Dimension(53, 16));
         bookHotelButtonGreenMessageLabel.setPreferredSize(new java.awt.Dimension(53, 16));
         hotelsPanel.add(bookHotelButtonGreenMessageLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(173, 606, 200, 40));
+
+        roomType.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3" }));
+        hotelsPanel.add(roomType, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 140, -1, -1));
+
+        jLabel8.setText("Room type");
+        hotelsPanel.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 120, -1, -1));
 
         mainTabbedPane.addTab("Hotels", hotelsPanel);
 
@@ -974,6 +982,7 @@ public class Window extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
@@ -995,6 +1004,7 @@ public class Window extends javax.swing.JFrame {
     private javax.swing.JCheckBox oneWayCheckBox;
     private javax.swing.JCheckBox pickupCheckBox;
     private javax.swing.JComboBox<String> roomHotelComboBox;
+    private javax.swing.JComboBox<String> roomType;
     private javax.swing.JCheckBox smokeCheckBox;
     private javax.swing.JCheckBox spoolCheckBox;
     private javax.swing.JComboBox<String> ticketsTourComboBox;
@@ -1484,11 +1494,21 @@ public class Window extends javax.swing.JFrame {
     }
      
     private Object[] hToObj(Hotel x, int i){
+        String r;
+        if("1".equals(roomType.getSelectedItem().toString()))
+            r=x.getOrderPriceRoomType1(Integer.parseInt(adultsHotelComboBox.getSelectedItem().toString()),
+            Integer.parseInt(roomHotelComboBox.getSelectedItem().toString()))+" ISK";
+        else if("2".equals(roomType.getSelectedItem().toString()))
+            r=x.getOrderPriceRoomType2(Integer.parseInt(adultsHotelComboBox.getSelectedItem().toString()),
+            Integer.parseInt(roomHotelComboBox.getSelectedItem().toString()))+" ISK";
+        else
+            r=x.getOrderPriceRoomType3(Integer.parseInt(adultsHotelComboBox.getSelectedItem().toString()),
+            Integer.parseInt(roomHotelComboBox.getSelectedItem().toString()))+" ISK";
+        
         return new Object[]{i,x.getName(), x.getAddress(), x.getPostcode(), 
             x.getCity(), conIntToString(x.getWifi()), conIntToString(x.getFreeWifi()), 
             conIntToString(x.getSmoke()), conIntToString(x.getPool()), conIntToString(x.getGym()), 
-            conIntToString(x.getTV()),(x.getOrderPriceRoomType1(Integer.parseInt(adultsHotelComboBox.getSelectedItem().toString()),
-            Integer.parseInt(roomHotelComboBox.getSelectedItem().toString()))+" ISK").replaceAll("([0-9])(?=(?:[0-9]{3})+\\b)", "$1."), false};
+            conIntToString(x.getTV()),r.replaceAll("([0-9])(?=(?:[0-9]{3})+\\b)", "$1."), false};
 
     }
     
