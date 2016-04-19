@@ -525,7 +525,7 @@ public class Window extends javax.swing.JFrame {
         });
         dayTourPanel.add(bookTourButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 610, -1, -1));
 
-        difficultyComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Choose", "Esay", "Medium", "Hard" }));
+        difficultyComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Choose", "Easy", "Medium", "Hard" }));
         dayTourPanel.add(difficultyComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 60, -1, -1));
 
         jLabel23.setText("Difficulty");
