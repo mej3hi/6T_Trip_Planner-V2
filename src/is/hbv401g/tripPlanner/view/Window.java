@@ -529,7 +529,7 @@ public class Window extends javax.swing.JFrame {
         });
         dayTourPanel.add(bookTourButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 610, -1, -1));
 
-        difficultyComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Choose", "Esay", "Medium", "Hard" }));
+        difficultyComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Choose", "Easy", "Medium", "Hard" }));
         dayTourPanel.add(difficultyComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 60, -1, -1));
 
         jLabel23.setText("Difficulty");
@@ -779,7 +779,7 @@ public class Window extends javax.swing.JFrame {
      */
     private void finalBookingButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_finalBookingButtonActionPerformed
         Booking booking = bookingManager.getBookings();
-        bookingMessageLabel1.setText("Successful booking. Thank you " + booking.customer.getName()+ " and have a pleasent trip. " ); 
+        bookingMessageLabel1.setText("Successful booking. Thank you " + booking.customer.getName()+ " and have a pleasant trip. " ); 
         for(int i=0; i<5; i++){
             mainTabbedPane.setEnabledAt(i, false);
         }

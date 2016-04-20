@@ -24,7 +24,7 @@ public class DayTourSearch {
             boolean pickup, boolean handicap, String language, int numOfTickets ){
         
         String convertedDate = String.format("%1$td.%1$tm.%1$tY", date);
-        String convertedType = type.toLowerCase().replaceAll("\\s+","");
+        String convertedType = type.replaceAll("\\s+","");
         
         if(date == null) convertedDate = "";
         
