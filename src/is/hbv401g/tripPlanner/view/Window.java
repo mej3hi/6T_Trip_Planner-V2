@@ -227,6 +227,7 @@ public class Window extends javax.swing.JFrame {
         });
         flightsPanel.add(flightSearchButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 140, -1, -1));
 
+        jdepFlightResultTable.setAutoCreateRowSorter(true);
         jdepFlightResultTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -265,6 +266,7 @@ public class Window extends javax.swing.JFrame {
         jLabel16.setText("Number of tickets");
         flightsPanel.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 40, -1, -1));
 
+        jArrFlightResultTable.setAutoCreateRowSorter(true);
         jArrFlightResultTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -358,6 +360,7 @@ public class Window extends javax.swing.JFrame {
         });
         hotelsPanel.add(hotelSearchButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 140, -1, -1));
 
+        hotelResultTable.setAutoCreateRowSorter(true);
         hotelResultTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -466,6 +469,7 @@ public class Window extends javax.swing.JFrame {
         jLabel15.setText("Type");
         dayTourPanel.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 40, -1, -1));
 
+        dayTourResultsTable.setAutoCreateRowSorter(true);
         dayTourResultsTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -714,7 +718,6 @@ public class Window extends javax.swing.JFrame {
         ArrayList<Hotel> results = hotelSearch.search(datein, dateout, rooms , city, wifi, freewifi, smoke, spool, gym, tv);
         createHotelTable(results);
         
-        System.out.println(daysBetween(datein,dateout));
     }//GEN-LAST:event_hotelSearchButtonActionPerformed
     /**
      * Event handler for next button in hotel tab
