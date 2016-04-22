@@ -7,7 +7,6 @@ package is.hbv401g.tripPlanner.controller;
 
 import java.util.ArrayList;
 import java.util.Date;
-import is.hbv401g.dayTour.controller.Search;
 import is.hbv401g.dayTour.model.Tours;
 import is.hbv401g.dayTour.controller.Booking;
 
@@ -15,8 +14,8 @@ import is.hbv401g.dayTour.controller.Booking;
  *
  * @author 6T_Trip_planner group
  */
-public class DayTourSearch {
-    Search search = new Search();
+public class DayTourSearch extends is.hbv401g.dayTour.controller.Search{
+    //Search search = new Search();
     Booking booking = new Booking();
     private ArrayList<Tours> results;
 
@@ -29,7 +28,7 @@ public class DayTourSearch {
         if(date == null) convertedDate = "";
         
         // Þurfum aðeins að breyta því sem kemur úr comboboxunum til að það passi við gagnagrunnninn
-        results = search.getResults(0.0, convertedType, difficulty, area, 0, 0, language, pickup, handicap, convertedDate , numOfTickets);
+        results = getResults(0.0, convertedType, difficulty, area, 0, 0, language, pickup, handicap, convertedDate , numOfTickets);
         return results;
         // Fallið þeirra     
        //getResults(double duration, String type, String difficulty, String area, int minPrice, int maxPrice, 

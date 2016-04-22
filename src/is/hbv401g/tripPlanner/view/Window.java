@@ -16,7 +16,6 @@ import java.util.HashMap;
 import java.util.Map;
 import javax.swing.JPanel;
 import javax.swing.JTable;
-import javax.swing.UIManager;
 import javax.swing.table.DefaultTableModel;
 import is.hbv401g.dayTour.model.Tours;
 
@@ -1493,7 +1492,7 @@ public class Window extends javax.swing.JFrame {
     private Object[] toObj(Flight x,int i){
         return new Object[]{i,x.getAirline(),x.getDepartureLocation(),x.getDepartureTime(),
                 x.getArrivalLocation(),x.getArrivalTime(),x.getDuration()+" hours",
-                x.getNumberOfPassengers(),x.getTotalPrice()+" ISK",false};
+                x.getNumberOfPassengers(),(x.getTotalPrice()+" ISK").replaceAll("([0-9])(?=(?:[0-9]{3})+\\b)", "$1."),false};
     }
      
     private Object[] hToObj(Hotel x, int i){

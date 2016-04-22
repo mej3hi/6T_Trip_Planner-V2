@@ -4,7 +4,6 @@ package is.hbv401g.tripPlanner.controller;
 import is.hbv401g.flight.Flight;
 import java.util.ArrayList;
 import java.util.Date;
-import is.hbv401g.flight.Search;
 import is.hbv401g.flight.BookingController;
 
 
@@ -12,14 +11,13 @@ import is.hbv401g.flight.BookingController;
  *
  * @author 6T_Trip_planner group
  */
-public class FlightSearch {
+public class FlightSearch extends is.hbv401g.flight.Search{
     BookingController bookingController = new BookingController();
-    Search search = new Search();
     private ArrayList<Flight> results;
 
     public ArrayList<Flight> search(Date departure, String from, String to, int numberOfPassengers){
         String convertedDate = String.format("%1$td.%1$tm.%1$tY", departure);
-        results = search.gettingCorrectSearchResults(from, to, numberOfPassengers, convertedDate);
+        results = gettingCorrectSearchResults(from, to, numberOfPassengers, convertedDate);
         return results;
     }
     
